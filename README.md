@@ -8,7 +8,7 @@
 
 https://gitee.com/wlicsnju/pa2020_spring_guide
 
-* 视频课程地址：
+* 直播课程录屏地址：
 
 https://space.bilibili.com/284613991/channel/detail?cid=103368
 
