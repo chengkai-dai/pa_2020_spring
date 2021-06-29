@@ -28,6 +28,7 @@ void set_PF(uint32_t result)
 }
 
 void set_SF(uint32_t res, size_t data_size){
+	result = sign_ext(result & (0xFFFFFFF >> (32 - data_size)), data_size);
 
 }
 
