@@ -339,10 +339,10 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size)
 #else
     
 	uint32_t res=0;
-	res=src<<dest;
-	set_CF_shl(src,data_size);
+	res=dest<<src;
+	set_CF_shl(dest,data_size);
 	set_OF_shl(res,data_size);
-	set_CF_shl(src,data_size);
+	set_CF_shl(dest,data_size);
 	set_ZF(res,data_size);
 	set_PF(res);
 	set_SF(res,data_size);
