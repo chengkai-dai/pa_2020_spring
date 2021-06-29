@@ -24,7 +24,7 @@ void set_PF(uint32_t result)
 		result = result >> 1;
 	}
 
-	cpu.eflags.PF = !one_bits % 2;
+	cpu.eflags.PF = !(one_bits % 2);
 }
 
 void set_SF(uint32_t result, size_t data_size)
