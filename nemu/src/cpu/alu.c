@@ -322,9 +322,9 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	printf(" dest 0x%x ", dest);
 	printf(" res before 0x%llx  ", res);
 
-	printf(" res 0x%llx  ", res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size)));
+	printf(" res 0x%llx  ", res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2)));
 	printf(" cpu.eflags.CF %x\n ", cpu.eflags.CF);
-	return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size));
+	return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2));
 #endif
 }
 
