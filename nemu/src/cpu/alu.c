@@ -7,6 +7,10 @@ void set_CF_add(uint32_t result, uint32_t src, size_t data_size)
 	cpu.eflags.CF = result < src;
 }
 
+void set_ZF(uint32_t result, size_t data_size){
+	
+}
+
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
