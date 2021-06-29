@@ -457,7 +457,7 @@ void alu_test_sar() {
 void alu_test_imul() {
 	uint64_t res, temp_a, temp_d;
 	uint32_t a, b, res_asm_a, res_asm_d, res_eflags;
-	//TEST_EFLAGS test_eflags;
+	TEST_EFLAGS test_eflags;
 	int input[] = {-4,-3, -2, -1, 0, 1, 2, 3, 4, 0x0fffffff, 0xefffffff};
 	int n = sizeof(input) / sizeof(int);
 	int i, j;
