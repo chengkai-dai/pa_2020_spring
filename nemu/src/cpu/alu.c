@@ -7,6 +7,7 @@ void set_CF_add(uint32_t result, uint32_t src, size_t data_size)
 	cpu.eflags.CF = result < src;
 }
 
+
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
 #ifdef NEMU_REF_ALU
