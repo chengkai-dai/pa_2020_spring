@@ -475,8 +475,8 @@ void alu_test_imul() {
 				"popl %%ecx;"
 				: "=a" (res_asm_a), "=c" (res_eflags)
 				: "a" (a & 0xff), "c" (b & 0xff));
-			printf("res_asm %x  ",res_asm_a);
-			printf("sign extend res_asm %x  ",sign_ext(res_asm_a, 16));
+			//printf("res_asm %x  ",res_asm_a);
+			//printf("sign extend res_asm %x  ",sign_ext(res_asm_a, 16));
 			assert((int32_t) res == (int32_t) sign_ext(res_asm_a, 16));
 		}
 	}
