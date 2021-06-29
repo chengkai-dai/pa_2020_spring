@@ -31,7 +31,7 @@ void set_SF(uint32_t result, size_t data_size)
 {
 	assert(data_size != 0);
 	result = sign_ext(result & (0xFFFFFFF >> (32 - data_size)), data_size);
-	return (result & (1 << (data_size - 1)))>>
+	return (result & (1 << (data_size - 1)))>> (data_size-1);
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
