@@ -174,9 +174,9 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 		set_CF_sub(src, dest, data_size);
 	else
 	{
-		printf(cpu.eflags.CF);
-		printf("dest 0x%x",dest);
-		printf(src);
+		printf("CF %d",cpu.eflags.CF);
+		printf(" dest 0x%x",dest);
+		printf(" src 0x%x\n",src);
 
 		set_CF_sub(src, dest, data_size);
 		if (cpu.eflags.CF == 1)
