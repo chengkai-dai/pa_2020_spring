@@ -412,7 +412,8 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size)
 	uint32_t res = 0;
 	src = src & (0xFFFFFFFF >> (32 - data_size));
 	dest = dest & (0xFFFFFFFF >> (32 - data_size));
-	res = dest >> src & (~(((0x1 << (data_size-1)) >> src) << 1));
+	if(sign(dest))
+	res = dest >> src;
 	set_CF_shr(src, dest, data_size);
 	set_OF_shr(res, data_size);
 	set_ZF(res, data_size);
