@@ -174,7 +174,7 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 		set_CF_sub(src, dest, data_size);
 	else
 	{
-		set_CF_add(res, src, data_size);
+		set_CF_sub(src, dest, data_size);
 		uint32_t backup_res = res;
 		res = res + 1;
 		if (cpu.eflags.CF == 0)
