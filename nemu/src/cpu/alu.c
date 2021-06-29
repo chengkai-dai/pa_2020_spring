@@ -18,11 +18,7 @@ void set_CF_shl(uint32_t src, uint32_t dest, size_t data_size)
 {
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	dest = sign_ext(dest & (0xFFFFFFFF >> (32 - data_size)), data_size);
-	printf("test src 0x%x dest 0x%x sign 0x%x %x\n", src, dest, dest<<(src-1),sign(dest<<(src-1)) );
-	uint8_t x=0x80;
-	printf("0x80 >> 32 %x",((uint32_t)(x) >> 31));
-
-	cpu.eflags.CF = sign(dest<<(src-1));
+	cpu.eflags.CF = dest<<(src-1)>>(data_size-1);
 }
 
 void set_ZF(uint32_t result, size_t data_size)
