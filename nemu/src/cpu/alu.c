@@ -178,8 +178,7 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 		if (cpu.eflags.CF == 0)			
 			set_CF_sub(1, res, data_size);
 		
-		res = res - 1;
-		
+		res = res - 1;	
 	}
 	set_PF(res);
 	set_ZF(res, data_size);
