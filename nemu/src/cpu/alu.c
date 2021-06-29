@@ -13,15 +13,16 @@ void set_ZF(uint32_t result, size_t data_size)
 	cpu.eflags.ZF = (result == 0);
 }
 
-void set_PF(uint32_t result){
+void set_PF(uint32_t result)
+{
 
 	result = result & 0xFF;
-	size_t one_bits= 0;
-	while(result!=0){
-		one_bits+=result & 0x1;
-		
+	size_t one_bits = 0;
+	while (result != 0)
+	{
+		one_bits += result & 0x1;
+		result = result >> 1;
 	}
-
 }
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
