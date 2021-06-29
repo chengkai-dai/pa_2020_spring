@@ -115,11 +115,11 @@ void set_OF_shl(uint32_t src, size_t data_size)
 		break;
 	case 16:
 		src = sign_ext(src & 0xFFFF, 16);
-		dest = sign_ext(dest & 0xFFFF, 16);
 		break;
 	default:
 		break;
 	}
+	
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
