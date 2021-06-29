@@ -180,7 +180,7 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 
 		set_CF_sub(src, dest, data_size);
 		if (cpu.eflags.CF == 1)
-			res = res + 1;
+			res = res - 1;
 		else{
 			res=res-1;
 			set_CF_sub(res, 1, data_size);
