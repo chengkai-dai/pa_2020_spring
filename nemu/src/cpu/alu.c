@@ -99,6 +99,7 @@ uint32_t alu_adc(uint32_t src, uint32_t dest, size_t data_size)
 		set_CF_add(res, src, data_size);
 		res=res+1;
 		if(cpu.eflags.CF==0)
+			set_CF_add(res,src,data_size)
 
 
 	}
