@@ -15,7 +15,8 @@ void set_ZF(uint32_t result, size_t data_size)
 
 void set_PF(uint32_t result){
 
-	result
+	result = result & 0xFF;
+	size_t one_bits= 
 
 }
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
