@@ -340,7 +340,8 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size)
 	uint32_t res=0;
 	res=src<<dest;
 	set_CF_shl(src,data_size);
-	set_OF_shl(src,res,)
+	set_OF_shl(res,data_size);
+	
 #endif
 }
 
