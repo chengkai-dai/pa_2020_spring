@@ -17,7 +17,7 @@ void set_CF_sub(uint32_t src, uint32_t dest, size_t data_size)
 void set_CF_shl(uint32_t src, size_t data_size)
 {
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
-	cpu.eflags.CF = !sign(src);
+	cpu.eflags.CF = sign(src);
 }
 
 void set_ZF(uint32_t result, size_t data_size)
