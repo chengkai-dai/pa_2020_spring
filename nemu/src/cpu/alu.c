@@ -183,7 +183,7 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 			res = res - 1;
 		else{
 			res=res-1;
-			set_CF_sub(res, 1, data_size);
+			set_CF_sub(1, res, data_size);
 		}
 	}
 	set_PF(res);
