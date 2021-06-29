@@ -317,6 +317,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 
 	// res = src * dest;
 	set_CF_OF_mul(res, data_size);
+	if(data_size==16){
 	printf("data_size %d ", data_size);
 	printf(" src 0x%x ", src);
 	printf(" dest 0x%x ", dest);
@@ -325,6 +326,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	printf(" res 0x%llx  ", res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2)));
 	printf(" cpu.eflags.CF %x ", cpu.eflags.CF);
 	printf(" cpu.eflags.OF %x\n ", cpu.eflags.OF);
+	}
 
 	return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2));
 #endif
