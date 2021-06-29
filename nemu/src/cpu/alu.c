@@ -18,14 +18,14 @@ void set_CF_shl(uint32_t src, uint32_t dest, size_t data_size)
 {
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	dest = sign_ext(dest & (0xFFFFFFFF >> (32 - data_size)), data_size);
-	cpu.eflags.CF = (dest<<(src-1))>>(data_size-1);
+	cpu.eflags.CF = (dest << (src - 1)) >> (data_size - 1);
 }
 
-void set_CF_shl(uint32_t src, uint32_t dest, size_t data_size)
+void set_CF_shr(uint32_t src, uint32_t dest, size_t data_size)
 {
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	dest = sign_ext(dest & (0xFFFFFFFF >> (32 - data_size)), data_size);
-	cpu.eflags.CF = (dest>>(src-1))>>(data_size-1);
+	cpu.eflags.CF = (dest >> (src - 1)) & 0x1;
 }
 
 void set_ZF(uint32_t result, size_t data_size)
@@ -115,6 +115,26 @@ void set_OF_sub(uint32_t result, uint32_t src, uint32_t dest, size_t data_size)
 }
 
 void set_OF_shl(uint32_t res, size_t data_size)
+{
+	switch (data_size)
+	{
+	case 8:
+		res = sign_ext(res & 0xFF, 8);
+		break;
+	case 16:
+		res = sign_ext(res & 0xFFFF, 16);
+		break;
+	default:
+		break;
+	}
+
+	if (cpu.eflags.CF == sign(res))
+		cpu.eflags.OF = 0;
+	else
+		cpu.eflags.OF = 1;
+}
+
+void set_OF_shr(uint32_t res, size_t data_size)
 {
 	switch (data_size)
 	{
@@ -345,14 +365,14 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_shl(src, dest, data_size);
 #else
-    
-	uint32_t res=0;
-	res=dest<<src;
-	set_CF_shl(src,dest,data_size);
-	set_OF_shl(res,data_size);
-	set_ZF(res,data_size);
+
+	uint32_t res = 0;
+	res = dest << src;
+	set_CF_shl(src, dest, data_size);
+	set_OF_shl(res, data_size);
+	set_ZF(res, data_size);
 	set_PF(res);
-	set_SF(res,data_size);
+	set_SF(res, data_size);
 	// printf("data_size %d ",data_size);
 	// printf(" src 0x%x ",src);
 	// printf(" dest 0x%x ",dest);
@@ -367,13 +387,13 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_shr(src, dest, data_size);
 #else
-	uint32_t res=0;
-	res=dest>>src;
-	set_CF_shl(src,dest,data_size);
-	set_OF_shl(res,data_size);
-	set_ZF(res,data_size);
+	uint32_t res = 0;
+	res = dest >> src;
+	set_CF_shl(src, dest, data_size);
+	set_OF_shl(res, data_size);
+	set_ZF(res, data_size);
 	set_PF(res);
-	set_SF(res,data_size);
+	set_SF(res, data_size);
 	return res & (0xFFFFFFFF >> (32 - data_size));
 
 #endif
