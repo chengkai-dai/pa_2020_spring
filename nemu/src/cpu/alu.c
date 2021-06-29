@@ -264,7 +264,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 #else
 	uint32_t x = src;
 	uint32_t y = dest;
-	uint32_t xhigh=0;
+	uint32_t xhigh = 0;
 
 	uint16_t x0 = (uint16_t)x;
 	uint16_t x1 = x >> 16;
@@ -308,9 +308,9 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	xhigh = p11 + (middle >> 16) + (p01 >> 16);
 
 	// Add LOW PART and lower half of MIDDLE PART
-	uint32_t xlow= (middle << 16) | (uint16_t)p00;
+	uint32_t xlow = (middle << 16) | (uint16_t)p00;
 
-	uint64_t res = xhigh<<32 | xlow;
+	uint64_t res = ((uint64_t)xhigh << 32) | xlow;
 
 	// uint64_t res = 0;
 	// uint64_t test = 0xFFFFFFFFFFFFFFFF;
@@ -321,7 +321,6 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	printf(" src 0x%x ", src);
 	printf(" dest 0x%x ", dest);
 	printf(" res before 0x%llx  ", res);
-	printf(" test 0x%llx  ", test);
 
 	printf(" res 0x%llx  ", res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size)));
 	printf(" cpu.eflags.CF %x\n ", cpu.eflags.CF);
