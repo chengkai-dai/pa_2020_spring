@@ -38,6 +38,8 @@ void set_CF_OF_mul(uint64_t res, size_t data_size)
 		cpu.eflags.OF = (res >> 8 != 0);
 	case 16:
 		printf("res >> 16 0x%llx\n",res >> 16);
+		printf("bool 0x%x\n",(res >> 16 != 0));
+
 		cpu.eflags.CF = (res >> 16 != 0);
 		cpu.eflags.OF = (res >> 16 != 0);
 	default:
