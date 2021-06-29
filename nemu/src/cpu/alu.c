@@ -276,6 +276,8 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 
 	uint32_t p11 = x1 * y1, p01 = x0 * y1;
 	uint32_t p10 = x1 * y0, p00 = x0 * y0;
+
+	//https://stackoverflow.com/questions/28868367/getting-the-high-part-of-64-bit-integer-multiplication
 	/*
         This is implementing schoolbook multiplication:
 
@@ -315,25 +317,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 
 	uint64_t res = ((uint64_t)xhigh << 32) | xlow;
 
-	// uint64_t res = 0;
-	// uint64_t test = 0xFFFFFFFFFFFFFFFF;
-
-	// res = src * dest;
 	set_CF_OF_mul(res, data_size);
-	// if(data_size==16){
-	// printf("data_size %d ", data_size);
-	// printf(" src 0x%x ", src);
-	// printf(" dest 0x%x ", dest);
-	// printf(" res before 0x%llx  ", res);
-
-	// printf(" res 0x%llx  ", res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2)));
-	// printf(" res shift 32 0x%llx ", res >> 32);
-	// printf(" res shift 16 0x%llx ", res >> 16);
-	// printf(" res shift 8 0x%llx ", res >> 8);
-
-	// printf(" cpu.eflags.CF %x ", cpu.eflags.CF);
-	// printf(" cpu.eflags.OF %x\n ", cpu.eflags.OF);
-	// }
 
 	return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2));
 #endif
@@ -356,9 +340,15 @@ uint32_t alu_div(uint64_t src, uint64_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_div(src, dest, data_size);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	assert(src!=0);
+	uint32_t res=0;
+	res=(uint32_t)(dest / src);
+	printf(" data_size 0x%x ",data_size);
+	printf(" src 0x%llx ",src);
+	printf(" dest 0x%llx ",dest);
+	printf(" res 0x%x \n",res);
+	return res & (0xFFFFFFFF >> (32 - data_size));
+
 #endif
 }
 
@@ -379,9 +369,10 @@ uint32_t alu_mod(uint64_t src, uint64_t dest)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_mod(src, dest);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	uint32_t res=0; 
+	res=(uint32_t)dest%src;
+	return res;
+
 #endif
 }
 
