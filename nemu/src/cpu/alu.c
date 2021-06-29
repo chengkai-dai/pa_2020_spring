@@ -201,5 +201,6 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size)
 }
 
 void set_CF_add(uint32_t result, uint32_t src, size_t data_size){
-	result= sign_ext(re)
+	result= sign_ext(result & (0xFFFFFFF >> (32-data_size)), data_size);
+	src= sign_ext(src & (0xFFFFFFF >> (32-data_size)), data_size);
 }
