@@ -409,16 +409,16 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_sar(src, dest, data_size);
 #else
-	// uint32_t res = 0;
-	// src = src & (0xFFFFFFFF >> (32 - data_size));
-	// dest = dest & (0xFFFFFFFF >> (32 - data_size));
-	// res = dest >> src & (~(((0x1 << data_size) >> src) << 1));
-	// set_CF_shr(src, dest, data_size);
-	// set_OF_shr(res, data_size);
-	// set_ZF(res, data_size);
-	// set_PF(res);
-	// set_SF(res, data_size);
-	// return res & (0xFFFFFFFF >> (32 - data_size));
+	uint32_t res = 0;
+	src = src & (0xFFFFFFFF >> (32 - data_size));
+	dest = dest & (0xFFFFFFFF >> (32 - data_size));
+	res = dest >> src & (~(((0x1 << data_size) >> src) << 1));
+	set_CF_shr(src, dest, data_size);
+	set_OF_shr(res, data_size);
+	set_ZF(res, data_size);
+	set_PF(res);
+	set_SF(res, data_size);
+	return res & (0xFFFFFFFF >> (32 - data_size));
 #endif
 }
 
