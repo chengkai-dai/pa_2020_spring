@@ -386,22 +386,19 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size)
 #else
 	uint32_t res = 0;
 	src = src & (0xFFFFFFFF >> (32 - data_size));
-
 	dest = dest & (0xFFFFFFFF >> (32 - data_size));
-
 	res = dest >> src;
-	printf(" res 0x%x ",res);
 
 	set_CF_shr(src, dest, data_size);
 	set_OF_shr(res, data_size);
 	set_ZF(res, data_size);
 	set_PF(res);
 	set_SF(res, data_size);
-	printf("data_size %d ", data_size);
-	printf(" src 0x%x ", src);
-	printf(" dest 0x%x ", dest);
-	printf(" res 0x%x  ", res & (0xFFFFFFFF >> (32 - data_size)));
-	printf(" cpu.eflags.CF %x\n ", cpu.eflags.CF);
+	// printf("data_size %d ", data_size);
+	// printf(" src 0x%x ", src);
+	// printf(" dest 0x%x ", dest);
+	// printf(" res 0x%x  ", res & (0xFFFFFFFF >> (32 - data_size)));
+	// printf(" cpu.eflags.CF %x\n ", cpu.eflags.CF);
 	return res & (0xFFFFFFFF >> (32 - data_size));
 
 #endif
