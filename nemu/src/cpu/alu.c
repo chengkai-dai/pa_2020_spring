@@ -122,8 +122,10 @@ void set_OF_shl(uint32_t src, uint32_t res, size_t data_size)
 		break;
 	}
 
-	if(sign(src)==
-
+	if (sign(src) == sign(res))
+		cpu.eflags.OF = 0;
+	else
+		cpu.eflags.OF = 1;
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
