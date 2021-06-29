@@ -317,20 +317,20 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 
 	// res = src * dest;
 	set_CF_OF_mul(res, data_size);
-	// if(data_size==16){
-	// printf("data_size %d ", data_size);
-	// printf(" src 0x%x ", src);
-	// printf(" dest 0x%x ", dest);
-	// printf(" res before 0x%llx  ", res);
+	if(data_size==16){
+	printf("data_size %d ", data_size);
+	printf(" src 0x%x ", src);
+	printf(" dest 0x%x ", dest);
+	printf(" res before 0x%llx  ", res);
 
-	// printf(" res 0x%llx  ", res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2)));
-	// printf(" res shift 32 0x%llx ", res >> 32);
-	// printf(" res shift 16 0x%llx ", res >> 16);
-	// printf(" res shift 8 0x%llx ", res >> 8);
+	printf(" res 0x%llx  ", res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2)));
+	printf(" res shift 32 0x%llx ", res >> 32);
+	printf(" res shift 16 0x%llx ", res >> 16);
+	printf(" res shift 8 0x%llx ", res >> 8);
 
-	// printf(" cpu.eflags.CF %x ", cpu.eflags.CF);
-	// printf(" cpu.eflags.OF %x\n ", cpu.eflags.OF);
-	// }
+	printf(" cpu.eflags.CF %x ", cpu.eflags.CF);
+	printf(" cpu.eflags.OF %x\n ", cpu.eflags.OF);
+	}
 
 	return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2));
 #endif
