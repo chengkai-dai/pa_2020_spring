@@ -16,15 +16,29 @@ void set_ZF(uint32_t result, size_t data_size)
 void set_PF(uint32_t result)
 {
 
-	result = result & 0xFF;
-	size_t one_bits = 0;
-	while (result != 0)
-	{
-		one_bits += result & 0x1;
-		result = result >> 1;
-	}
+	// result = result & 0xFF;
+	// size_t one_bits = 0;
+	// while (result != 0)
+	// {
+	// 	one_bits += result & 0x1;
+	// 	result = result >> 1;
+	// }
 
-	cpu.eflags.PF = !(one_bits % 2);
+	// cpu.eflags.PF = !(one_bits % 2);
+
+	uint32_t temp=result&0xff;
+    uint32_t my_PF=0;
+    for(int i=0;i<8;i++)
+    {
+        my_PF=temp^my_PF;
+        temp=temp>>1;
+    }
+    //after up_doings, my_PF presents the number of '1' in temp, odd is 1 even is 0
+    //so..
+    //PF is odd inspect
+    my_PF^=1;
+    uint32_t result_PF=my_PF&0x1;
+    cpu.eflags.PF=result_PF;
 }
 
 void set_SF(uint32_t result, size_t data_size)
