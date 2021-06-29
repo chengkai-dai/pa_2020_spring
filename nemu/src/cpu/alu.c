@@ -106,17 +106,14 @@ void set_OF_sub(uint32_t result, uint32_t src, uint32_t dest, size_t data_size)
 		cpu.eflags.OF = 0;
 }
 
-void set_OF_shl(uint32_t result, uint32_t src, uint32_t dest, size_t data_size)
+void set_OF_shl(uint32_t src, size_t data_size)
 {
 	switch (data_size)
 	{
 	case 8:
-		result = sign_ext(result & 0xFF, 8);
 		src = sign_ext(src & 0xFF, 8);
-		dest = sign_ext(dest & 0xFF, 8);
 		break;
 	case 16:
-		result = sign_ext(result & 0xFFFF, 16);
 		src = sign_ext(src & 0xFFFF, 16);
 		dest = sign_ext(dest & 0xFFFF, 16);
 		break;
