@@ -265,7 +265,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 	uint64_t res = 0;
 	res = src * dest;
 	set_CF_OF_mul(res, data_size);
-	return res & (0xFFFFFFFF >> (32 - data_size));
+	return res & (0xFFFFFFFF >> (64 - data_size));
 #endif
 }
 
