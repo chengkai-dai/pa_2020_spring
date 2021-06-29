@@ -262,10 +262,60 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_mul(src, dest, data_size);
 #else
-	uint64_t res = 0;
-	uint64_t test = 0xFFFFFFFFFFFFFFFF;
+	uint32_t x = src;
+	uint32_t y = dest;
+	uint32_t xhigh=0;
 
-	res = src * dest;
+	uint16_t x0 = (uint16_t)x;
+	uint16_t x1 = x >> 16;
+	uint16_t y0 = (uint16_t)y;
+	uint16_t y1 = y >> 16;
+
+	uint32_t p11 = x1 * y1, p01 = x0 * y1;
+	uint32_t p10 = x1 * y0, p00 = x0 * y0;
+	/*
+        This is implementing schoolbook multiplication:
+
+                x1 x0
+        X       y1 y0
+        -------------
+                   00  LOW PART
+        -------------
+                00
+             10 10     MIDDLE PART
+        +       01
+        -------------
+             01 
+        + 11 11        HIGH PART
+        -------------
+    */
+
+	// 64-bit product + two 32-bit values
+	uint32_t middle = p10 + (p00 >> 16) + (uint16_t)p01;
+
+	/*
+        Proof that 64-bit products can accumulate two more 32-bit values
+        without overflowing:
+
+        Max 32-bit value is 2^32 - 1.
+        PSum = (2^32-1) * (2^32-1) + (2^32-1) + (2^32-1)
+             = 2^64 - 2^32 - 2^32 + 1 + 2^32 - 1 + 2^32 - 1
+             = 2^64 - 1
+        Therefore it cannot overflow regardless of input.
+    */
+
+	// 64-bit product + two 32-bit values
+	xhigh = p11 + (middle >> 16) + (p01 >> 16);
+
+	// Add LOW PART and lower half of MIDDLE PART
+	uint32_t xlow= (middle << 16) | (uint16_t)p00;
+
+	uint64_t res = xhigh<<32 | xlow;
+
+	// uint64_t res = 0;
+	// uint64_t test = 0xFFFFFFFFFFFFFFFF;
+
+	// res = src * dest;
 	set_CF_OF_mul(res, data_size);
 	printf("data_size %d ", data_size);
 	printf(" src 0x%x ", src);
