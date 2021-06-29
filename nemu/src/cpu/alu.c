@@ -329,7 +329,6 @@ int64_t alu_imul(int32_t src, int32_t dest, size_t data_size)
 	return __ref_alu_imul(src, dest, data_size);
 #else
 	int64_t res= (int64_t) alu_mul((uint32_t) src, (uint32_t) dest, data_size);
-1
 	printf("data_size %d ",data_size);
 	printf(" src 0x%x ",src);
 	printf(" dest 0x%x ",dest);
