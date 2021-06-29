@@ -27,6 +27,10 @@ void set_PF(uint32_t result)
 	return !one_bits % 2;
 }
 
+void set_SF(uint32_t res, size_t data_size){
+
+}
+
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
 #ifdef NEMU_REF_ALU
