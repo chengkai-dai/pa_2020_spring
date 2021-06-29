@@ -325,8 +325,8 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 
 	printf(" res 0x%llx  ", res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2)));
 	printf(" res shift 32 0x%llx ", res >> 32);
-	printf(" res shift 48 0x%llx ", res >> 48);
-	printf(" res shift 56 0x%llx ", res >> 56);
+	printf(" res shift 16 0x%llx ", res >> 16);
+	printf(" res shift 8 0x%llx ", res >> 8);
 
 	printf(" cpu.eflags.CF %x ", cpu.eflags.CF);
 	printf(" cpu.eflags.OF %x\n ", cpu.eflags.OF);
