@@ -335,11 +335,11 @@ int64_t alu_imul(int32_t src, int32_t dest, size_t data_size)
 	printf(" src 0x%x ",src);
 	printf(" dest 0x%x ",dest);
 	printf(" res 0x%llx  ",res & (0xFFFFFFFF >> (64 - data_size*2)));
-	// return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2));
+	return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2));
 
 	// printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	// assert(0);
-	return res;
+	//return res;
 #endif
 }
 
