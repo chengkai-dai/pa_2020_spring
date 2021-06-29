@@ -12,10 +12,10 @@ uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 	res = dest + src;
 
 	set_CF_add(res, src, data_size);
-	set_PF(res);
-	set_ZF(res, data_size);
-	set_SF(res, data_size);
-	set_OF_add(res, src, dest, data_size);
+	// set_PF(res);
+	// set_ZF(res, data_size);
+	// set_SF(res, data_size);
+	// set_OF_add(res, src, dest, data_size);
 
 	return res & (0xFFFFFFFF >> (32 - data_size));
 
@@ -200,7 +200,9 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size)
 #endif
 }
 
-void set_CF_add(uint32_t result, uint32_t src, size_t data_size){
-	result= sign_ext(result & (0xFFFFFFF >> (32-data_size)), data_size);
-	src= sign_ext(src & (0xFFFFFFF >> (32-data_size)), data_size);
+void set_CF_add(uint32_t result, uint32_t src, size_t data_size)
+{
+	result = sign_ext(result & (0xFFFFFFF >> (32 - data_size)), data_size);
+	src = sign_ext(src & (0xFFFFFFF >> (32 - data_size)), data_size);
+	cpu.eflags.CF = result < src;
 }
