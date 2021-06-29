@@ -51,7 +51,9 @@ void set_OF_add(uint32_t result, uint32_t src, uint32_t dest, size_t data_size){
 		break;
 	}
 
-	if(sign())
+	if(sign(src)==sign(dest)){
+		
+	}
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
