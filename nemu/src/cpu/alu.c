@@ -34,6 +34,8 @@ void set_SF(uint32_t result, size_t data_size)
 	return (result & (1 << (data_size - 1)))>> (data_size-1);
 }
 
+vpod set_OF_add(uint32_t result, uint32_t src, uint32_t des)
+
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size)
 {
 #ifdef NEMU_REF_ALU
