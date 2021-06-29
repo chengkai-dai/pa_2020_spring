@@ -378,9 +378,9 @@ int32_t alu_imod(int64_t src, int64_t dest)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_imod(src, dest);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	int32_t res=0; 
+	res=(int32_t)dest%src;
+	return res;
 #endif
 }
 
