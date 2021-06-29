@@ -269,7 +269,6 @@ uint32_t alu_and(uint32_t src, uint32_t dest, size_t data_size)
 	set_PF(res);
 	set_SF(res, data_size);
 	set_ZF(res, data_size);
-	1
 #endif
 }
 
