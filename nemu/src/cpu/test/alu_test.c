@@ -466,9 +466,6 @@ void alu_test_imul() {
 			a = input[i];
 			b = input[j];
 			res = alu_imul(sign_ext(b, 8), sign_ext(a, 8), 8);
-			printf("a %x ",a);
-			printf("b %x ",b);
-			printf("res %llx  ",res);
 
 			asm (	"imulb %%cl;"
 				"pushf;"
