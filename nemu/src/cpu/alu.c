@@ -18,7 +18,8 @@ void set_PF(uint32_t result){
 	result = result & 0xFF;
 	size_t one_bits= 0;
 	while(result!=0){
-		one_bits+=res
+		one_bits+=result & 0x1;
+		
 	}
 
 }
