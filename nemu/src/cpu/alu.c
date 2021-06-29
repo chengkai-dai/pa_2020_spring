@@ -14,10 +14,10 @@ void set_CF_sub(uint32_t src, uint32_t dest, size_t data_size)
 	cpu.eflags.CF = src > dest;
 }
 
-void set_CF_shl(uint32_t src, size_t data_size)
+void set_CF_shl(uint32_t src, uint32_t dest, size_t data_size)
 {
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
-	cpu.eflags.CF = sign(src);
+	cpu.eflags.CF = sign(dest>>(src-1));
 }
 
 void set_ZF(uint32_t result, size_t data_size)
@@ -340,9 +340,8 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size)
     
 	uint32_t res=0;
 	res=dest<<src;
-	set_CF_shl(dest,data_size);
+	set_CF_shl(src,dest,data_size);
 	set_OF_shl(res,data_size);
-	set_CF_shl(dest,data_size);
 	set_ZF(res,data_size);
 	set_PF(res);
 	set_SF(res,data_size);
