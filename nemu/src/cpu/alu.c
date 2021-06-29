@@ -18,7 +18,14 @@ void set_CF_shl(uint32_t src, uint32_t dest, size_t data_size)
 {
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	dest = sign_ext(dest & (0xFFFFFFFF >> (32 - data_size)), data_size);
-	cpu.eflags.CF = dest<<(src-1)>>(data_size-1);
+	cpu.eflags.CF = (dest<<(src-1))>>(data_size-1);
+}
+
+void set_CF_shl(uint32_t src, uint32_t dest, size_t data_size)
+{
+	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
+	dest = sign_ext(dest & (0xFFFFFFFF >> (32 - data_size)), data_size);
+	cpu.eflags.CF = (dest>>(src-1))>>(data_size-1);
 }
 
 void set_ZF(uint32_t result, size_t data_size)
