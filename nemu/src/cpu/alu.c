@@ -30,9 +30,10 @@ void set_PF(uint32_t result)
 
 void set_SF(uint32_t result, size_t data_size)
 {
-	assert(data_size != 0);
+	//assert(data_size != 0);
 	result = sign_ext(result & (0xFFFFFFF >> (32 - data_size)), data_size);
-	cpu.eflags.SF = (result & (1 << (data_size - 1))) >> (data_size - 1);
+	//cpu.eflags.SF = (result & (1 << (data_size - 1))) >> (data_size - 1);
+	cpu.eflags.SF=sign(result);
 }
 
 void set_OF_add(uint32_t result, uint32_t src, uint32_t dest, size_t data_size)
