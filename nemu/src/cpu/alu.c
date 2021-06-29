@@ -24,7 +24,7 @@ void set_PF(uint32_t result)
 		result = result >> 1;
 	}
 
-	return !one_bits % 2;
+	cpu.eflags.PF = !one_bits % 2;
 }
 
 void set_SF(uint32_t result, size_t data_size)
@@ -52,7 +52,8 @@ void set_OF_add(uint32_t result, uint32_t src, uint32_t dest, size_t data_size){
 	}
 
 	if(sign(src)==sign(dest)){
-		
+		if(sign(src)!=sign(result))
+		cpu.
 	}
 }
 
