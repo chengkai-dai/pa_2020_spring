@@ -263,7 +263,10 @@ uint32_t alu_and(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_and(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	res= src 
+	res= src & dest;
+	cpu.eflags.CF=0;
+	cpu.eflags.OF=0;
+	set
 #endif
 }
 
