@@ -175,10 +175,10 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 	else
 	{
 		set_CF_sub(src, dest, data_size);
-		if (cpu.eflags.CF == 0)			
+		if (cpu.eflags.CF == 0)
 			set_CF_sub(1, res, data_size);
-		
-		res = res - 1;	
+
+		res = res - 1;
 	}
 	set_PF(res);
 	set_ZF(res, data_size);
@@ -263,10 +263,12 @@ uint32_t alu_and(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_and(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	res= src & dest;
-	cpu.eflags.CF=0;
-	cpu.eflags.OF=0;
-	set
+	res = src & dest;
+	cpu.eflags.CF = 0;
+	cpu.eflags.OF = 0;
+	set_PF(res);
+	set_SF(res, data_size);
+	set_ZF(res, data_size);
 #endif
 }
 
