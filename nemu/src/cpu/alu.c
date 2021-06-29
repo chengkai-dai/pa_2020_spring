@@ -38,8 +38,11 @@ void set_OF_add(uint32_t result, uint32_t src, uint32_t dest, size_t data_size){
 	switch (data_size)
 	{
 	case 8:
-		re
+		result = sign_ext(result & 0xFF, 8);
+		src=sign_ext(src & 0xFF, 8);
+		dest=sign_ext(dest & 0xFF, 8);
 		break;
+	case 1
 	
 	default:
 		break;
