@@ -343,10 +343,6 @@ uint32_t alu_div(uint64_t src, uint64_t dest, size_t data_size)
 	assert(src!=0);
 	uint32_t res=0;
 	res=(uint32_t)(dest / src);
-	printf(" data_size 0x%x ",data_size);
-	printf(" src 0x%llx ",src);
-	printf(" dest 0x%llx ",dest);
-	printf(" res 0x%x \n",res);
 	return res & (0xFFFFFFFF >> (32 - data_size));
 
 #endif
