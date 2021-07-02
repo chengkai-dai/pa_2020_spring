@@ -130,6 +130,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
     }
 	printf("sig_grs 0x%llx\n",sig_grs);
 	printf("exp 0x%x\n",exp);
+	printf(" after 0x%x\n",(uint32_t)(exp & 0xff));
     FLOAT f;
     f.sign = sign;
     f.exponent = (uint32_t)(exp & 0xff);
