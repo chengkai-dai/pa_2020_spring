@@ -38,7 +38,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
         if (exp >= 0xff)
         {
-            exp == 0xff;
+            exp = 0xff;
             sig_grs = 0;
             overflow = true;
         }
@@ -104,7 +104,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
         uint32_t grs = sig_grs & 0x07;
         sig_grs = sig_grs >> 3;
-        if (grs > 4 ||  (grs == 4 && (sig_grs & 0x01 == 1)))
+        if (grs > 4 ||  (grs == 4 && ((sig_grs & 0x01) == 1)))
         {
 
             sig_grs++;
