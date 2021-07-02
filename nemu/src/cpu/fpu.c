@@ -322,8 +322,7 @@ uint32_t internal_float_mul(uint32_t b, uint32_t a)
 	sig_res = sig_a * sig_b; // 24b * 24b
 	uint32_t exp_res = 0;
 	exp_res=fa.exponent+fb.exponent;
-	if(fa.exponent==0 || fb.exponent==0)
-		exp_res++;
+	
 	sig_a=sig_res<<3;
 	printf("a sign %x, exp %x, fa 0x%x\n, siga 0x%x\n", fa.sign, fa.exponent, fa.val, fa.fraction);
 	printf("b sign %x, exp %x, fb 0x%x\n, sigb 0x%x\n", fb.sign, fb.exponent, fb.val, fb.fraction);
