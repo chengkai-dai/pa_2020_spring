@@ -17,6 +17,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
     if ((sig_grs >> (23 + 3)) > 1 || exp < 0)
     {
+		printf("come 1");
 
         // condition 1
         // 1.fraction_b + 1. fraction_a introduce carry bits
@@ -69,6 +70,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
     else if (((sig_grs >> (23 + 3)) == 0) && exp > 0)
     {
+		printf("come 2");
         // printf("b 0x%x, a 0x%x\n", b.val, a.val);
         // printf("sign 0x%x, exp 0x%x, sig_grs 0x%lx\n", sign, exp, sig_grs);
         // normalize toward left
@@ -88,6 +90,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
     }
     else if (exp == 0 && sig_grs >> (23 + 3) == 1)
     {
+		printf("come 3");
         // two denormals result in a normal
 
         exp++;
