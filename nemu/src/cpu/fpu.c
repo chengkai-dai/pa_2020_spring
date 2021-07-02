@@ -17,7 +17,6 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
     if ((sig_grs >> (23 + 3)) > 1 || exp < 0)
     {
-		printf("come 1");
 
         // condition 1
         // 1.fraction_b + 1. fraction_a introduce carry bits
@@ -70,7 +69,6 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
     else if (((sig_grs >> (23 + 3)) == 0) && exp > 0)
     {
-		printf("come 2");
         // printf("b 0x%x, a 0x%x\n", b.val, a.val);
         // printf("sign 0x%x, exp 0x%x, sig_grs 0x%lx\n", sign, exp, sig_grs);
         // normalize toward left
@@ -90,7 +88,6 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
     }
     else if (exp == 0 && sig_grs >> (23 + 3) == 1)
     {
-		printf("come 3");
         // two denormals result in a normal
 
         exp++;
@@ -128,14 +125,11 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
         sig_grs = sig_grs & 0x7fffff;
             
     }
-	printf("sig_grs 0x%llx\n",sig_grs);
-	printf("exp 0x%x\n",exp);
-	printf(" after 0x%x\n",(uint32_t)(exp & 0xff));
+
     FLOAT f;
     f.sign = sign;
     f.exponent = (uint32_t)(exp & 0xff);
     f.fraction = sig_grs; // here only the lowest 23 bits are kept
-	printf("result %x",f.val);
     return f.val;
 }
 
@@ -328,22 +322,7 @@ uint32_t internal_float_mul(uint32_t b, uint32_t a)
 	sig_res = sig_a * sig_b; // 24b * 24b
 	uint32_t exp_res = 0;
 	exp_res=fa.exponent+fb.exponent-127-23;
-	printf("sig_res 0x%llx\n",sig_res);
-
-	
 	sig_res=sig_res<<3;
-	printf("a sign %x, exp %x, fa 0x%x\n, siga 0x%llx\n", fa.sign, fa.exponent, fa.val, sig_a);
-	printf("b sign %x, exp %x, fb 0x%x\n, sigb 0x%llx\n", fb.sign, fb.exponent, fb.val, sig_b);
-	printf("exp_res 0x%x\n",exp_res);
-
-
-	printf("move 0x%llx\n",sig_res>>26);
-
-	// /* TODO: exp_res = ? leave space for GRS bits. */
-	// printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-	// assert(0);
-	uint32_t res=internal_normalize(f.sign, exp_res, sig_res);
-	printf("res 0x%x\n",res);
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
 
