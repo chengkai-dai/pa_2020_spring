@@ -120,9 +120,11 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
                 exp = exp | 0xff;
                 sig_grs = sig_grs & 0x0;
             }
+            else
+            {
+                sig_grs = sig_grs & 0x7fffff;
+            }
         }
-		sig_grs = sig_grs & 0x7fffff;
-
     }
 	printf("sig_grs 0x%llx\n",sig_grs);
 
