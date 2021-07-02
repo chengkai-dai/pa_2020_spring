@@ -330,6 +330,9 @@ uint32_t internal_float_mul(uint32_t b, uint32_t a)
 	printf("b sign %x, exp %x, fb 0x%x\n, sigb 0x%llx\n", fb.sign, fb.exponent, fb.val, sig_b);
 	printf("exp_res 0x%x\n",exp_res);
 
+
+	printf("move 0x%llx\n",sig_res>>26);
+
 	// /* TODO: exp_res = ? leave space for GRS bits. */
 	// printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
 	// assert(0);
