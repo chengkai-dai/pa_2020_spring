@@ -12,78 +12,125 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 	// normalization
 	bool overflow = false; // true if the result is INFINITY or 0 during normalize
 
-	if ((sig_grs >> (23 + 3)) > 1 || exp < 0)
-	{
-		// normalize toward right
-		while ((((sig_grs >> (23 + 3)) > 1) && exp < 0xff) // condition 1
-			   ||										   // or
-			   (sig_grs > 0x04 && exp < 0)				   // condition 2
-		)
-		{
+	uint32_t sticky = 0;
 
-			/* TODO: shift right, pay attention to sticky bit*/
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
-		}
+    if ((sig_grs >> (23 + 3)) > 1 || exp < 0)
+    {
 
-		if (exp >= 0xff)
-		{
-			/* TODO: assign the number to infinity */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
-			overflow = true;
-		}
-		if (exp == 0)
-		{
-			// we have a denormal here, the exponent is 0, but means 2^-126,
-			// as a result, the significand should shift right once more
-			/* TODO: shift right, pay attention to sticky bit*/
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
-		}
-		if (exp < 0)
-		{
-			/* TODO: assign the number to zero */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
-			overflow = true;
-		}
-	}
-	else if (((sig_grs >> (23 + 3)) == 0) && exp > 0)
-	{
-		// normalize toward left
-		while (((sig_grs >> (23 + 3)) == 0) && exp > 0)
-		{
-			/* TODO: shift left */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
-		}
-		if (exp == 0)
-		{
-			// denormal
-			/* TODO: shift right, pay attention to sticky bit*/
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
-		}
-	}
-	else if (exp == 0 && sig_grs >> (23 + 3) == 1)
-	{
-		// two denormals result in a normal
-		exp++;
-	}
+        // condition 1
+        // 1.fraction_b + 1. fraction_a introduce carry bits
+        // normalize toward right
+        while ((((sig_grs >> (23 + 3)) > 1) && exp < 0xff) // condition 1
+               ||                                          // or
+               (sig_grs > 0x04 && exp < 0)                 // condition 2
+        )
+        {
 
-	if (!overflow)
-	{
-		/* TODO: round up and remove the GRS bits */
-		printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-		assert(0);
-	}
+            // /* TODO: shift right, pay attention to sticky bit*/
+            // printf("sign 0x%x, exp 0x%x, sig_grs 0x%lx\n", sign, exp, sig_grs);
+            // //printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
+            // assert(0);
+            exp++;
+            sticky = sticky | (sig_grs & 0x1);
+            sig_grs = sig_grs >> 1;
+            sig_grs |= sticky;
+        }
 
-	FLOAT f;
-	f.sign = sign;
-	f.exponent = (uint32_t)(exp & 0xff);
-	f.fraction = sig_grs; // here only the lowest 23 bits are kept
-	return f.val;
+        if (exp >= 0xff)
+        {
+            exp == 0xff;
+            sig_grs = 0;
+            overflow = true;
+        }
+
+        if (exp == 0)
+        {
+            //printf("b 0x%x, a 0x%x\n", b.val, a.val);
+            //printf("sign 0x%x, exp 0x%x, sig_grs 0x%lx\n", sign, exp, sig_grs);
+            sticky = sticky | (sig_grs & 0x1);
+            sig_grs = sig_grs >> 1;
+            sig_grs |= sticky;
+
+            // // we have a denormal here, the exponent is 0, but means 2^-126,
+            // // as a result, the significand should shift right once more
+            // /* TODO: shift right, pay attention to sticky bit*/
+            // printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
+            //assert(0);
+        }
+        if (exp < 0)
+        {
+            /* TODO: assign the number to zero */
+            exp = 0;
+            sig_grs = 0;
+            overflow = true;
+        }
+    }
+
+    else if (((sig_grs >> (23 + 3)) == 0) && exp > 0)
+    {
+        // printf("b 0x%x, a 0x%x\n", b.val, a.val);
+        // printf("sign 0x%x, exp 0x%x, sig_grs 0x%lx\n", sign, exp, sig_grs);
+        // normalize toward left
+        while (((sig_grs >> (23 + 3)) == 0) && exp > 0)
+        {
+            sig_grs = sig_grs << 1;
+            exp--;
+        }
+        if (exp == 0)
+        {
+            // denormal
+            /* TODO: shift right, pay attention to sticky bit*/
+            sticky = sticky | (sig_grs & 0x1);
+            sig_grs = sig_grs >> 1;
+            sig_grs |= sticky;
+        }
+    }
+    else if (exp == 0 && sig_grs >> (23 + 3) == 1)
+    {
+        // two denormals result in a normal
+
+        exp++;
+    }
+
+    if (!overflow)
+    {
+        /* TODO: round up and remove the GRS bits */
+        //GRS - 行动
+        //0xx - 向下舍入=什么都不做（x表示任何位值，0或1）
+        //100 - 这是 tie ：如果 G 之前的尾数位是1，则向上舍入，否则向下舍入=什么都不做
+        //101 - 向上舍入
+        //110 - 向上舍入
+        //111 - 向上舍入
+
+        uint32_t grs = sig_grs & 0x07;
+        sig_grs = sig_grs >> 3;
+        if (grs > 4 ||  (grs == 4 && (sig_grs & 0x01 == 1)))
+        {
+
+            sig_grs++;
+        }
+        if (sig_grs >> 24 == 1)
+        {
+
+            sig_grs = sig_grs >> 1;
+            exp++;
+            if (exp >= 0xff)
+            {
+                exp = exp | 0xff;
+                sig_grs = sig_grs & 0x0;
+            }
+            else
+            {
+                sig_grs = sig_grs & 0x7fffff;
+            }
+        }
+    }
+
+    FLOAT f;
+    f.sign = sign;
+    f.exponent = (uint32_t)(exp & 0xff);
+    f.fraction = sig_grs; // here only the lowest 23 bits are kept
+    return f.val;
 }
 
 CORNER_CASE_RULE corner_add[] = {
