@@ -325,8 +325,8 @@ uint32_t internal_float_mul(uint32_t b, uint32_t a)
 	if(fa.exponent==0 || fb.exponent==0)
 		exp_res++;
 	sig_a=sig_res<<3;
-	printf("a       sign %x, exp %x, fa 0x%x\n, siga 0x%llx\n", fa.sign, fa.exponent, fa.val, sig_a);
-	printf("b       sign %x, exp %x, fb 0x%x\n, sigb 0x%llx\n", fb.sign, fb.exponent, fb.val, sig_b);
+	printf("a sign %x, exp %x, fa 0x%x\n, siga 0x%llx\n", fa.sign, fa.exponent, fa.val, fa.fraction);
+	printf("b sign %x, exp %x, fb 0x%x\n, sigb 0x%llx\n", fb.sign, fb.exponent, fb.val, fb.fraction);
 	printf("exp_res 0x%x\n",exp_res);
 
 	// /* TODO: exp_res = ? leave space for GRS bits. */
