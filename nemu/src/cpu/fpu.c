@@ -133,7 +133,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a)
 		return b;
 	}
 
-	// To ensure fa's exponent < fb's exponent, so that 
+	// To ensure fa's exponent < fb's exponent, so that the shift (fb.exponent- fa.exponent) > 0
 
 	if (fa.exponent > fb.exponent)
 	{
