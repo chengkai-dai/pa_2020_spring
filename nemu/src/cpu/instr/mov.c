@@ -44,8 +44,14 @@ make_instr_func(mov_i2rm_v){
 
         rm.data_size=data_size;
         int len=1;
-
         len+=modrm_rm(eip+1, &rm);
+
+        imm.type=OPR_IMM;
+        imm.addr=eip+len;
+        imm.data_size=data_size;
+
+        operand_read(&imm);
+        
 
         
 
