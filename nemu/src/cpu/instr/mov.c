@@ -51,11 +51,10 @@ make_instr_func(mov_i2rm_v){
         imm.data_size=data_size;
 
         operand_read(&imm);
-        
+        rm.val=imm.val;
+        operand_write(&rm);
 
-        
-
-
+        return len+ data_size/8;
 }
 
 make_instr_func(mov_zrm82r_v) {
