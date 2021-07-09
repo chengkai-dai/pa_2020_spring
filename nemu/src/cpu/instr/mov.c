@@ -20,42 +20,44 @@ make_instr_impl_2op(mov, a, o, v)
 make_instr_impl_2op(mov, o, a, b)
 make_instr_impl_2op(mov, o, a, v)
 
-make_instr_func(mov_i2r_b){
-        OPERAND imm,r;
+// make_instr_func(mov_i2r_b){
+//         OPERAND imm,r;
 
-        imm.type=OPR_IMM;
-        imm.addr=eip+1;
-        imm.data_size=8;
+//         imm.type=OPR_IMM;
+//         imm.addr=eip+1;
+//         imm.data_size=8;
 
-        r.data_size=8;
-        r.type=OPR_REG;
-        r.addr=opcode & 0x7;
+//         r.data_size=8;
+//         r.type=OPR_REG;
+//         r.addr=opcode & 0x7;
 
-        operand_read(&imm);
-        r.val=imm.val;
-        operand_write(&r);
+//         operand_read(&imm);
+//         r.val=imm.val;
+//         operand_write(&r);
 
-        return 2;
+//         return 2;
 
-}
+// }
 
-make_instr_func(mov_i2rm_v){
-        OPERAND rm,imm;
+// make_instr_func(mov_i2rm_v){
+//         OPERAND rm,imm;
 
-        rm.data_size=data_size;
-        int len=1;
-        len+=modrm_rm(eip+1, &rm);
+//         rm.data_size=data_size;
+//         int len=1;
+//         len+=modrm_rm(eip+1, &rm);
 
-        imm.type=OPR_IMM;
-        imm.addr=eip+len;
-        imm.data_size=data_size;
+//         imm.type=OPR_IMM;
+//         imm.addr=eip+len;
+//         imm.data_size=data_size;
 
-        operand_read(&imm);
-        rm.val=imm.val;
-        operand_write(&rm);
+//         operand_read(&imm);
+//         rm.val=imm.val;
+//         operand_write(&rm);
 
-        return len+ data_size/8;
-}
+//         return len+ data_size/8;
+
+
+// }
 
 make_instr_func(mov_zrm82r_v) {
 	int len = 1;
