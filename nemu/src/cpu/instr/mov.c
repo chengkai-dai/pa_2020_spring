@@ -39,6 +39,10 @@ make_instr_func(mov_i2r_b){
 
 }
 
+make_instr_func(mov_i2rm_v){
+        
+}
+
 make_instr_func(mov_zrm82r_v) {
 	int len = 1;
 	OPERAND r, rm;
