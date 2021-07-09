@@ -40,7 +40,16 @@ make_instr_func(mov_i2r_b){
 }
 
 make_instr_func(mov_i2rm_v){
+        OPERAND rm,imm;
+
+        rm.data_size=data_size;
+        int len=1;
+
+        len+=modrm_rm(eip+1, &rm);
+
         
+
+
 }
 
 make_instr_func(mov_zrm82r_v) {
