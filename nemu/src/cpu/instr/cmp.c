@@ -11,9 +11,9 @@ make_instr_func(cmp_i2rm_bv){
     imm.addr=eip+2;
     imm.data_size=8;
 
-    // operand_read(&imm);
+    operand_read(&imm);
     r.val=imm.val;
-    // operand_write(&r);
+    operand_write(&r);
 
     return 2;
 }
