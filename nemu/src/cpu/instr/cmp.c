@@ -2,4 +2,5 @@
 
 make_instr_func(cmp_i2rm_bv){
     printf("gotcha!\n");
+     return 2;
 }
