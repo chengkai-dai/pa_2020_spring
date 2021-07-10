@@ -1,18 +1,18 @@
 #include "cpu/instr.h"
 
 make_instr_func(cmp_i2rm_bv){
-    OPERAND imm, reg;
-    //         imm.type=OPR_IMM;
-//         imm.addr=eip+1;
-//         imm.data_size=8;
+    OPERAND imm, r;
+    imm.type=OPR_IMM;
+    imm.addr=eip+1;
+    imm.data_size=8;
 
-//         r.data_size=8;
-//         r.type=OPR_REG;
-//         r.addr=opcode & 0x7;
+    r.data_size=data_size;
+    r.type=OPR_REG;
+    r.addr=opcode & 0x7;
 
-//         operand_read(&imm);
-//         r.val=imm.val;
-//         operand_write(&r);
+    operand_read(&imm);
+    r.val=imm.val;
+    operand_write(&r);
 
-//         return 2;
+    return 2;
 }
