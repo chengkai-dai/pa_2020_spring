@@ -3,7 +3,7 @@
 
 
 
-make_instr_impl_2op(cmp, i, rm, b)
+make_instr_impl_2op(cmp, i, rm, v)
 
 
 #endif
