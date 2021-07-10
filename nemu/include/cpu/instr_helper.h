@@ -235,7 +235,7 @@ static inline bool inv_cc()
 
 static inline bool inv_cc_np(){
 	printf("Please implement np condition in instr_helper.h\n");
-	assert(0);
+	assert(0);1
 	return false;
 }
 
