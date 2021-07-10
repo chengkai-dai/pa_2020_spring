@@ -200,7 +200,7 @@ static inline bool inv_cc();
 	inv_cc()
 
 #define condition_np \
-	cpu.eflags.PF == 0
+	inv_cc()
 
 #define condition_ns \
 	inv_cc()
