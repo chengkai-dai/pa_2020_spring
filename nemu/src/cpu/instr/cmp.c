@@ -2,16 +2,17 @@
 
 make_instr_func(cmp_i2rm_bv){
     OPERAND imm, r;
-    imm.type=OPR_IMM;
-    imm.addr=eip+2;
-    imm.data_size=8;
 
-    modrm_rm(eip, &r);
+    int len=modrm_rm(eip+1, &r);
     r.data_size=data_size;
+    printf("read len %d\n")
 
-    operand_read(&imm);
-    r.val=imm.val;
-    operand_write(&r);
+    // imm.type=OPR_IMM;
+    // imm.addr=eip+2;
+    // imm.data_size=8;
 
-    return 2;
-}
+    // operand_read(&imm);
+    // r.val=imm.val;
+    // operand_write(&r);
+
+    return 2;
