@@ -1,5 +1,6 @@
 #include "cpu/instr.h"
-#
+#include "stdio.h"
+
 #define make_group_impl(name)                               \
 	make_instr_func(name)                                   \
 	{
