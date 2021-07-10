@@ -203,7 +203,7 @@ static inline bool inv_cc_np();
 	inv_cc_np()
 
 #define condition_np \
-	inv_cc()
+	inv_cc_np()
 
 #define condition_ns \
 	inv_cc_np()
