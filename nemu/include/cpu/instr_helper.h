@@ -203,7 +203,7 @@ static inline bool inv_cc_np();
 	inv_cc()
 
 #define condition_np \
-	cpu.eflags.PF == 0
+	inv_cc_np()
 
 #define condition_ns \
 	inv_cc()
@@ -233,7 +233,11 @@ static inline bool inv_cc()
 	return false;
 }
 
-static inline bool inv_cc_np();
+static inline bool inv_cc_np(){
+	printf("Please implement np condition in instr_helper.h\n");
+	assert(0);
+	return false;
+}
 
 
 #endif
