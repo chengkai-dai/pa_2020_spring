@@ -203,10 +203,10 @@ static inline bool inv_cc_np();
 	inv_cc()
 
 #define condition_np \
-	inv_cc_np()
+	cpu.eflags.PF == 0
 
 #define condition_ns \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_g \
 	inv_cc()
