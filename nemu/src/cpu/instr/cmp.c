@@ -8,8 +8,6 @@ make_instr_func(cmp_i2rm_bv){
 
     modrm_rm(eip, &r);
     r.data_size=data_size;
-    r.type=OPR_REG;
-    r.addr=opcode & 0x7;
 
     operand_read(&imm);
     r.val=imm.val;
