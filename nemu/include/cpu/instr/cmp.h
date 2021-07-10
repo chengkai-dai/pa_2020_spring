@@ -2,7 +2,7 @@
 #define __INSTR_CMP_H__
 
 make_instr(cmp_i2rm_bv){
-    
+    printf("gotcha!\n");
 }
 // make_instr_impl_2op(cmp, i, rm, v)
 
