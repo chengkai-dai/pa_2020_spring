@@ -6,7 +6,7 @@
 		uint8_t op_code;                                    \
 		modrm_opcode(eip + 1, &op_code);                    \
 		printf(#name);										\
-		printf(#_entry);									\
+		printf(#(_entry));									\
 
 		return concat(name, _entry)[op_code](eip, op_code); \
 	}
