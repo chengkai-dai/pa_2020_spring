@@ -185,40 +185,40 @@ static inline bool inv_cc_np();
 	inv_cc()
 
 #define condition_o \
-	inv_cc()
-
-#define condition_p \
-	inv_cc()
-
-#define condition_s \
-	inv_cc()
-
-#define condition_ne \
-	inv_cc()
-
-#define condition_na \
-	inv_cc()
-
-#define condition_no \
-	inv_cc()
-
-#define condition_np \
 	inv_cc_np()
 
-#define condition_ns \
+#define condition_p \
+	inv_cc_np()
+
+#define condition_s \
+	inv_cc_np()
+
+#define condition_ne \
+	inv_cc_np()
+
+#define condition_na \
+	inv_cc_np()
+
+#define condition_no \
+	inv_cc_np()
+
+#define condition_np \
 	inv_cc()
+
+#define condition_ns \
+	inv_cc_np()
 
 #define condition_g \
-	inv_cc()
+	inv_cc_np()
 
 #define condition_ge \
-	inv_cc()
+	inv_cc_np()
 
 #define condition_l \
-	inv_cc()
+	inv_cc_np()
 
 #define condition_le \
-	inv_cc()
+	inv_cc_np()
 
 #define condition_ecxz \
 	cpu.ecx == 0
