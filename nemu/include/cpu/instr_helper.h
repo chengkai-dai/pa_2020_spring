@@ -165,9 +165,6 @@ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND
 // possible condition: e, a, ae, b, be, o, p, s , ne, na, no, np, ns, g, ge, l, le, ecxz
 
 static inline bool inv_cc();
-static inline bool inv_cc_e();
-static inline bool inv_cc_a();
-static inline bool inv_cc_np();
 
 #define condition_e \
 	inv_cc()
