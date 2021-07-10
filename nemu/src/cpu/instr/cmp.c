@@ -6,7 +6,7 @@ make_instr_func(cmp_i2rm_bv){
     imm.addr=eip+1;
     imm.data_size=8;
 
-    modrm_rm(uint32_t eip, OPERAND *rm)
+    modrm_rm(eip, &r);
 uint8_t op_code;                                    \
 		modrm_opcode(eip + 1, &op_code); 
     r.data_size=data_size;
