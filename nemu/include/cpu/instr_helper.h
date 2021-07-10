@@ -170,19 +170,19 @@ static inline bool inv_cc_a();
 static inline bool inv_cc_np();
 
 #define condition_e \
-	inv_cc()
+	inv_cc_np()
 
 #define condition_a \
-	inv_cc()
+	inv_cc_np()
 
 #define condition_ae \
-	inv_cc()
+	inv_cc_np()
 
 #define condition_b \
-	inv_cc()
+	inv_cc_np()
 
 #define condition_be \
-	inv_cc()
+	inv_cc_np()
 
 #define condition_o \
 	inv_cc_np()
