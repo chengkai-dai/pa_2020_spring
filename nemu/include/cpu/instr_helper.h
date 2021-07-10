@@ -170,37 +170,37 @@ static inline bool inv_cc_a();
 static inline bool inv_cc_np();
 
 #define condition_e \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_a \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_ae \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_b \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_be \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_o \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_p \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_s \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_ne \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_na \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_no \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_np \
 	inv_cc_np()
@@ -209,16 +209,16 @@ static inline bool inv_cc_np();
 	inv_cc_np()
 
 #define condition_g \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_ge \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_l \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_le \
-	inv_cc_np()
+	inv_cc()
 
 #define condition_ecxz \
 	cpu.ecx == 0
@@ -232,12 +232,5 @@ static inline bool inv_cc()
 	assert(0);
 	return false;
 }
-
-static inline bool inv_cc_np(){
-	printf("Please implement np condition in instr_helper.h\n");
-	assert(0);1
-	return false;
-}
-
 
 #endif
