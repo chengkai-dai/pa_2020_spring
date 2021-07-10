@@ -5,7 +5,7 @@
 	{                                                       \
 		uint8_t op_code;                                    \
 		modrm_opcode(eip + 1, &op_code);                    \
-		printf(#(concat(name, _entry));										\
+		printf(#name);										\
 		return concat(name, _entry)[op_code](eip, op_code); \
 	}
 #define make_group_impl_ref(name)                                    \
