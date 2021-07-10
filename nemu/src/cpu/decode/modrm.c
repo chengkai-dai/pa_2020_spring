@@ -156,7 +156,7 @@ int modrm_opcode(uint32_t eip, uint8_t *opcode)
 	MODRM modrm;
 	modrm.val = instr_fetch(eip, 1);
 	*opcode = modrm.reg_opcode;
-	printf("modrm.reg_opcode 0x%x")
+	printf("modrm.reg_opcode 0x%x\n",modrm.reg_opcode);
 	return 1;
 }
 
