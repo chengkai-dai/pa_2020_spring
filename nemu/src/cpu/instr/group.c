@@ -2,7 +2,8 @@
 
 #define make_group_impl(name)                               \
 	make_instr_func(name)                                   \
-	{                                                       \
+	{
+		printf("come to see me!\n");                                                       \
 		uint8_t op_code;                                    \
 		modrm_opcode(eip + 1, &op_code);                    \
 		return concat(name, _entry)[op_code](eip, op_code); \
