@@ -3,35 +3,26 @@
 make_instr_func(add_i2r_v)
 {
 
-    OPERAND opr_src, opr_dest;
+    OPERAND imm, r;
 
     int len = 1;
 
-    // opr_dest.data_size = data_size;
-    // opr_dest.type = OPR_REG;
-    // opr_dest.addr = instr_fetch(eip+1,1) & 0x7;
-    // operand_read(&opr_dest);
+    r.data_size = data_size;
+    r.type = OPR_REG;
+    r.addr = instr_fetch(eip + 1, 1) & 0x7;
+    operand_read(&r);
 
-    len += modrm_rm(eip + 1, &opr_dest);
-    opr_dest.data_size=data_size;
+    imm.data_size = data_size;
+    imm.type = OPR_IMM;
+    imm.sreg = SREG_CS;
+    imm.addr = eip + 2;
+    operand_read(&imm);
 
-    opr_src.data_size = data_size;
-    opr_src.type = OPR_IMM;
-    opr_src.sreg = SREG_CS;
-    opr_src.addr = eip + 2;
-    operand_read(&opr_src);
+    len += data_size / 8;
 
-    len+=data_size/8;
+    r.val = alu_add(imm.val, r.val, data_size);
 
-    printf("opr_src.val 0x%x\n", opr_src.val);
-    printf("opr_dest.val 0x%x\n", opr_dest.val);
-    // r.data_size=data_size;
+    operand_write(&r);
 
-    // imm.type=OPR_IMM;
-    // imm.addr=eip+len;
-    // imm.data_size=8;
-
-    // operand_read(&imm);
-    // alu_sub(imm.val,r.val,data_size);
-    return len ;
+    return len;
 }
