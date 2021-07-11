@@ -9,14 +9,13 @@ make_instr_func(add_i2r_v)
     opr_src.data_size = data_size;
     opr_src.type = OPR_IMM;
     opr_src.sreg = SREG_CS;
-    opr_src.addr = eip + 1;
+    opr_src.addr = eip + 2;
     operand_read(&opr_src);
 
     opr_dest.data_size = data_size;
     opr_dest.type = OPR_REG;
-    opr_dest.addr = opcode & 0x7;
+    opr_dest.addr = instr_fetch(eip+1) & 0x7;
     operand_read(&opr_src);
-    printf("opcode 0x%x\n", opcode);
 
     printf("opr_src.val 0x%x\n", opr_src.val);
     printf("opr_dest.addr 0x%x\n", opr_dest.addr);
