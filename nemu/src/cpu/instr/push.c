@@ -2,6 +2,7 @@
 
 make_instr_func(push_r_v){
     printf("push_r_v\n");
+    int len=1;
 
     OPERAND r, sr;
     r.type = OPR_REG; 
@@ -13,9 +14,10 @@ make_instr_func(push_r_v){
 
     sr.type = OPR_MEM; 
 	sr.addr = cpu.esp-data_size;
+    sr.data_size = data_size;
     sr.val=r.val;
 
     operand_write(&sr);
 
-    return 1;
+    return len;
 }
