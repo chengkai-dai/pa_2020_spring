@@ -4,6 +4,8 @@ make_instr_func(add_i2r_v){
 
     OPERAND  opr_src,opr_dest;
     int len = 1;
+    opr_src.data_size=data_size;
+    opr_dest.data_size=data_size;
 
     len += opr_src.data_size / 8; 
 	opr_src.type = OPR_IMM;       
