@@ -3,7 +3,8 @@
 make_instr_func(add_i2rm_v)
 {
 
-    OPERAND imm, r;
+    // OPERAND imm, r;
+    OPERAND r;
 
     int len = 1;
 
