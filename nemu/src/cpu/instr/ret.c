@@ -16,7 +16,5 @@ make_instr_func(ret_near){
 
     cpu.eip=ret_eip;
 
-    printf("ret eip 0x%x\n",ret_eip);
-    printf("ret len %d\n",(int)ret_eip-(int)eip);
     return 0;
 }
