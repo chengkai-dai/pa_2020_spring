@@ -3,7 +3,10 @@
 static void instr_execute_2op() 
 {
 	operand_read(&opr_src);
-	opr_dest.val = opr_src.val;
+        printf("opr_dest 0x%x\n", opr_dest.val);
+        printf("opr_src 0x%x\n", opr_src.val);
+        opr_dest.val = opr_src.val;
+
 	operand_write(&opr_dest);
 }
 
