@@ -2,7 +2,6 @@
 
 make_instr_func(ret_near){
 
-    int len = 1;
     OPERAND rsp;
 
     rsp.type = OPR_MEM;
