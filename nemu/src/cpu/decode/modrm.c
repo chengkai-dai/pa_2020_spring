@@ -163,7 +163,6 @@ int modrm_rm(uint32_t eip, OPERAND *rm)
 {
 	MODRM modrm;
 	modrm.val = instr_fetch(eip, 1);
-	printf("modrm val 0x%x\n",modrm.val);
 	int len = parse_rm_32(eip, modrm, rm);
 	return len;
 }

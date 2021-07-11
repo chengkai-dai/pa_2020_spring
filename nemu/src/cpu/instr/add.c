@@ -11,6 +11,8 @@ make_instr_func(add_i2rm_v)
     len += modrm_rm(eip + 1, &r); 
 	r.data_size=data_size;
 
+    operand_read(&r);
+
     printf("r.addr 0x%x\n",r.addr);
     printf("r.val 0x%x\n",r.val);
     printf("r.mem_addr.base 0x%x\n",r.mem_addr.base);
