@@ -2,7 +2,6 @@
 
 make_instr_func(call_near)
 {
-    printf("call!!!!!!\n");
     int len = 1;
     OPERAND rsp;
 
@@ -28,7 +27,5 @@ make_instr_func(call_near)
     int offset = sign_ext(rel.val, data_size);
 
     cpu.eip += offset;
-    printf("len %d\n", len);
-    printf("offset 0x%x\n", offset);
     return len;
 }
