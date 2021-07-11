@@ -27,5 +27,5 @@ make_instr_func(add_i2r_v)
 
     // operand_read(&imm);
     // alu_sub(imm.val,r.val,data_size);
-    return len + 1;
+    return len + data_size/8;
 }
