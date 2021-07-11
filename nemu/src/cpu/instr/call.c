@@ -11,7 +11,7 @@ make_instr_func(call_near)
     rsp.type = OPR_MEM;
     rsp.addr = cpu.esp;
     rsp.data_size = data_size;
-    rsp.val = eip;
+    rsp.val = eip + data_size / 8 + 1;
 
     operand_write(&rsp);
 
@@ -28,7 +28,7 @@ make_instr_func(call_near)
     int offset = sign_ext(rel.val, data_size);
 
     cpu.eip += offset;
-    printf("len %d\n",len);
-    printf("offset 0x%x\n",offset);
+    printf("len %d\n", len);
+    printf("offset 0x%x\n", offset);
     return len;
 }
