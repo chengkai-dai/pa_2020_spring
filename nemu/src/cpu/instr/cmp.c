@@ -14,6 +14,5 @@ make_instr_func(cmp_i2rm_bv){
 
     operand_read(&imm);
 	alu_sub(imm.val,r.val,data_size);
-    printf("cmp_i2rm_bv len %d\n",len+1);
     return len+1;
 }
