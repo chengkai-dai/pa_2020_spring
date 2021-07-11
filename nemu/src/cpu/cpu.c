@@ -59,7 +59,9 @@ void exec(uint32_t n)
 	while (n > 0 && nemu_state == NEMU_RUN)
 	{
 		instr_len = exec_inst();
+		printf("instr_len %d\n",instr_len);
 		cpu.eip += instr_len;
+		printf("eip 0x%x\n",cpu.eip);
 		n--;
 
 		if (hit_break_rerun)
