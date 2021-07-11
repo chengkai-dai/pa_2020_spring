@@ -12,6 +12,8 @@ make_instr_func(add_i2r_v)
     r.addr = instr_fetch(eip + 1, 1) & 0x7;
     operand_read(&r);
 
+    len += 1;
+
     imm.data_size = data_size;
     imm.type = OPR_IMM;
     imm.sreg = SREG_CS;
