@@ -1,6 +1,8 @@
 #include "cpu/instr.h"
 
 make_instr_func(push_r_v){
+    printf("push_r_v\n");
+
     OPERAND r, sr;
     r.type = OPR_REG; 
 	r.addr = opcode & 0x7;
