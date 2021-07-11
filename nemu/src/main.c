@@ -63,9 +63,7 @@ static void single_run(const char *img_file_path, const char *elf_file_path)
 {
 	restart(INIT_EIP); // restart the machine, do some initializations
 	printf("NEMU load and execute img: \033[1m\033[32m%s\033[0m  elf: \033[1m\033[36m%s\033[0m\n", img_file_path, elf_file_path);
-	printf("11111");
 	load_exec(img_file_path, LOAD_OFF); // Load the memory image of executable
-	printf("22222");
 #ifdef HAS_DEVICE_IDE
 	init_ide(elf_file_path); // Initialize hard drive
 #else
