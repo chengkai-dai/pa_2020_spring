@@ -19,6 +19,7 @@ make_instr_func(push_r_v){
     printf("esp addr disp 0x%x\n", sr.mem_addr.disp);
     printf("esp addr index 0x%x\n", sr.mem_addr.index);
     printf("esp addr scale 0x%x\n", sr.mem_addr.scale);
+    printf("esp value 0x%x\n", cpu.esp);
 
     return 1;
 }
