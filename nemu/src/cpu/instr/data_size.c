@@ -4,6 +4,7 @@ extern uint8_t data_size;
 
 make_instr_func(data_size_16)
 {
+	printf("data size 16\n");
 	uint8_t op_code = 0;
 	int len = 0;
 	data_size = 16;
