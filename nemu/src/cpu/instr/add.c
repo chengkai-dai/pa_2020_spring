@@ -1,4 +1,4 @@
-0#include "cpu/instr.h"
+#include "cpu/instr.h"
 
 make_instr_func(add_i2r_v){
 
