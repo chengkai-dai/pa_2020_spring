@@ -15,7 +15,7 @@ make_instr_func(call_near)
 
     operand_write(&rsp);
 
-    len += data_size / 4;
+    len += data_size / 8;
 
     OPERAND rel;
     rel.type = OPR_IMM;
