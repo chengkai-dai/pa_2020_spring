@@ -1,8 +1,6 @@
 #include "cpu/instr.h"
 
 make_instr_func(push_r_v){
-    printf("push_r_v\n");
-    int len=1;
 
     OPERAND r, sr;
     r.type = OPR_REG; 
@@ -19,5 +17,5 @@ make_instr_func(push_r_v){
 
     operand_write(&sr);
 
-    return len;
+    return 1;
 }
