@@ -2,7 +2,7 @@
 
 make_instr_func(add_i2r_v){
 
-    OPERAND imm, r;
+    OPERAND  r;
     int len = 1;
 
     len += modrm_rm(eip + 1, &r);
