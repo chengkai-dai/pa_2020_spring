@@ -28,6 +28,6 @@ make_instr_func(call_near)
     int offset = sign_ext(rel.val, data_size);
 
     cpu.eip += offset;
-
+    printf("len %d\n",len);
     return len;
 }
