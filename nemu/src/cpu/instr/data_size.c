@@ -4,11 +4,11 @@ extern uint8_t data_size;
 
 make_instr_func(data_size_16)
 {
-	printf("data size 16\n");
 	uint8_t op_code = 0;
 	int len = 0;
 	data_size = 16;
 	op_code = instr_fetch(eip + 1, 1);
+	printf("op_code 0x%x\n",op_code);
 #ifdef NEMU_REF_INSTR
 	len = __ref_opcode_entry[op_code](eip + 1, op_code);
 #else

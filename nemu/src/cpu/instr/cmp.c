@@ -13,8 +13,6 @@ make_instr_func(cmp_i2rm_bv){
 
 
     operand_read(&imm);
-    printf("imm val 0x%x\n", imm.val);
 	alu_sub(imm.val,r.val,data_size);
-
     return 2 + len;
 }
