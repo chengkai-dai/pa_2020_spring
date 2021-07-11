@@ -10,7 +10,7 @@ make_instr_func(push_r_v){
 	sr.addr = 4;
     operand_read(&sr);
 
-    printf("esp addr 0x%x\n", sr.mem_addr);
+    printf("esp addr 0x%x\n", sr.mem_addr.base);
 
     return 1;
 }
