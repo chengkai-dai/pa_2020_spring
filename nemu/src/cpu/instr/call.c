@@ -4,7 +4,7 @@ make_instr_func(call_near)
 {
     printf("call!!!!!!\n");
     int len = 1;
-    OPERAND rsp, imm;
+    OPERAND rsp;
 
     cpu.esp -= 32;
 
