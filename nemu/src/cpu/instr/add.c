@@ -7,13 +7,13 @@ make_instr_func(add_i2r_v)
 
     int len = 1;
 
-    opr_dest.data_size = data_size;
-    opr_dest.type = OPR_REG;
-    opr_dest.addr = instr_fetch(eip+1,1) & 0x7;
-    operand_read(&opr_dest);
+    // opr_dest.data_size = data_size;
+    // opr_dest.type = OPR_REG;
+    // opr_dest.addr = instr_fetch(eip+1,1) & 0x7;
+    // operand_read(&opr_dest);
 
-    // len += modrm_rm(eip + 1, &opr_dest);
-    // opr_dest.data_size=data_size;
+    len += modrm_rm(eip + 1, &opr_dest);
+    opr_dest.data_size=data_size;
 
     opr_src.data_size = data_size;
     opr_src.type = OPR_IMM;
