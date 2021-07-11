@@ -15,7 +15,10 @@ make_instr_func(push_r_v){
 
     operand_read(&sr);
 
-    printf("esp addr 0x%x\n", sr.mem_addr.base);
+    printf("esp addr base 0x%x\n", sr.mem_addr.base);
+    printf("esp addr disp 0x%x\n", sr.mem_addr.disp);
+    printf("esp addr index 0x%x\n", sr.mem_addr.index);
+    printf("esp addr scale 0x%x\n", sr.mem_addr.scale);
 
     return 1;
 }
