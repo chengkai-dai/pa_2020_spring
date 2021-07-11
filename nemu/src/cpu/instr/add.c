@@ -6,19 +6,25 @@ make_instr_func(add_i2r_v)
     OPERAND opr_src, opr_dest;
 
     int len = 1;
+
+    opr_dest.data_size = data_size;
+    opr_dest.type = OPR_REG;
+    opr_dest.addr = instr_fetch(eip+1,1) & 0x7;
+    operand_read(&opr_dest);
+
+    len+=1;
+
+
     opr_src.data_size = data_size;
     opr_src.type = OPR_IMM;
     opr_src.sreg = SREG_CS;
     opr_src.addr = eip + 2;
     operand_read(&opr_src);
 
-    opr_dest.data_size = data_size;
-    opr_dest.type = OPR_REG;
-    opr_dest.addr = instr_fetch(eip+1,1) & 0x7;
-    operand_read(&opr_src);
+    len+=data_size/8;
 
     printf("opr_src.val 0x%x\n", opr_src.val);
-    printf("opr_dest.addr 0x%x\n", opr_dest.addr);
+    printf("opr_dest.val 0x%x\n", opr_dest.addr);
     // r.data_size=data_size;
 
     // imm.type=OPR_IMM;
@@ -27,5 +33,5 @@ make_instr_func(add_i2r_v)
 
     // operand_read(&imm);
     // alu_sub(imm.val,r.val,data_size);
-    return len + data_size/8;
+    return len ;
 }
