@@ -12,8 +12,8 @@ make_instr_func(add_i2r_v)
     opr_dest.addr = instr_fetch(eip+1,1) & 0x7;
     operand_read(&opr_dest);
 
-    len+=1;
-
+    // len += modrm_rm(eip + 1, &opr_dest);
+    // opr_dest.data_size=data_size;
 
     opr_src.data_size = data_size;
     opr_src.type = OPR_IMM;
@@ -24,7 +24,7 @@ make_instr_func(add_i2r_v)
     len+=data_size/8;
 
     printf("opr_src.val 0x%x\n", opr_src.val);
-    printf("opr_dest.val 0x%x\n", opr_dest.addr);
+    printf("opr_dest.val 0x%x\n", opr_dest.val);
     // r.data_size=data_size;
 
     // imm.type=OPR_IMM;
