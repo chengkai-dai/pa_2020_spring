@@ -21,9 +21,8 @@ int parse_sib(uint32_t eip, uint32_t mod, OPERAND *opr)
 
 	if (sib.index != 4)
 	{
-		printf("idx 0x%x\n",idx);
 		idx = cpu.gpr[sib.index]._32;
-				printf("idx 0x%x\n",idx);
+		printf("idx 0x%x\n",idx);
 
 		opr->mem_addr.index = sib.index;
 		switch (sib.ss)
@@ -59,6 +58,7 @@ int parse_sib(uint32_t eip, uint32_t mod, OPERAND *opr)
 	case 2:
 		opr->addr = cpu.gpr[sib.base]._32 + idx;
 		opr->mem_addr.base = sib.base;
+		printf("opr->addr 0x%x\n",opr->addr);
 		return 1;
 	default:
 		printf("illegal mod=11 in SIB\n");
