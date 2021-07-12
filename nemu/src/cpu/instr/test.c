@@ -5,6 +5,9 @@ static void instr_execute_2op()
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
 	alu_and(opr_src.val, opr_dest.val, data_size);
+	printf("opr_src.val 0x%x\n",opr_src.val);
+	printf("opr_dest.val 0x%x\n",opr_dest.val);
+
 }
 
 // make_instr_func(cmp_i2rm_bv)
