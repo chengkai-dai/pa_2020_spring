@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-make_instr_func(lea_r2rm_v)
+make_instr_func(lea_rm2rm_v)
 {
     int len=1;
     OPERAND rm,r;
