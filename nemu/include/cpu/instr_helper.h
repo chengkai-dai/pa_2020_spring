@@ -99,7 +99,6 @@ void print_asm_3(char *instr, char *suffix, uint8_t len, OPERAND *opr_1, OPERAND
 	opr_src.type = OPR_IMM; \
 	opr_src.sreg = SREG_CS; \
 	opr_src.addr = eip + 1; \
-	printf("data size %d\n",opr_src.data_size); \
 	len += opr_src.data_size / 8;
 
 #define decode_operand_r2rm \

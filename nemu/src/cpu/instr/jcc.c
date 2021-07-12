@@ -3,6 +3,7 @@
 static void instr_execute_1op_cc_pass()
 {
 	operand_read(&opr_src);
+	printf("src")
 	cpu.eip += sign_ext(opr_src.val, opr_src.data_size);
 
 }
