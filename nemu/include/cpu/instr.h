@@ -28,6 +28,7 @@ extern uint8_t data_size;
 #include "cpu/instr/add.h"
 #include "cpu/instr/test.h"
 #include "cpu/instr/sub.h"
+#include "cpu/instr/lea.h"
 
 /* TODO: add more instructions here */
 

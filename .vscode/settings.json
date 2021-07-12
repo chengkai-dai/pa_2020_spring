@@ -8,6 +8,7 @@
         "typeinfo": "c",
         "instr.h": "c",
         "add.h": "c",
-        "test.h": "c"
+        "test.h": "c",
+        "sub.h": "c"
     }
 }
