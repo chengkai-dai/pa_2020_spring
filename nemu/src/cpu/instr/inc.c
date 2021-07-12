@@ -10,7 +10,7 @@ static void	instr_execute_1op(){
 
     printf("opr_dest.mem_addr.index 0x%x\n ", opr_dest.mem_addr.index);
 
-    printf("opr_dest.addr 0x%x\n ", opr_dest.addr);
+    printf("opr_dest.scale 0x%x\n ", opr_dest.mem_addr.scale);
 
     operand_write(&opr_dest);
 }
