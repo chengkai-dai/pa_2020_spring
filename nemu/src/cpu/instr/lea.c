@@ -13,7 +13,6 @@ make_instr_func(lea)
     printf("rm.mem_addr.scale 0x%x\n", rm.mem_addr.scale);
     printf("rm.mem_addr.disp 0x%x\n", rm.mem_addr.disp);
     printf("rm.addr 0x%x\n", rm.addr);
-    printf("r.val 0x%x\n", r.val);
 
     return len;
 }
