@@ -6,8 +6,11 @@
 
 int parse_sib(uint32_t eip, uint32_t mod, OPERAND *opr)
 {
+	printf("parse_sib\n");
 	SIB sib;
 	sib.val = instr_fetch(eip, 1);
+	printf("sib.val 0x%x\n");
+
 	uint32_t idx = 0;
 	opr->sreg = SREG_DS;
 
