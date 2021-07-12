@@ -1,11 +1,20 @@
 #include "cpu/instr.h"
 
-static void instr_execute_2op() 
+make_instr_func(lea_m2r_v)
 {
-	operand_read(&opr_src);
-	operand_read(&opr_dest);
-	opr_dest.val=alu_sub(opr_src.val, opr_dest.val, data_size);
-    operand_write(&opr_dest);
-}
+        OPERAND rel;
+        rel.type = OPR_IMM;
+        rel.sreg = SREG_CS;
+        rel.data_size = data_size;
+        rel.addr = eip + 1;
 
-make_instr_impl_2op(lea, m, r, v)
+        operand_read(&rel);
+
+        int offset = sign_ext(rel.val, data_size);
+        // thank Ting Xu from CS'17 for finding this bug
+        print_asm_1("jmp", "", 1 + data_size / 8, &rel);
+
+        cpu.eip += offset;
+
+        return 1 + data_size / 8;
+}
