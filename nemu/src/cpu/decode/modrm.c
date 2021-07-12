@@ -66,6 +66,7 @@ int case_mod_01(uint32_t eip, MODRM modrm, OPERAND *opr)
 		break;
 	}
 	opr->addr = disp8 + (int32_t)opr->addr;
+	printf("opr->addr 0x%x\n", opr->addr);
 	opr->mem_addr.disp = disp8;
 	return len;
 }
