@@ -6,7 +6,7 @@ make_instr_func(lea)
     OPERAND rm,r;
     len += modrm_r_rm(eip + 1, &r, &rm);
     printf("eip 0x%x\n",cpu.eip);
-    printf("r.mem_addr.base 0x%x\n", r.mem_addr.base);
+    printf("rm.mem_addr.base 0x%x\n", r.mem_addr.base);
     printf("r.mem_addr.index 0x%x\n", r.mem_addr.index);
     printf("r.mem_addr.scale 0x%x\n", r.mem_addr.scale);
     printf("r.mem_addr.disp 0x%x\n", r.mem_addr.disp);
