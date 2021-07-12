@@ -2,7 +2,7 @@
 
 static void instr_execute_1op_cc_pass()
 {
-	printf("pass");
+	printf("pass\n");
 	operand_read(&opr_src);
 
 	cpu.eip += sign_ext(opr_src.val, opr_src.data_size);
@@ -10,8 +10,8 @@ static void instr_execute_1op_cc_pass()
 }
 
 static void instr_execute_1op_cc_fail() {
-	printf("fail");
-	printf("fail");
+	printf("fail\n");
+	printf("PF %x\n",cpu.eflags.PF);
 
 }
 
