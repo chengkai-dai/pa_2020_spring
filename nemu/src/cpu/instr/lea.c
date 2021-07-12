@@ -7,9 +7,10 @@ make_instr_func(lea)
     len += modrm_r_rm(eip + 1, &r, &rm);
     // operand_read(&r);
     // operand_read(&rm);
-    
+    printf("1111\n");
     r.val = rm.addr;
     operand_write(&r);
+    printf("2222\n");
 
     return len;
 }
