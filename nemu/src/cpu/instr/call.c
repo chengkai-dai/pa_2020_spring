@@ -5,16 +5,25 @@ make_instr_func(call_near)
     int len = 1;
     OPERAND rsp;
 
-    cpu.esp -= 32;
+    // next instruction is pushed to the top of stack 
+    // 1. allocate the space on the stack for next instruction
+    // 2. push the instruction to stack
+    // 3. jmp to the next instr
 
+
+    len += data_size / 8;
+
+    //step 1 and 2
+    cpu.esp -= 32;
     rsp.type = OPR_MEM;
     rsp.addr = cpu.esp;
     rsp.data_size = data_size;
-    rsp.val = eip + data_size / 8 + 1;
+    rsp.val = eip + len;
 
     operand_write(&rsp);
 
-    len += data_size / 8;
+    //step 3
+    // set the eip to the call addr ((current eip + len) (next instr) + offset)
 
     OPERAND rel;
     rel.type = OPR_IMM;
@@ -25,7 +34,7 @@ make_instr_func(call_near)
     operand_read(&rel);
 
     int offset = sign_ext(rel.val, data_size);
-
     cpu.eip += offset;
+
     return len;
 }

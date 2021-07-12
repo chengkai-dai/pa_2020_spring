@@ -5,6 +5,8 @@
         "initializer_list": "c",
         "utility": "c",
         "algorithm": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "instr.h": "c",
+        "add.h": "c"
     }
 }
