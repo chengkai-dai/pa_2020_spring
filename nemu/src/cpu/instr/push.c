@@ -28,6 +28,7 @@ make_instr_func(push_r_v){
 
 make_instr_func(push_rm_v){
     int len=1;
+    // step 1
     cpu.esp-=data_size;
 
     // step 2
