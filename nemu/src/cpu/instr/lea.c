@@ -8,7 +8,8 @@ make_instr_func(lea)
     // operand_read(&r);
     // operand_read(&rm);
     
-    r
+    r.val = rm.addr;
+    operand_write()
 
     return len;
 }
