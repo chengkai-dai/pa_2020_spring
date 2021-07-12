@@ -8,7 +8,7 @@ static void instr_execute_2op()
     printf("opr_dest.val 0x%x\n",opr_dest.val);
     printf("data size %d\n",data_size);
 
-	opr_dest.val=alu_and(sign_ext(opr_src.val,data_size),opr_dest.val,data_size);
+	opr_dest.val=alu_and(sign_ext(opr_src.val,opr_src.data_size),opr_dest.val,data_size);
     printf("opr_dest.val 0x%x\n",opr_dest.val);
 
 	operand_write(&opr_dest);
