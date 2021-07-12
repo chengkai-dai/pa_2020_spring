@@ -3,7 +3,10 @@
 static void instr_execute_1op_cc_pass()
 {
 	operand_read(&opr_src);
+	printf("before eip 0x%x\n",cpu.eip);
 	cpu.eip += sign_ext(opr_src.val, opr_src.data_size);
+	printf("after eip 0x%x\n",cpu.eip);
+
 }
 
 static void instr_execute_1op_cc_fail() {/* Do nothing */}
