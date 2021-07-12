@@ -8,3 +8,4 @@ static void instr_execute_2op()
     operand_write(&opr_dest);
 }
 
+make_instr_impl_2op(lea, m, r, v)
