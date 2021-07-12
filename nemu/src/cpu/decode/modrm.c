@@ -136,7 +136,7 @@ int modrm_r_rm(uint32_t eip, OPERAND *r, OPERAND *rm)
 {
 	MODRM modrm;
 	modrm.val = instr_fetch(eip, 1);
-	printf("modrm.val 0x%x")
+	printf("modrm.val 0x%x\n",modrm.val);
 	r->type = OPR_REG;
 	r->addr = modrm.reg_opcode;
 	int len = parse_rm_32(eip, modrm, rm);
