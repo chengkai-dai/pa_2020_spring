@@ -3,7 +3,9 @@
 static void instr_execute_1op_cc_pass()
 {
 	operand_read(&opr_src);
-	printf("src")
+	printf("src data_size %d\n",opr_src.data_size);
+	printf("src addr 0x%x\n",opr_src.addr);
+
 	cpu.eip += sign_ext(opr_src.val, opr_src.data_size);
 
 }
