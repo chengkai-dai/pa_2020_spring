@@ -53,7 +53,7 @@ int case_mod_01(uint32_t eip, MODRM modrm, OPERAND *opr)
 		opr->mem_addr.base = modrm.rm;
 		disp8 = (int8_t)instr_fetch(eip + 1, 1);
 		printf("disp 8 0x%x\n", disp8);
-		printf("disp 8 0x%x\n", disp8);
+		printf("disp 8 %d\n", disp8);
 		len += 1; // disp8
 		if (modrm.rm == 5)
 		{ // EBP
