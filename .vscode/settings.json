@@ -9,6 +9,7 @@
         "instr.h": "c",
         "add.h": "c",
         "test.h": "c",
-        "sub.h": "c"
+        "sub.h": "c",
+        "lea.h": "c"
     }
 }
