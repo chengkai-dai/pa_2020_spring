@@ -52,8 +52,6 @@ int case_mod_01(uint32_t eip, MODRM modrm, OPERAND *opr)
 		opr->addr = cpu.gpr[modrm.rm]._32;
 		opr->mem_addr.base = modrm.rm;
 		disp8 = (int8_t)instr_fetch(eip + 1, 1);
-		printf("disp 8 0x%x\n", disp8);
-		printf("disp 8 %d\n", disp8);
 		len += 1; // disp8
 		if (modrm.rm == 5)
 		{ // EBP
@@ -66,7 +64,6 @@ int case_mod_01(uint32_t eip, MODRM modrm, OPERAND *opr)
 		break;
 	}
 	opr->addr = disp8 + (int32_t)opr->addr;
-	printf("opr->addr 0x%x\n", opr->addr);
 	opr->mem_addr.disp = disp8;
 	return len;
 }
