@@ -391,6 +391,7 @@ uint32_t alu_and(uint32_t src, uint32_t dest, size_t data_size)
 #else
 	uint32_t res = 0;
 	res = src & dest;
+	printf("and res %x\n",res);
 	cpu.eflags.CF = 0;
 	cpu.eflags.OF = 0;
 	set_PF(res);
