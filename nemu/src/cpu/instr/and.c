@@ -4,7 +4,7 @@ static void instr_execute_2op()
 {
 	operand_read(&opr_src);
     operand_read(&opr_dest);
-    printf("opr_src.val 0x%x\n",sign_ext(opr_src.val,data_size));
+    printf("opr_src.val 0x%x\n",sign_ext(opr_src.val,opr_src.data_size));
     printf("opr_dest.val 0x%x\n",opr_dest.val);
     printf("data size %d\n",data_size);
 
