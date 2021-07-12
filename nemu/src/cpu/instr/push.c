@@ -34,6 +34,7 @@ make_instr_func(push_rm_v){
     // step 2
     OPERAND rm,sr;
     len+=modrm_rm(eip + 1,&rm);
+    rm.data_size=data_size;
     operand_read(&rm);
 
     // r.type = OPR_REG; 
