@@ -2,13 +2,18 @@
 
 static void instr_execute_1op_cc_pass()
 {
+	printf("pass");
 	operand_read(&opr_src);
 
 	cpu.eip += sign_ext(opr_src.val, opr_src.data_size);
 
 }
 
-static void instr_execute_1op_cc_fail() {}
+static void instr_execute_1op_cc_fail() {
+	printf("fail");
+	printf("fail");
+
+}
 
 #define jcc_helper(suffix) \
 	make_instr_impl_1op_cc(j, i, suffix, e) \
