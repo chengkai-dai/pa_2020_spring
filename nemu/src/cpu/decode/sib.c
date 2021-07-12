@@ -21,7 +21,10 @@ int parse_sib(uint32_t eip, uint32_t mod, OPERAND *opr)
 
 	if (sib.index != 4)
 	{
+		printf("idx 0x%x\n",idx);
 		idx = cpu.gpr[sib.index]._32;
+				printf("idx 0x%x\n",idx);
+
 		opr->mem_addr.index = sib.index;
 		switch (sib.ss)
 		{
