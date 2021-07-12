@@ -12,5 +12,5 @@ make_instr_func(lea_r2rm_v)
     printf("r.addr 0x%x\n", r.addr);
     printf("rm.addr 0x%x\n", rm.addr);
 
-    exit(-1);
+    return len;
 }
