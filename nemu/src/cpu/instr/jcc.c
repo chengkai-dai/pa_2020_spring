@@ -11,7 +11,7 @@ static void instr_execute_1op_cc_pass()
 
 }
 
-static void instr_execute_1op_cc_fail() {printf("fail\n");}
+static void instr_execute_1op_cc_fail() {}
 
 #define jcc_helper(suffix) \
 	make_instr_impl_1op_cc(j, i, suffix, e) \
