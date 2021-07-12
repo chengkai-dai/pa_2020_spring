@@ -33,7 +33,7 @@ make_instr_func(push_rm_v){
     // step 2
     OPERAND rm;
     len+=modrm_rm(eip + 1,&rm);
-
+    operand_read(&rm);
 
     // r.type = OPR_REG; 
 	// r.addr = opcode & 0x7;
