@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-make_instr_func(lea_m2r_v)
+make_instr_func(lea_rm2r_v)
 {
         OPERAND rel;
         rel.type = OPR_IMM;
