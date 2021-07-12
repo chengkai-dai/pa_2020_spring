@@ -12,6 +12,8 @@ static void	instr_execute_1op(){
 
     printf("opr_dest.scale 0x%x\n ", opr_dest.mem_addr.scale);
 
+    printf("opr_dest.disp %d\n ", opr_dest.mem_addr.disp);
+
     operand_write(&opr_dest);
 }
 
