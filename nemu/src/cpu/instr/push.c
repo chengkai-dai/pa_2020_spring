@@ -32,7 +32,7 @@ make_instr_func(push_rm_v){
     cpu.esp-=data_size;
 
     // step 2
-    OPERAND rm;
+    OPERAND rm,sr;
     len+=modrm_rm(eip + 1,&rm);
     operand_read(&rm);
 
@@ -41,15 +41,14 @@ make_instr_func(push_rm_v){
     // r.data_size=data_size;
     // operand_read(&r);
 
-    // sr.type = OPR_MEM; 
-	// sr.addr = cpu.esp;
-    // sr.data_size = data_size;
-    // sr.val=r.val;
+    sr.type = OPR_MEM; 
+	sr.addr = cpu.esp;
+    sr.data_size = data_size;
+    sr.val=rm.val;
 
-    // operand_write(&sr);
+    operand_write(&sr);
 
-
-
+    return len;
 
 }
 
