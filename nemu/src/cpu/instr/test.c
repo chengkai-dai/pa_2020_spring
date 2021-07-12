@@ -7,6 +7,7 @@ static void instr_execute_2op()
 	alu_and(opr_src.val, opr_dest.val, data_size);
 	printf("opr_src.val 0x%x\n",opr_src.val);
 	printf("opr_dest.val 0x%x\n",opr_dest.val);
+	printf("ZF 0x%x\n",cpu.eflags.ZF);
 
 }
 
