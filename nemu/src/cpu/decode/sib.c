@@ -6,7 +6,6 @@
 
 int parse_sib(uint32_t eip, uint32_t mod, OPERAND *opr)
 {
-	printf("parse_sib\n");
 	SIB sib;
 	sib.val = instr_fetch(eip, 1);
 
