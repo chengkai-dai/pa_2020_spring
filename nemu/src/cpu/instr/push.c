@@ -27,12 +27,14 @@ make_instr_func(push_r_v){
 }
 
 make_instr_func(push_rm_v){
-
+    int len=1;
     cpu.esp-=data_size;
 
     // step 2
     OPERAND rm;
-    modrm_rm(&rm);
+    len+=modrm_rm(eip + 1,&rm);
+
+
     // r.type = OPR_REG; 
 	// r.addr = opcode & 0x7;
     // r.data_size=data_size;
