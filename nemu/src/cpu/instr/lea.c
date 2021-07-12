@@ -8,7 +8,7 @@ make_instr_func(lea)
     // operand_read(&r);
     // operand_read(&rm);
     
-    printf("rm.addr 0x%x\n", rm.addr);
+    r
 
     return len;
 }
