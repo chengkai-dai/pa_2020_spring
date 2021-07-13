@@ -17,6 +17,7 @@
         "adc.h": "c",
         "pop.h": "c",
         "xor.h": "c",
-        "or.h": "c"
+        "or.h": "c",
+        "leave.h": "c"
     }
 }
