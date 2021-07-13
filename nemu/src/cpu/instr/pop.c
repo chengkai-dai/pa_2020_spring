@@ -2,7 +2,7 @@
 
 make_instr_func(pop_r_v)
 {
-    int len=1;
+    int len = 1;
 
     // 1. set the content on stack memory to the register
     // 2. collect the space for the popped value
@@ -24,7 +24,7 @@ make_instr_func(pop_r_v)
 
     // step 2
 
-    cpu.esp += data_size;
+    cpu.esp += data_size / 8;
 
     return len;
 }
