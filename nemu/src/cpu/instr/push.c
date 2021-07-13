@@ -2,6 +2,7 @@
 
 make_instr_func(push_r_v){
 
+    int len=1;
     // 1. allocate the space for the pushed value
     // 2. set the memory to the new value
 
@@ -23,7 +24,7 @@ make_instr_func(push_r_v){
 
     operand_write(&sr);
 
-    return 1;
+    return len;
 }
 
 make_instr_func(push_rm_v){

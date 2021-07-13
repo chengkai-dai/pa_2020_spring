@@ -13,6 +13,8 @@
         "lea.h": "c",
         "inc.h": "c",
         "and.h": "c",
-        "*.tcc": "c"
+        "*.tcc": "c",
+        "adc.h": "c",
+        "pop.h": "c"
     }
 }
