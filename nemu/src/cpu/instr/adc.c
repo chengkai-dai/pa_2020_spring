@@ -4,6 +4,8 @@ static void instr_execute_2op()
 {
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
+	printf("eax value 0x%x\n",cpu.gpr[0]._32);
+
 	printf("cf value 0x%x\n",cpu.eflags.CF);
 
 	printf("adc before value 0x%x\n",opr_dest.val);
