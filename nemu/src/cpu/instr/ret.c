@@ -1,6 +1,7 @@
 #include "cpu/instr.h"
 
-make_instr_func(ret_near){
+make_instr_func(ret_near)
+{
 
     // 1. next instruction is popped
     // 2. release the space on the stack which stores next instruction
@@ -16,11 +17,11 @@ make_instr_func(ret_near){
     operand_read(&rsp);
 
     // step 2
-    cpu.esp+=32;
+    cpu.esp += data_size / 8;
 
     //step 3
-    uint32_t ret_eip=rsp.val;
-    cpu.eip=ret_eip;
+    uint32_t ret_eip = rsp.val;
+    cpu.eip = ret_eip;
 
     return 0;
 }
