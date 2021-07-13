@@ -23,5 +23,5 @@ make_instr_func(ret_near)
     uint32_t ret_eip = rsp.val;
     cpu.eip = ret_eip;
 
-    return 1;
+    return 0;
 }
