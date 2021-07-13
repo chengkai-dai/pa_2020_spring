@@ -4,7 +4,7 @@ make_instr_func(pop_r_v)
 {
     int len = 1;
 
-    // 1. set the content on stack memory to the register
+    // 1. set the content on stack pointer to the register
     // 2. collect the space for the popped value
 
     // step 1

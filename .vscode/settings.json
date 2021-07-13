@@ -16,6 +16,7 @@
         "*.tcc": "c",
         "adc.h": "c",
         "pop.h": "c",
-        "xor.h": "c"
+        "xor.h": "c",
+        "or.h": "c"
     }
 }
