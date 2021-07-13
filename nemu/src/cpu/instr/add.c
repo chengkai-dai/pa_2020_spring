@@ -24,7 +24,7 @@ make_instr_impl_2op(add, i, rm, v)
 make_instr_impl_2op(add, i, a, v)
 make_instr_impl_2op(add, rm, r, v)
 make_instr_impl_2op(add, i, rm, bv)
-make_instr_impl_2op(add, r, rm, bv)
+make_instr_impl_2op(add, r, rm, v)
 
 
 // make_instr_func(add_i2rm_v)
