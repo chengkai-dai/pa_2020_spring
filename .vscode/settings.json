@@ -11,6 +11,8 @@
         "test.h": "c",
         "sub.h": "c",
         "lea.h": "c",
-        "inc.h": "c"
+        "inc.h": "c",
+        "and.h": "c",
+        "*.tcc": "c"
     }
 }
