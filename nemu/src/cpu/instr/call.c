@@ -5,16 +5,15 @@ make_instr_func(call_near)
     int len = 1;
     OPERAND rsp;
 
-    // next instruction is pushed to the top of stack 
+    // next instruction is pushed to the top of stack
     // 1. allocate the space on the stack for next instruction
     // 2. push the instruction to stack
     // 3. jmp to the next instr
 
-
     len += data_size / 8;
 
     //step 1 and 2
-    cpu.esp -= 32;
+    cpu.esp -= data_size / 8;
     rsp.type = OPR_MEM;
     rsp.addr = cpu.esp;
     rsp.data_size = data_size;
