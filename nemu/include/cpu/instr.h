@@ -38,6 +38,7 @@ extern uint8_t data_size;
 #include "cpu/instr/leave.h"
 #include "cpu/instr/dec.h"
 #include "cpu/instr/set.h"
+#include "cpu/instr/not.h"
 
 /* TODO: add more instructions here */
 
