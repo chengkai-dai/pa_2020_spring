@@ -19,6 +19,7 @@
         "xor.h": "c",
         "or.h": "c",
         "leave.h": "c",
-        "dec.h": "c"
+        "dec.h": "c",
+        "not.h": "c"
     }
 }
