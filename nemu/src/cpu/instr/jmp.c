@@ -19,7 +19,7 @@ make_instr_func(jmp_near)
         return 1 + data_size / 8;
 }
 
-ake_instr_func(jmp_short_)
+make_instr_func(jmp_short_)
 {
         OPERAND rel;
         int data_size=8;
