@@ -173,13 +173,10 @@ static inline bool inv_cc();
 	inv_cc()
 
 #define condition_ae \
-	inv_cc()
+	cpu.eflags.CF == 0
 
 #define condition_b \
 	inv_cc()
-
-#define condition_be \
-	cpu.eflags.CF == 0
 
 #define condition_o \
 	inv_cc()
