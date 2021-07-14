@@ -6,6 +6,13 @@ make_instr_func(leave)
     printf("edx value 0x%x\n",cpu.gpr[2]._32);
     printf("\n");
 
+    OPERAND test_r;
+    test_r.type = OPR_MEM;
+    test_r.addr = cpu.ebp-4;
+    test_r.data_size = data_size;
+    operand_read(&test_r);
+    printf("cpu.ebp-4 0x%x\n",test_r.val);
+
     int len = 1;
     // 1. set the esp value (stack pointer) to ebp value (frame pointer)
     // 2. pop the stack pointer value to ebp
