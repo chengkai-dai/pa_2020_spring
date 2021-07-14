@@ -1,22 +1,10 @@
 #include "cpu/instr.h"
 
 static void instr_execute_2op() 
-{
-         
+{ 
 	operand_read(&opr_src);
 	opr_dest.val = opr_src.val;
 	operand_write(&opr_dest);
-
-        if(cpu.eip==0x300f7){
-                OPERAND sr;
-    	sr.type = OPR_MEM;
-    	sr.addr = cpu.ebp+0xc;
-    	sr.data_size = data_size;
-    	operand_read(&sr);
-        printf("sr.val 0x%x\n", sr.val);
-	printf("mov opr_src.val 0x%x\n", opr_src.val);
-	printf("mov opr_dest.val 0x%x\n", opr_dest.val);
-        }
 }
 
 make_instr_impl_2op(mov, r, rm, b)
