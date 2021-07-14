@@ -36,6 +36,14 @@ make_instr_func(leave)
     printf("after eax value 0x%x\n",cpu.gpr[0]._32);
     printf("\n");
 
+    OPERAND test_r;
+    test_r.type = OPR_MEM;
+    test_r.addr = cpu.ebp-16;
+    test_r.data_size = data_size;
+    operand_read(&test_r);
+    printf("ebp - 0x10  value 0x%x\n",test_r.val);
+    printf("\n");
+
     //(2) collect the space for the popped value
     cpu.esp += data_size / 8;
 
