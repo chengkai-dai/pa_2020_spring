@@ -7,6 +7,7 @@ make_instr_func(opcode_2_byte)
 #ifdef NEMU_REF_INSTR
 	len += __ref_opcode_2_byte_entry[op](eip + 1, op);
 #else
+	printf("come on!\n");
 	len += opcode_2_byte_entry[op](eip + 1, op);
 #endif
 	return len;
