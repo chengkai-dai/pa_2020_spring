@@ -2,31 +2,23 @@
 
 static void instr_execute_2op() 
 {
-         if(cpu.eip==0x30020){
-        OPERAND test_r;
-    test_r.type = OPR_MEM;
-    test_r.addr = cpu.ebp-4;
-    test_r.data_size = data_size;
-    operand_read(&test_r);
-    printf("cpu.ebp-4 before 0x%x\n",test_r.val);
-         }
-
+         
 	operand_read(&opr_src);
 	opr_dest.val = opr_src.val;
 	operand_write(&opr_dest);
 
-        if(cpu.eip==0x3001d){
-                printf("eax 0x%x\n",cpu.gpr[0]._32);
-        }
+//         if(cpu.eip==0x3001d){
+//                 printf("eax 0x%x\n",cpu.gpr[0]._32);
+//         }
 
-                 if(cpu.eip==0x30020){
-        OPERAND test_r;
-    test_r.type = OPR_MEM;
-    test_r.addr = cpu.ebp-4;
-    test_r.data_size = data_size;
-    operand_read(&test_r);
-    printf("cpu.ebp-4 after 0x%x\n",test_r.val);
-         }
+//                  if(cpu.eip==0x30020){
+//         OPERAND test_r;
+//     test_r.type = OPR_MEM;
+//     test_r.addr = cpu.ebp-4;
+//     test_r.data_size = data_size;
+//     operand_read(&test_r);
+//     printf("cpu.ebp-4 after 0x%x\n",test_r.val);
+//          }
 }
 
 make_instr_impl_2op(mov, r, rm, b)
