@@ -6,6 +6,20 @@ static void instr_execute_2op()
 	operand_read(&opr_dest);
     opr_dest.val = alu_add(sign_ext(opr_src.val,opr_src.data_size), opr_dest.val, data_size);
 	operand_write(&opr_dest);
+
+	if (cpu.eip == 0x30174)
+    {
+        for (int i = 0; i < 100; i++)
+        {
+
+            OPERAND test_r;
+            test_r.type = OPR_MEM;
+            test_r.addr = cpu.ebx + 0x20 + i * 4;
+            test_r.data_size = data_size;
+            operand_read(&test_r);
+            printf(" 0x%x ", test_r.val);
+        }
+    }
 }
 
 make_instr_impl_2op(add, i, rm, v)
