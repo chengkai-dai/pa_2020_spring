@@ -5,6 +5,10 @@ static void instr_execute_2op()
 	operand_read(&opr_src);
 	opr_dest.val = opr_src.val;
 	operand_write(&opr_dest);
+
+        if(cpu.eip=0x3001d){
+                printf("eax 0x%x\n",cpu.gpr[0]._32);
+        }
 }
 
 make_instr_impl_2op(mov, r, rm, b)
