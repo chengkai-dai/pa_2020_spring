@@ -12,7 +12,7 @@ static void instr_execute_2op()
 		res=alu_sub(opr_src.val, opr_dest.val, data_size);   
 
 	
-	if(cpu.eip==0x30181){
+	if(cpu.eip==0x30178){
 		printf("opr_src.val 0x%x\n",opr_src.val);
 		printf("opr_dest.val 0x%x\n",opr_dest.val);
 		printf("res 0x%x\n",res);
