@@ -13,7 +13,7 @@ static void instr_execute_2op()
 		printf("opr_src.val 0x%x\n",opr_src.val);
 		printf("opr_dest.val 0x%x\n",opr_dest.val);
 		printf("res1 0x%x\n",res1);
-		printf("res2 0x%x\n",res1);
+		printf("res2 0x%x\n",res2);
 
 		printf("cpu.zf 0x%x\n",cpu.eflags.ZF);
 
