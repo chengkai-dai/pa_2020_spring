@@ -8,10 +8,11 @@ make_instr_func(leave)
 
     OPERAND test_r;
     test_r.type = OPR_MEM;
-    test_r.addr = cpu.ebp-4;
+    test_r.addr = cpu.ebp+0xc;
     test_r.data_size = data_size;
     operand_read(&test_r);
-    printf("cpu.ebp-4 0x%x\n",test_r.val);
+    printf("cpu.ebp+c 0x%x\n",test_r.val);
+
 
     int len = 1;
     // 1. set the esp value (stack pointer) to ebp value (frame pointer)
