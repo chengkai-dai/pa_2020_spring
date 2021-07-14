@@ -8,6 +8,7 @@ static void instr_execute_1op_cc_pass()
 	cpu.eip += sign_ext(opr_src.val, opr_src.data_size);
 
 	if(cpu.eip==0x30023){
+		printf("next eip offset 0x%x\n",opr_src.val);
 		printf("pass next eip 0x%x\n",cpu.eip);
 	}
 
