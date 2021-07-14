@@ -4,6 +4,12 @@ static void instr_execute_2op()
 {
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
+	if(cpu.eip==0x3008b){
+		printf("cmp\n");
+		printf("eax value 0x%x\n",cpu.gpr[0]._32);
+    	printf("ecx value 0x%x\n",cpu.gpr[1]._32);
+    	printf("\n");
+	}
 	alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
 }
 
