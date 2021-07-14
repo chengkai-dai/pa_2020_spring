@@ -33,6 +33,9 @@ make_instr_func(leave)
     br.val = sr.val;
     operand_write(&br);
 
+    printf("after eax value 0x%x\n",cpu.gpr[0]._32);
+    printf("\n");
+
     //(2) collect the space for the popped value
     cpu.esp += data_size / 8;
 
