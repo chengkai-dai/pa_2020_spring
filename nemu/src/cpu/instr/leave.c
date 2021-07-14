@@ -2,7 +2,8 @@
 
 make_instr_func(leave)
 {
-
+    printf("eax value 0x%x\n",cpu.gpr[0]._32);
+    printf("ecx value 0x%x\n",cpu.gpr[1]._32);
     int len = 1;
     // 1. set the esp value (stack pointer) to ebp value (frame pointer)
     // 2. pop the stack pointer value to ebp
