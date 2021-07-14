@@ -4,20 +4,7 @@ static void instr_execute_2op()
 {
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
-	if(cpu.eip==0x30018){
-		printf("cmp\n");
-		printf("opr_src.val 0x%x\n",opr_src.val);
-    	printf("opr_dest.val 0x%x\n",opr_dest.val);
-	}
 	uint32_t val=alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
-	
-	if(cpu.eip==0x30018){
-		printf("val 0x%x\n",val);
-		printf("cpu.eflags.SF 0x%x\n",cpu.eflags.SF);
-		printf("cpu.eflags.OF 0x%x\n",cpu.eflags.OF);
-		printf("cpu.eflags.ZF 0x%x\n",cpu.eflags.ZF);
-
-	}
 	
 }
 
