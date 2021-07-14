@@ -44,7 +44,7 @@ make_instr_func(leave)
         test_r.addr = cpu.ebx+0x20+i*4;
         test_r.data_size = data_size;
         operand_read(&test_r);
-        printf("result val 0x%x ",test_r.val);
+        printf(" 0x%x ",test_r.val);
 
     }
 
