@@ -81,6 +81,7 @@ make_instr_func(push_i_b){
     sr.val = imm.val;
 
     operand_write(&sr);
+    printf ("sr.val 0x%x\n",sr.val);
 
     return len;
 
