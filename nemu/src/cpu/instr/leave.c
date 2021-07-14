@@ -44,6 +44,14 @@ make_instr_func(leave)
     printf("ebp - 0x10  value 0x%x\n",test_r.val);
     printf("\n");
 
+    OPERAND test_ebx_r;
+    test_ebx_r.type = OPR_MEM;
+    test_ebx_r.addr = cpu.ebx+64+test_r.val*4;
+    test_ebx_r.data_size = data_size;
+    operand_read(&test_ebx_r);
+    printf("test_ebx_r  value 0x%x\n",test_ebx_r.val);
+    printf("\n");
+
     //(2) collect the space for the popped value
     cpu.esp += data_size / 8;
 
