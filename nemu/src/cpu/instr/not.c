@@ -13,5 +13,5 @@ make_instr_func(not_rm_v)
 
     operand_write(&rm);
 
-    return len + 1;
+    return len;
 }
