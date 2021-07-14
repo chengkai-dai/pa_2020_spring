@@ -2,9 +2,7 @@
 
 static void instr_execute_1op_cc_pass()
 {
-    if(cpu.eip==0x30023){
-		printf("pass\n");
-	}
+
 	operand_read(&opr_src);
 
 	cpu.eip += sign_ext(opr_src.val, opr_src.data_size);
@@ -12,9 +10,7 @@ static void instr_execute_1op_cc_pass()
 }
 
 static void instr_execute_1op_cc_fail() {
-	if(cpu.eip==0x30023){
-		printf("fail next eip 0x%x\n",cpu.eip);
-	}
+
 }
 
 #define jcc_helper(suffix) \

@@ -2,16 +2,12 @@
 
 make_instr_func(leave)
 {
-    printf("eax value 0x%x\n",cpu.gpr[0]._32);
-    printf("edx value 0x%x\n",cpu.gpr[2]._32);
-    printf("\n");
 
     OPERAND test_r;
     test_r.type = OPR_MEM;
     test_r.addr = cpu.ebp+0xc;
     test_r.data_size = data_size;
     operand_read(&test_r);
-    printf("cpu.ebp+c 0x%x\n",test_r.val);
 
 
     int len = 1;
