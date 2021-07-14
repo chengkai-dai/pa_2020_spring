@@ -10,7 +10,9 @@ static void instr_execute_2op()
     	printf("opr_dest.val 0x%x\n",opr_dest.val);
     	printf("\n");
 	}
-	alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
+	uint32_t val=alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
+	printf("val 0x%x\n",val);
+	
 }
 
 // make_instr_func(cmp_i2rm_bv)
