@@ -57,7 +57,7 @@ void set_ZF(uint32_t result, size_t data_size)
 void set_PF(uint32_t result)
 {
 	if(cpu.eip==0x30018){
-		printf("result %0x%x\n",result);
+		printf("result 0x%x\n",result);
 	}
 		
 	result = result & 0xFF;
