@@ -4,8 +4,10 @@ static void instr_execute_2op()
 {
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
-	alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
+	uint32_t val=alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
+
 	if(cpu.eip==0x30018){
+		printf("val 0x%x\n",val);
 		printf("cpu.pf 0x%x\n",cpu.eflags.PF);
 	}
 	
