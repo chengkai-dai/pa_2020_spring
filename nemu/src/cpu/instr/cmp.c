@@ -13,6 +13,10 @@ static void instr_execute_2op()
 	
 	if(cpu.eip==0x30018){
 		printf("val 0x%x\n",val);
+		printf("cpu.eflags.SF 0x%x\n",cpu.eflags.SF);
+		printf("cpu.eflags.OF 0x%x\n",cpu.eflags.OF);
+		printf("cpu.eflags.ZF 0x%x\n",cpu.eflags.ZF);
+
 	}
 	
 }
