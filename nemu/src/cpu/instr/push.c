@@ -59,7 +59,7 @@ make_instr_func(push_i_b){
 
     int len = 1;
     // step 1
-    cpu.esp -= 8 / 8;
+    cpu.esp -= data_size / 8;
 
     // step 2
     OPERAND imm, sr;
@@ -77,11 +77,11 @@ make_instr_func(push_i_b){
 
     sr.type = OPR_MEM;
     sr.addr = cpu.esp;
-    sr.data_size = 8;
+    sr.data_size = data_size ;
     sr.val = imm.val;
 
     operand_write(&sr);
-    printf ("sr.val 0x%x\n",sr.val);
+    // printf ("sr.val 0x%x\n",sr.val);
 
     return len;
 
