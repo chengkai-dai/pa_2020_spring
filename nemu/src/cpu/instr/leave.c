@@ -46,7 +46,7 @@ make_instr_func(leave)
 
     OPERAND test_ebx_r;
     test_ebx_r.type = OPR_MEM;
-    test_ebx_r.addr = cpu.ebx+64+test_r.val*4;
+    test_ebx_r.addr = cpu.ebx+64+(test_r.val+1)*4;
     test_ebx_r.data_size = data_size;
     operand_read(&test_ebx_r);
     printf("test_ebx_r  value 0x%x\n",test_ebx_r.val);
