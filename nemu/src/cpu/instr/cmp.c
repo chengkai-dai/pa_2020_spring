@@ -6,12 +6,15 @@ static void instr_execute_2op()
 	operand_read(&opr_dest);
 	// alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);   
 
-	uint32_t res=alu_sub(sign_ext(opr_src.val, opr_src.data_size), sign_ext(opr_dest.val,data_size), data_size);   
+	uint32_t res1=alu_sub(sign_ext(opr_src.val, opr_src.data_size), sign_ext(opr_dest.val,data_size), data_size);   
+	uint32_t res2=alu_sub(opr_src.val, opr_dest.val, data_size);   
 
 	if(cpu.eip==0x30178){
 		printf("opr_src.val 0x%x\n",opr_src.val);
 		printf("opr_dest.val 0x%x\n",opr_dest.val);
-		printf("res 0x%x\n",res);
+		printf("res1 0x%x\n",res1);
+		printf("res2 0x%x\n",res1);
+
 		printf("cpu.zf 0x%x\n",cpu.eflags.ZF);
 
 	}
