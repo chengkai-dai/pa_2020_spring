@@ -3,7 +3,7 @@
 make_instr_func(leave)
 {
     printf("eax value 0x%x\n",cpu.gpr[0]._32);
-    printf("ecx value 0x%x\n",cpu.gpr[1]._32);
+    printf("edx value 0x%x\n",cpu.gpr[2]._32);
     printf("\n");
 
     int len = 1;
