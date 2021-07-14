@@ -8,10 +8,12 @@ static void instr_execute_2op()
 		printf("cmp\n");
 		printf("opr_src.val 0x%x\n",opr_src.val);
     	printf("opr_dest.val 0x%x\n",opr_dest.val);
-    	printf("\n");
 	}
 	uint32_t val=alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
-	printf("val 0x%x\n",val);
+	
+	if(cpu.eip==0x30018){
+		printf("val 0x%x\n",val);
+	}
 	
 }
 
