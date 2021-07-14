@@ -14,6 +14,7 @@ static void instr_execute_2op()
     	// sr.data_size = data_size;
     	// operand_read(&sr);
 		// printf("eax 0x%x\n", cpu.eax);
+	printf("ebp.val 0x%x\n", cpu.ebp);
 	printf("opr_src.val 0x%x\n", opr_src.val);
 	printf("opr_dest.val 0x%x\n", opr_dest.val);
 
