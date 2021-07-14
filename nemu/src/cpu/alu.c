@@ -56,27 +56,15 @@ void set_ZF(uint32_t result, size_t data_size)
 
 void set_PF(uint32_t result)
 {
-	if(cpu.eip==0x30018){
-		printf("result 0x%x\n",result);
-	}
-		
+
 	result = result & 0xFF;
 	size_t one_bits = 0;
 	
-	if(cpu.eip==0x30018){
-		printf("after result 0x%x\n",result);
-	}
-
 	while (result != 0)
 	{
 		one_bits += result & 0x1;
 		result = result >> 1;
 	}
-
-	if(cpu.eip==0x30018){
-		printf("one bits %d\n",one_bits);
-	}
-
 
 	cpu.eflags.PF = !(one_bits % 2);
 }
