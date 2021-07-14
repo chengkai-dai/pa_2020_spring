@@ -4,12 +4,11 @@ static void instr_execute_2op()
 {
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
-	uint32_t res;
 	// alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
 	if(opr_dest.data_size==32)
-		res=alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
+		alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
 	else
-		res=alu_sub(opr_src.val, opr_dest.val, data_size);   
+		alu_sub(opr_src.val, opr_dest.val, data_size);   
 	   
 }
 
