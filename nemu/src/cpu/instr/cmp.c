@@ -4,7 +4,7 @@ static void instr_execute_2op()
 {
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
-	if(cpu.eip==0x3008b){
+	if(cpu.eip==0x30018){
 		printf("cmp\n");
 		printf("eax value 0x%x\n",cpu.gpr[0]._32);
     	printf("ecx value 0x%x\n",cpu.gpr[1]._32);
