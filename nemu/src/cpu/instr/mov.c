@@ -8,6 +8,12 @@ static void instr_execute_2op()
 	operand_write(&opr_dest);
 
         if(cpu.eip==0x300f7){
+                OPERAND sr;
+    	sr.type = OPR_MEM;
+    	sr.addr = cpu.ebp+0xc;
+    	sr.data_size = data_size;
+    	operand_read(&sr);
+        printf("sr.val 0x%x\n", sr.val);
 	printf("mov opr_src.val 0x%x\n", opr_src.val);
 	printf("mov opr_dest.val 0x%x\n", opr_dest.val);
         }
