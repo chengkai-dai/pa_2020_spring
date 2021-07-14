@@ -36,7 +36,7 @@ make_instr_func(leave)
     br.val = sr.val;
     operand_write(&br);
 
-    if (cpu.eip = 0x30142)
+    if (cpu.eip == 0x30142)
     {
         for (int i = 0; i < 100; i++)
         {
