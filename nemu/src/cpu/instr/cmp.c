@@ -5,7 +5,23 @@ static void instr_execute_2op()
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
 	alu_sub(sign_ext(opr_src.val, opr_src.data_size), opr_dest.val, data_size);
-	
+	if(cpu.eip==0x300fa){
+
+		// printf("eax 0x%x\n", cpu.eax);
+		// OPERAND sr;
+    	// sr.type = OPR_MEM;
+    	// sr.addr = cpu.ebp+10;
+    	// sr.data_size = data_size;
+    	// operand_read(&sr);
+		// printf("eax 0x%x\n", cpu.eax);
+	printf("opr_src.val 0x%x\n", opr_src.val);
+	printf("opr_dest.val 0x%x\n", opr_dest.val);
+
+		
+	}
+	   
+	   
+	   
 }
 
 // make_instr_func(cmp_i2rm_bv)
