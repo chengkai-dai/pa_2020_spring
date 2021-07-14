@@ -21,8 +21,9 @@ make_instr_func(jmp_near)
 
 make_instr_func(jmp_short_)
 {
+        printf("come on!\n");
         OPERAND rel;
-        int data_size=8;
+        int data_size = 8;
         rel.type = OPR_IMM;
         rel.sreg = SREG_CS;
         rel.data_size = data_size;
