@@ -60,7 +60,7 @@ void set_PF(uint32_t result)
 		printf("result 0x%x\n",result);
 	}
 		
-	result = result & 0xFF;
+	// result = result & 0xFF;
 	size_t one_bits = 0;
 	
 	if(cpu.eip==0x30018){
