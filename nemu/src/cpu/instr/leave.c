@@ -2,9 +2,9 @@
 
 make_instr_func(leave)
 {
-    printf("eax value 0x%x\n",cpu.gpr[0]._32);
-    printf("edx value 0x%x\n",cpu.gpr[2]._32);
-    printf("\n");
+    // printf("eax value 0x%x\n",cpu.gpr[0]._32);
+    // printf("edx value 0x%x\n",cpu.gpr[2]._32);
+    // printf("\n");
 
     int len = 1;
     // 1. set the esp value (stack pointer) to ebp value (frame pointer)
@@ -33,8 +33,8 @@ make_instr_func(leave)
     br.val = sr.val;
     operand_write(&br);
 
-    printf("after eax value 0x%x\n",cpu.gpr[0]._32);
-    printf("\n");
+    // printf("after eax value 0x%x\n",cpu.gpr[0]._32);
+    // printf("\n");
 
     //(2) collect the space for the popped value
     cpu.esp += data_size / 8;
