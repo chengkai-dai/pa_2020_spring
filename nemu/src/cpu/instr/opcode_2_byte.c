@@ -8,6 +8,7 @@ make_instr_func(opcode_2_byte)
 	len += __ref_opcode_2_byte_entry[op](eip + 1, op);
 #else
 	printf("come on!\n");
+	printf("op %d\n",op);
 	len += opcode_2_byte_entry[op](eip + 1, op);
 #endif
 	return len;
