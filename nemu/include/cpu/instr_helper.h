@@ -176,13 +176,13 @@ static inline bool inv_cc();
 	cpu.eflags.CF == 0
 
 #define condition_b \
-	inv_cc()
+	inv_cc_b()
 
 #define condition_o \
-	inv_cc()
+	inv_cc_o()
 
 #define condition_p \
-	inv_cc()
+	inv_cc_p()
 
 #define condition_s \
 	cpu.eflags.SF == 1
@@ -191,7 +191,7 @@ static inline bool inv_cc();
 	cpu.eflags.ZF == 0
 
 #define condition_be \
-	inv_cc()
+	inv_cc_be()
 
 #define condition_na \
 	(cpu.eflags.CF | cpu.eflags.ZF) == 1
@@ -203,7 +203,7 @@ static inline bool inv_cc();
 	cpu.eflags.PF == 0
 
 #define condition_ns \
-	inv_cc()
+	inv_cc_ns()
 
 #define condition_g \
 	((cpu.eflags.SF ^ cpu.eflags.OF) | cpu.eflags.ZF) == 0
@@ -226,6 +226,41 @@ static inline bool inv_cc();
 static inline bool inv_cc()
 {
 	printf("Please implement cc condition in instr_helper.h\n");
+	assert(0);
+	return false;
+}
+
+static inline bool inv_cc_b()
+{
+	printf("Please implement inv_cc_b condition in instr_helper.h\n");
+	assert(0);
+	return false;
+}
+
+static inline bool inv_cc_o()
+{
+	printf("Please implement inv_cc_o condition in instr_helper.h\n");
+	assert(0);
+	return false;
+}
+
+static inline bool inv_cc_p()
+{
+	printf("Please implement inv_cc_p condition in instr_helper.h\n");
+	assert(0);
+	return false;
+}
+
+static inline bool inv_cc_be()
+{
+	printf("Please implement inv_cc_be condition in instr_helper.h\n");
+	assert(0);
+	return false;
+}
+
+static inline bool inv_cc_ns()
+{
+	printf("Please implement inv_cc_ns condition in instr_helper.h\n");
 	assert(0);
 	return false;
 }
