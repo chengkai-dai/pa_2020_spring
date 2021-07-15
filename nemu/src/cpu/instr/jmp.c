@@ -39,9 +39,13 @@ make_instr_func(jmp_short_)
         return 1 + data_size / 8;
 }
 
-make_instr_func(jmp_near_indirect){
-        int len=1;
+make_instr_func(jmp_near_indirect)
+{
+        int len = 1;
         OPERAND ind;
-        ind.data_size=data_size;
+        ind.data_size = data_size;
         len += modrm_rm(eip + 1, &ind);
+
+        int offset = e
+
 }
