@@ -23,6 +23,7 @@
         "not.h": "c",
         "sbb.h": "c",
         "imul.h": "c",
-        "idiv.h": "c"
+        "idiv.h": "c",
+        "random": "c"
     }
 }
