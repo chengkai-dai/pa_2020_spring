@@ -38,3 +38,7 @@ make_instr_func(jmp_short_)
 
         return 1 + data_size / 8;
 }
+
+make_instr_func(jmp_near_indirect){
+        len += modrm_rm(eip + 1, &opr_src);
+}
