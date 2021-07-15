@@ -51,9 +51,9 @@ make_instr_func(cmps_w)
 	operand_read(&mdi);
 	alu_sub(mdi.val, msi.val, data_size);
 	int incDec = 0;
-	incDec = cpu.eflags.DF == 0 ? 1 : -1;
-	cpu.gpr[REG_ESI]._32 += incDec;
-	cpu.gpr[REG_EDI]._32 += incDec;
-	print_asm_0("cmps (%%edi), (%%esi)", "", 1);
+	incDec = cpu.eflags.DF == 0 ? 2 : -2;
+	cpu.gpr[REG_SI]._32 += incDec;
+	cpu.gpr[REG_DI]._32 += incDec;
+	print_asm_0("cmps (%%edi), (%%si)", "", 1);
 	return 1;
 }
