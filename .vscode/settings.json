@@ -24,6 +24,7 @@
         "sbb.h": "c",
         "imul.h": "c",
         "idiv.h": "c",
-        "random": "c"
+        "random": "c",
+        "stos.h": "c"
     }
 }
