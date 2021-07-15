@@ -25,4 +25,6 @@ make_instr_func(jna_short_);
 make_instr_func(jno_short_);
 make_instr_func(jge_short_);
 make_instr_func(js_short_);
+make_instr_func(jae_short_);
+
 #endif
