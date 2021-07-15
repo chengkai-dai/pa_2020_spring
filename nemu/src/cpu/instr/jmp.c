@@ -45,7 +45,11 @@ make_instr_func(jmp_near_indirect)
         OPERAND ind;
         ind.data_size = data_size;
         len += modrm_rm(eip + 1, &ind);
+        int offset = sign_ext(ind.val, data_size);
+        
+        cpu.eip += offset;
 
-        int offset = e
+        return 1 + data_size / 8;
+
 
 }
