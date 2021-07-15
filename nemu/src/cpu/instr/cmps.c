@@ -45,8 +45,8 @@ make_instr_func(cmps_w)
 	msi.data_size = mdi.data_size = 16;
 	msi.type = mdi.type = OPR_MEM;
 	msi.sreg = mdi.sreg = SREG_DS;
-	msi.addr = cpu.gpr[REG_ESI]._32;
-	mdi.addr = cpu.gpr[REG_EDI]._32;
+	msi.addr = cpu.gpr[REG_SI]._32;
+	mdi.addr = cpu.gpr[REG_DI]._32;
 	operand_read(&msi);
 	operand_read(&mdi);
 	alu_sub(mdi.val, msi.val, data_size);
