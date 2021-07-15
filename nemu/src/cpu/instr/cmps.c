@@ -39,10 +39,10 @@ make_instr_func(cmps_b)
 	return 1;
 }
 
-make_instr_func(cmps_b)
+make_instr_func(cmps_w)
 {
 	OPERAND msi, mdi;
-	msi.data_size = mdi.data_size = 8;
+	msi.data_size = mdi.data_size = 16;
 	msi.type = mdi.type = OPR_MEM;
 	msi.sreg = mdi.sreg = SREG_DS;
 	msi.addr = cpu.gpr[REG_ESI]._32;
