@@ -4,8 +4,6 @@ make_instr_func(rep_repe)
 {
 	int len = 1;
 	uint8_t op = instr_fetch(eip + 1, 1);
-	print_asm_0("rep", "", len + 1);
-	printf("rep 0x%x\n",op);
 	if (op == 0xc3)
 	{
 		// reference http://repzret.org/p/repzret/
@@ -22,6 +20,6 @@ make_instr_func(rep_repe)
 			break;
 		}
 	}
-	printf("len %d\n",len+1);
+	
 	return len + 1;
 }
