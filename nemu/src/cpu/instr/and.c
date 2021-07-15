@@ -14,7 +14,7 @@ static void instr_execute_2op()
 	if (opr_dest.data_size != opr_src.data_size)
 		alu_and(sign_ext(opr_src.val, opr_src.data_size), sign_ext(opr_dest.val, opr_dest.data_size), data_size);
 	else
-		alu_and(sign_ext(opr_src.val, opr_src.data_size),opr_dest.val, data_size);
+		alu_and(sign_ext(opr_src.val, data_size),opr_dest.val, data_size);
 
 	operand_write(&opr_dest);
 }
