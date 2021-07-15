@@ -3,4 +3,6 @@
 
 make_instr_func(imul_rm2r_v);
 make_instr_func(imul_rm2a_v);
+make_instr_func(imul_rm2a_b);
+
 #endif
