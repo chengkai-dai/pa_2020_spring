@@ -22,5 +22,6 @@ make_instr_func(rep_repe)
 			break;
 		}
 	}
+	printf("len %d\n",len+1);
 	return len + 1;
 }
