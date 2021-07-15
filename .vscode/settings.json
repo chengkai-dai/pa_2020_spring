@@ -20,6 +20,7 @@
         "or.h": "c",
         "leave.h": "c",
         "dec.h": "c",
-        "not.h": "c"
+        "not.h": "c",
+        "sbb.h": "c"
     }
 }
