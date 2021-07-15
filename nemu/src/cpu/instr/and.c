@@ -9,7 +9,8 @@ static void instr_execute_2op()
 	{
 		printf("opr_dest 0x%x\n",opr_dest.val);
 		printf("opr_src 0x%x\n",opr_src.val);
-		printf("res 0x%x\n",alu_and(sign_ext(opr_src.val, opr_src.data_size), sign_ext(opr_dest.val, opr_dest.data_size), data_size));
+		printf("res1 0x%x\n",alu_and(sign_ext(opr_src.val, opr_src.data_size), sign_ext(opr_dest.val, opr_dest.data_size), data_size));
+		printf("res2 0x%x\n",alu_and(sign_ext(opr_src.val,opr_src.data_size),opr_dest.val,data_size));
 	}
 	if (opr_dest.data_size != opr_src.data_size)
 		alu_and(sign_ext(opr_src.val, opr_src.data_size), sign_ext(opr_dest.val, opr_dest.data_size), data_size);
