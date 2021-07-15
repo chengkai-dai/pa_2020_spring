@@ -46,7 +46,7 @@ make_instr_func(jmp_near_indirect)
         ind.data_size = data_size;
         len += modrm_rm(eip + 1, &ind);
         operand_read(&ind);
-        int offset = sign_ext(ind.val, data_size);
+        int dest = sign_ext(ind.val, data_size);
         // printf("offset indirect 0x%x\n", offset);
         // printf("ind.mem_addr.base 0x%x\n", ind.mem_addr.base);
         // printf("ind.mem_addr.disp 0x%x\n", ind.mem_addr.disp);
@@ -56,7 +56,7 @@ make_instr_func(jmp_near_indirect)
         // printf("edx val 0x%x\n", cpu.edx);
         // printf("eip 0x%x\n", cpu.eip);
 
-        cpu.eip = offset;
+        cpu.eip = dest;
         return 0;
 
 }
