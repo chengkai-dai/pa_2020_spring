@@ -49,6 +49,7 @@ make_instr_func(jmp_near_indirect)
         int offset = sign_ext(ind.val, data_size);
         printf("offset indirect 0x%x\n", offset);
         printf("edx val 0x%x\n", cpu.edx);
+        printf("eip 0x%x\n", cpu.eip);
 
         cpu.eip = offset;
         return 0;
