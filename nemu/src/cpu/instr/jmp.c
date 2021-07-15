@@ -48,7 +48,7 @@ make_instr_func(jmp_near_indirect)
         operand_read(&ind);
         int offset = sign_ext(ind.val, data_size);
         printf("offset indirect 0x%x\n", offset);
-        cpu.eip += offset;
+        cpu.eip = offset;
         return 1 + data_size / 8;
 
 }
