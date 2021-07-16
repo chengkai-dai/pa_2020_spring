@@ -69,8 +69,7 @@ make_instr_func(call_near_indirect)
     len += modrm_rm(eip + 1, &ind);
     operand_read(&ind);
     int dest = sign_ext(ind.val, data_size);
-
-    cpu.eip += dest;
+    cpu.eip = dest;
 
     return 0;
 }
