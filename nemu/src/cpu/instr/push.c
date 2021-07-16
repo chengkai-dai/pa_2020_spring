@@ -55,7 +55,8 @@ make_instr_func(push_rm_v)
     return len;
 }
 
-make_instr_func(push_i_b){
+make_instr_func(push_i_b)
+{
 
     int len = 1;
     // step 1
@@ -65,9 +66,9 @@ make_instr_func(push_i_b){
     OPERAND imm, sr;
     imm.type = OPR_IMM;
     imm.addr = eip + 1;
-    imm.data_size = 8;  
-	len += imm.data_size / 8;
-    
+    imm.data_size = 8;
+    len += imm.data_size / 8;
+
     operand_read(&imm);
 
     // r.type = OPR_REG;
@@ -77,12 +78,43 @@ make_instr_func(push_i_b){
 
     sr.type = OPR_MEM;
     sr.addr = cpu.esp;
-    sr.data_size = data_size ;
+    sr.data_size = data_size;
     sr.val = imm.val;
 
     operand_write(&sr);
     // printf ("sr.val 0x%x\n",sr.val);
 
     return len;
+}
 
+make_instr_func(push_i_v)
+{
+
+    int len = 1;
+    // step 1
+    cpu.esp -= data_size / 8;
+
+    // step 2
+    OPERAND imm, sr;
+    imm.type = OPR_IMM;
+    imm.addr = eip + 1;
+    imm.data_size = data_size;
+    len += imm.data_size / 8;
+
+    operand_read(&imm);
+
+    // r.type = OPR_REG;
+    // r.addr = opcode & 0x7;
+    // r.data_size=data_size;
+    // operand_read(&r);
+
+    sr.type = OPR_MEM;
+    sr.addr = cpu.esp;
+    sr.data_size = data_size;
+    sr.val = imm.val;
+
+    operand_write(&sr);
+    // printf ("sr.val 0x%x\n",sr.val);
+
+    return len;
 }
