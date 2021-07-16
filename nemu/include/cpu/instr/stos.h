@@ -2,5 +2,6 @@
 #define __INSTR_SUB_H__
 
 make_instr_func(stos_b);
+make_instr_func(stos_v);
 
 #endif
