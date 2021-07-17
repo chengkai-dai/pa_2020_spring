@@ -121,7 +121,7 @@ static bool make_token(char *e)
 
 static uint32_t eval(int s, int e, bool *success)
 {
-	uint32_t val;
+	uint32_t val=0;
 	if (s > e)
 	{
 		printf("eval ERROR: start position is greater than end\n");
