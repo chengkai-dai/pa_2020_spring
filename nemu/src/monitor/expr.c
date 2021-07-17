@@ -73,7 +73,7 @@ typedef struct token
 Token tokens[32];
 int nr_token;
 
-char* substr(const char *src, size_t start, size_t len)
+char *substr(const char *src, size_t start, size_t len)
 {
 	char *dest = malloc(len + 1);
 	if (dest)
@@ -113,7 +113,10 @@ static bool make_token(char *e)
 				{
 				default:
 					tokens[nr_token].type = rules[i].token_type;
-					tokens[nr_token].str = substr(substr_start,0, position);
+					int j = 0;
+					for (; j < substr_len; ++j)
+						tokens[nr_token].str[j] = *substr_start + j;
+					tokens[nr_token].str[j] = '\0';
 					nr_token++;
 				}
 
