@@ -25,6 +25,7 @@
         "imul.h": "c",
         "idiv.h": "c",
         "random": "c",
-        "stos.h": "c"
+        "stos.h": "c",
+        "sstream": "c"
     }
 }

@@ -284,9 +284,16 @@ void ui_mainloop(bool autorun)
 	{
 		// read user command
 		char *user_cmd = rl_gets();
+		printf("user_cmd %s\n",user_cmd);
+
+
 		char *user_cmd_end = user_cmd + strlen(user_cmd);
+		printf("user_cmd_end %s\n",user_cmd_end);
+
 		// parse the command
 		char *cmd = strtok(user_cmd, " ");
+		printf("cmd %s\n",cmd);
+
 		if (cmd == NULL)
 		{
 			// empty command, should not happen
