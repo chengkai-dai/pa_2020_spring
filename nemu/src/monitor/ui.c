@@ -219,7 +219,8 @@ cmd_handler(cmd_x)
 	{
 		goto x_error;
 	}
-	//if(args + strspn(args, " ") >= cmd_end) { goto p_error; }
+	char *steps = strtok(NULL, " ");
+	printf("")
 
 	bool success;
 	uint32_t val = expr(args, &success);
