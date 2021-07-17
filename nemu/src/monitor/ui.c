@@ -229,7 +229,7 @@ cmd_handler(cmd_x)
 	char * t;    
     for (t = args1; *t != '\0'; t++){
 		if (*t < '0' || *t > '9'){
-			puts("N should be a number!");
+			puts("N should be a decimal number!");
 			return 0;
 		}
 	}
