@@ -120,6 +120,11 @@ static bool make_token(char *e)
 	return true;
 }
 
+static uint32_t eval(int s, int e, bool *success){
+	printf("\nPlease implement eval at eval\n");
+	return 0;
+}
+
 uint32_t expr(char *e, bool *success)
 {
 	if (!make_token(e))
@@ -136,7 +141,4 @@ uint32_t expr(char *e, bool *success)
 	return 0;
 }
 
-static uint32_t eval(int s, int e, bool *success){
-	printf("\nPlease implement eval at eval\n");
-	return 0;
-}
+
