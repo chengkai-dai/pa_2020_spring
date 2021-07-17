@@ -128,6 +128,8 @@ uint32_t expr(char *e, bool *success)
 		return 0;
 	}
 
+	uint32_t val=eval(0,nr_token,success);
+
 	printf("\nPlease implement expr at expr.c\n");
 	assert(0);
 
