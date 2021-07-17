@@ -219,8 +219,10 @@ cmd_handler(cmd_x)
 	{
 		goto x_error;
 	}
+	printf("args %s\n",args);
+
 	char *steps = strtok(NULL, " ");
-	printf("args %s\n",steps);
+	printf("steps %s\n",steps);
 
 	// bool success;
 	// uint32_t val = expr(args, &success);
