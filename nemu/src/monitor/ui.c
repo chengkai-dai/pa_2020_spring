@@ -257,7 +257,7 @@ static struct
 	{"exit", "Exit NEMU", cmd_q},
 
 	//DIY Commands
-	{"x", "Check Memory Content", cmd_x},
+	{"x", "Check Memory Data", cmd_x},
 
 
 	/* TODO: Add more commands */
