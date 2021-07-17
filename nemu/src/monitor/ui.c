@@ -220,12 +220,8 @@ cmd_handler(cmd_x)
 		goto x_error;
 	}
 
+	//parse the first argument (num of the 4_bytes for displaying)
 	char *args1 = strtok(NULL, " ");
-
-	char *args2 = args + strlen(args1) + 1;
-
-	bool success;
-
 	char * t;    
     for (t = args1; *t != '\0'; t++){
 		if (*t < '0' || *t > '9'){
@@ -233,12 +229,12 @@ cmd_handler(cmd_x)
 			return 0;
 		}
 	}
-
 	int32_t num_4bytes =  (int32_t)strtol(args1, NULL, 10);
-	
 	printf("%d\n", num_4bytes);
 	
-
+	//parse the second argument, the actual addr for the memory data
+	char *args2 = args + strlen(args1) + 1;
+	bool success;
 	uint32_t addr = expr(args2, &success);
 	if (!success)
 	{
