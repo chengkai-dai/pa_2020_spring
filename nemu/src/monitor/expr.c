@@ -114,12 +114,9 @@ static bool make_token(char *e)
 				default:
 					tokens[nr_token].type = rules[i].token_type;
 					int j = 0;
-					for (; j < substr_len; ++j){
+					for (; j < substr_len; ++j)
 						tokens[nr_token].str[j] = *(substr_start + j);
-						printf("single %c\n", tokens[nr_token].str[j]);
-					}
 					tokens[nr_token].str[j] = '\0';
-					printf("val_str %s\n", tokens[nr_token].str);
 					nr_token++;
 				}
 
