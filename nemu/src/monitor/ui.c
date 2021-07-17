@@ -227,7 +227,15 @@ cmd_handler(cmd_x)
 	char *args2 = args + strlen(steps) + 1;
 	printf("args2 %s\n",args2);
 
-	if(sscanf(args1,)
+	uint32_t val = expr(args, &success);
+	if (!success)
+	{
+		printf("invalid expression: '%s'\n", args);
+	}
+	else
+	{
+		printf("%d\n", val);
+	}
 
 
 	// bool success;
