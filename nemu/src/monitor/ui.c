@@ -220,19 +220,19 @@ cmd_handler(cmd_x)
 		goto x_error;
 	}
 	char *steps = strtok(NULL, " ");
-	printf("")
+	printf("args %s\n",args);
 
-	bool success;
-	uint32_t val = expr(args, &success);
-	if (!success)
-	{
-		printf("invalid expression: '%s'\n", args);
-	}
-	else
-	{
-		printf("%d\n", val);
-	}
-	return 0;
+	// bool success;
+	// uint32_t val = expr(args, &success);
+	// if (!success)
+	// {
+	// 	printf("invalid expression: '%s'\n", args);
+	// }
+	// else
+	// {
+	// 	printf("%d\n", val);
+	// }
+	// return 0;
 
 x_error:
 	puts("Command format: \"x N EXPR\"");
