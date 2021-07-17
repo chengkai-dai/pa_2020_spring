@@ -121,6 +121,7 @@ static bool make_token(char *e)
 
 static uint32_t eval(int s, int e, bool *success)
 {
+	uint32_t val;
 	if (s > e)
 	{
 		printf("eval ERROR: start position is greater than end\n");
@@ -128,11 +129,13 @@ static uint32_t eval(int s, int e, bool *success)
 		return 0;
 	}
 	else if (s==e){
-		return atoi(tokens[s].str);
+		val= atoi(tokens[s].str);
+		printf("val %d\n",val)
+
 	}
 
 	//printf("\nPlease implement eval at eval\n");
-	return 0;
+	return val;
 }
 
 uint32_t expr(char *e, bool *success)
@@ -142,6 +145,7 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
+	printf("nr_token %d\n",nr_token)
 
 	uint32_t val = eval(0, nr_token, success);
 
