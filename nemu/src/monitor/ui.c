@@ -234,15 +234,10 @@ cmd_handler(cmd_x)
 		}
 	}
 
-	uint32_t num_4bytes = expr(args1, &success);
-	if (!success)
-	{
-		printf("invalid num_4bytes expression: '%s'\n", args1);
-	}
-	else
-	{
-		printf("%d\n", num_4bytes);
-	}
+	int32_t num_4bytes =  (int32_t)strtol(args1, NULL, 10);
+	
+	printf("%d\n", num_4bytes);
+	
 
 	uint32_t addr = expr(args2, &success);
 	if (!success)
