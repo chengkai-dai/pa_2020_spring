@@ -227,6 +227,8 @@ cmd_handler(cmd_x)
 	char *args2 = args + strlen(args1) + 1;
 	printf("args2 %s\n",args2);
 
+	bool success;
+
 	uint32_t val1 = expr(args1, &success);
 	if (!success)
 	{
