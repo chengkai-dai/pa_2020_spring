@@ -131,7 +131,7 @@ static uint32_t eval(int s, int e, bool *success)
 		return atoi(tokens[s].str);
 	}
 
-	printf("\nPlease implement eval at eval\n");
+	//printf("\nPlease implement eval at eval\n");
 	return 0;
 }
 
@@ -145,8 +145,8 @@ uint32_t expr(char *e, bool *success)
 
 	uint32_t val = eval(0, nr_token, success);
 
-	printf("\nPlease implement expr at expr.c\n");
-	assert(0);
+	// printf("\nPlease implement expr at expr.c\n");
+	// assert(0);
 
 	return val;
 }
