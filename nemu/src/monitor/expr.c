@@ -34,12 +34,11 @@ static struct rule
 
 	{" +", NOTYPE}, // white space
 	{"\\+", '+'},
-	{"[0-9]{1,10}",NUM},
-	{"-",'-'},
-	{"\\*",'*'},
-	{"\\(",'('},
-	{"\\)",')'}
-};
+	{"[0-9]{1,10}", NUM},
+	{"-", '-'},
+	{"\\*", '*'},
+	{"\\(", '('},
+	{"\\)", ')'}};
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]))
 
@@ -120,7 +119,18 @@ static bool make_token(char *e)
 	return true;
 }
 
-static uint32_t eval(int s, int e, bool *success){
+static uint32_t eval(int s, int e, bool *success)
+{
+	if (s > e)
+	{
+		printf("eval ERROR: start position is greater than end\n");
+		*success = false;
+		return 0;
+	}
+	else if (s==e){
+		return atoi(tokens[s].str);
+	}
+
 	printf("\nPlease implement eval at eval\n");
 	return 0;
 }
@@ -133,12 +143,10 @@ uint32_t expr(char *e, bool *success)
 		return 0;
 	}
 
-	uint32_t val=eval(0,nr_token,success);
+	uint32_t val = eval(0, nr_token, success);
 
 	printf("\nPlease implement expr at expr.c\n");
 	assert(0);
 
 	return val;
 }
-
-
