@@ -130,7 +130,7 @@ static uint32_t eval(int s, int e, bool *success)
 	}
 	else if (s==e){
 		val= atoi(tokens[s].str);
-		printf("val %d\n",val)
+		printf("val %d\n",val);
 
 	}
 
@@ -145,7 +145,7 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
-	printf("nr_token %d\n",nr_token)
+	printf("nr_token %d\n",nr_token);
 
 	uint32_t val = eval(0, nr_token, success);
 
