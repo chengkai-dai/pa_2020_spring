@@ -219,35 +219,35 @@ cmd_handler(cmd_x)
 	{
 		goto x_error;
 	}
-	printf("args %s\n",args);
+	// printf("args %s\n",args);
 
-	char *args1 = strtok(NULL, " ");
-	printf("args1 %s\n",args1);
+	// char *args1 = strtok(NULL, " ");
+	// printf("args1 %s\n",args1);
 
-	char *args2 = args + strlen(args1) + 1;
-	printf("args2 %s\n",args2);
+	// char *args2 = args + strlen(args1) + 1;
+	// printf("args2 %s\n",args2);
 
-	bool success;
+	// bool success;
 
-	uint32_t val1 = expr(args1, &success);
-	if (!success)
-	{
-		printf("invalid expression: '%s'\n", args1);
-	}
-	else
-	{
-		printf("%d\n", val1);
-	}
+	// uint32_t val1 = expr(args1, &success);
+	// if (!success)
+	// {
+	// 	printf("invalid expression: '%s'\n", args1);
+	// }
+	// else
+	// {
+	// 	printf("%d\n", val1);
+	// }
 
-	uint32_t val2 = expr(args2, &success);
-	if (!success)
-	{
-		printf("invalid expression: '%s'\n", args2);
-	}
-	else
-	{
-		printf("%d\n", val2);
-	}
+	// uint32_t val2 = expr(args2, &success);
+	// if (!success)
+	// {
+	// 	printf("invalid expression: '%s'\n", args2);
+	// }
+	// else
+	// {
+	// 	printf("%d\n", val2);
+	// }
 
 
 	// bool success;
