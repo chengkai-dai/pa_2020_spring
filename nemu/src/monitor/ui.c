@@ -220,7 +220,7 @@ cmd_handler(cmd_x)
 		goto x_error;
 	}
 	char *steps = strtok(NULL, " ");
-	printf("args %s\n",args);
+	printf("args %s\n",steps);
 
 	// bool success;
 	// uint32_t val = expr(args, &success);
