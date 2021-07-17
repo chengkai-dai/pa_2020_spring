@@ -224,7 +224,7 @@ cmd_handler(cmd_x)
 	char *args1 = strtok(NULL, " ");
 	printf("args1 %s\n",args1);
 
-	char *args2 = args + strlen(steps) + 1;
+	char *args2 = args + strlen(args1) + 1;
 	printf("args2 %s\n",args2);
 
 	uint32_t val1 = expr(args1, &success);
@@ -234,7 +234,7 @@ cmd_handler(cmd_x)
 	}
 	else
 	{
-		printf("%d\n", val);
+		printf("%d\n", val1);
 	}
 
 	uint32_t val2 = expr(args2, &success);
@@ -244,7 +244,7 @@ cmd_handler(cmd_x)
 	}
 	else
 	{
-		printf("%d\n", val);
+		printf("%d\n", val2);
 	}
 
 
