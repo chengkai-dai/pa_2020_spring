@@ -176,7 +176,7 @@ static inline bool inv_cc();
 	cpu.eflags.CF == 0
 
 #define condition_b \
-	inv_cc_b()
+	cpu.eflags.CF == 1
 
 #define condition_o \
 	inv_cc_o()
