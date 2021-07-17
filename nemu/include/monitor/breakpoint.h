@@ -58,5 +58,6 @@ void init_regex();
 void init_bp_list();
 
 uint32_t expr(char *, bool *);
+uint32_t eval(int s, int e, bool *success);
 
 #endif
