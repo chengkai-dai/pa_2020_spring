@@ -215,36 +215,26 @@ cmd_handler(cmd_d)
 
 cmd_handler(cmd_x)
 {
-	char *p = strtok(NULL, " ");
-	if (p == NULL)
+	if (args == NULL)
 	{
-		char c;
-		while (1)
-		{
-			printf("Deleta all breakpoints? (y or n)");
-			scanf("%c", &c);
-			switch (c)
-			{
-			case 'y':
-				delete_all_breakpoint();
-			case 'n':
-				return 0;
-			default:
-				puts("Please answer y or n.");
-			}
-		}
+		goto x_error;
 	}
+	//if(args + strspn(args, " ") >= cmd_end) { goto p_error; }
 
-	int NO;
-	for (; p != NULL; p = strtok(NULL, " "))
+	bool success;
+	uint32_t val = expr(args, &success);
+	if (!success)
 	{
-		if (sscanf(p, "%d", &NO) != 1)
-		{
-			printf("Bad breakpoint number: '%s'\n", p);
-			return 0;
-		}
-		delete_breakpoint(NO);
+		printf("invalid expression: '%s'\n", args);
 	}
+	else
+	{
+		printf("%d\n", val);
+	}
+	return 0;
+
+x_error:
+	puts("Command format: \"x EXPR\"");
 	return 0;
 }
 
