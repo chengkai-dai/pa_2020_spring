@@ -221,10 +221,12 @@ cmd_handler(cmd_x)
 	}
 	printf("args %s\n",args);
 
+	char *args1 = strtok(NULL, " ");
+	printf("steps %s\n",steps);
+
 	char *args2 = args + strlen(steps) + 1;
 	printf("args2 %s\n",args2);
 
-	
 
 	// bool success;
 	// uint32_t val = expr(args, &success);
