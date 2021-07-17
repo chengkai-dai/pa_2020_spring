@@ -224,13 +224,9 @@ cmd_handler(cmd_x)
 	char *steps = strtok(NULL, " ");
 	printf("steps %s\n",steps);
 
-	char *args2 = steps + strlen(cmd) + 1;
-		args += strspn(args, " ");
-		if (args >= user_cmd_end)
-		{
-			// there is no argument
-			args = NULL;
-		}
+	char *args2 = args + strlen(steps) + 1;
+	printf("args2 %s\n",args2);
+
 
 	// bool success;
 	// uint32_t val = expr(args, &success);
