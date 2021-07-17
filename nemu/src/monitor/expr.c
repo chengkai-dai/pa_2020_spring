@@ -144,13 +144,10 @@ static uint32_t eval(int s, int e, bool *success)
 		return 0;
 	}
 	else if (s == e)
-	{
-		val = atoi(tokens[s-1].str);
-		printf("val %d\n", val);
-		printf("val_str %s\n", tokens[s].str);
-	}
+		val = atoi(tokens[s - 1].str);
 
 	//printf("\nPlease implement eval at eval\n");
+	*success = true;
 	return val;
 }
 
