@@ -222,10 +222,12 @@ cmd_handler(cmd_x)
 	printf("args %s\n",args);
 
 	char *args1 = strtok(NULL, " ");
-	printf("steps %s\n",steps);
+	printf("args1 %s\n",args1);
 
 	char *args2 = args + strlen(steps) + 1;
 	printf("args2 %s\n",args2);
+
+	if(sscanf(args1,)
 
 
 	// bool success;
