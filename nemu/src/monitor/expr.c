@@ -117,7 +117,6 @@ static bool make_token(char *e)
 					for (; j < substr_len; ++j)
 						tokens[nr_token].str[j] = *(substr_start + j);
 					tokens[nr_token].str[j] = '\0';
-					printf("nr_token str %s\n", tokens[nr_token].str);
 					nr_token++;
 				}
 
@@ -146,7 +145,7 @@ static uint32_t eval(int s, int e, bool *success)
 	}
 	else if (s == e)
 	{
-		val = atoi(tokens[s].str);
+		val = atoi(tokens[s-1].str);
 		printf("val %d\n", val);
 		printf("val_str %s\n", tokens[s].str);
 	}
