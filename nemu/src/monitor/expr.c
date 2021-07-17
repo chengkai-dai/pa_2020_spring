@@ -136,7 +136,7 @@ uint32_t expr(char *e, bool *success)
 	return 0;
 }
 
-uint32_t eval(int s, int e, bool *success){
+static uint32_t eval(int s, int e, bool *success){
 	printf("\nPlease implement eval at eval\n");
 	return 0;
 }
