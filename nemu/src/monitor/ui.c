@@ -213,6 +213,41 @@ cmd_handler(cmd_d)
 	return 0;
 }
 
+cmd_handler(cmd_x)
+{
+	char *p = strtok(NULL, " ");
+	if (p == NULL)
+	{
+		char c;
+		while (1)
+		{
+			printf("Deleta all breakpoints? (y or n)");
+			scanf("%c", &c);
+			switch (c)
+			{
+			case 'y':
+				delete_all_breakpoint();
+			case 'n':
+				return 0;
+			default:
+				puts("Please answer y or n.");
+			}
+		}
+	}
+
+	int NO;
+	for (; p != NULL; p = strtok(NULL, " "))
+	{
+		if (sscanf(p, "%d", &NO) != 1)
+		{
+			printf("Bad breakpoint number: '%s'\n", p);
+			return 0;
+		}
+		delete_breakpoint(NO);
+	}
+	return 0;
+}
+
 cmd_handler(cmd_help);
 
 static struct
@@ -230,7 +265,8 @@ static struct
 	{"d", "Delete breakpoint(s).", cmd_d},
 	{"exit", "Exit NEMU", cmd_q},
 
-	{"exit", "Exit NEMU", cmd_x},
+	//DIY Commands
+	{"x", "Check Memory Content", cmd_x},
 
 
 	/* TODO: Add more commands */
