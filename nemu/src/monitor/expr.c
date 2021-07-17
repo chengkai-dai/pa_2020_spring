@@ -117,6 +117,7 @@ static bool make_token(char *e)
 					for (; j < substr_len; ++j)
 						tokens[nr_token].str[j] = *(substr_start + j);
 					tokens[nr_token].str[j] = '\0';
+					printf("val_str1 %s\n", tokens[s].str);
 					nr_token++;
 				}
 
