@@ -34,6 +34,11 @@ static struct rule
 
 	{" +", NOTYPE}, // white space
 	{"\\+", '+'},
+	{"[0-9]{1,10}",NUM},
+	{"-",'-'},
+	{"\\*",'*'},
+	{"\\(",'('},
+	{"\\)",')'}
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]))
