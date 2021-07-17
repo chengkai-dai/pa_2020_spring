@@ -73,6 +73,17 @@ typedef struct token
 Token tokens[32];
 int nr_token;
 
+char* substr(const char *src, size_t start, size_t len)
+{
+	char *dest = malloc(len + 1);
+	if (dest)
+	{
+		memcpy(dest, src + start, len);
+		dest[len] = '\0';
+	}
+	return dest;
+}
+
 static bool make_token(char *e)
 {
 	int position = 0;
@@ -102,6 +113,7 @@ static bool make_token(char *e)
 				{
 				default:
 					tokens[nr_token].type = rules[i].token_type;
+					tokens[nr_token].str = substr(substr_start,0, position);
 					nr_token++;
 				}
 
@@ -121,17 +133,18 @@ static bool make_token(char *e)
 
 static uint32_t eval(int s, int e, bool *success)
 {
-	uint32_t val=0;
+	uint32_t val = 0;
 	if (s > e)
 	{
 		printf("eval ERROR: start position is greater than end\n");
 		*success = false;
 		return 0;
 	}
-	else if (s==e){
-		val= atoi(tokens[s].str);
-		printf("val %d\n",val);
-		printf("val_str %s\n",tokens[s].str);
+	else if (s == e)
+	{
+		val = atoi(tokens[s].str);
+		printf("val %d\n", val);
+		printf("val_str %s\n", tokens[s].str);
 	}
 
 	//printf("\nPlease implement eval at eval\n");
@@ -145,7 +158,7 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
-	printf("nr_token %d\n",nr_token);
+	printf("nr_token %d\n", nr_token);
 
 	uint32_t val = eval(1, nr_token, success);
 
