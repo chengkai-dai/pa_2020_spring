@@ -217,12 +217,12 @@ static uint32_t eval(int s, int e, bool *success)
 		val = atoi(tokens[s].str);
 	else
 	{
-		bool with_p = check_parentheses(s, e, success);
+		bool within_p = check_parentheses(s, e, success);
 
 		if (*success == false)
 			return 0;
 
-		if (with_p == true)
+		if (within_p == true)
 			val = eval(s + 1, e - 1, success);
 		else
 		{
