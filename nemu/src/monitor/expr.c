@@ -222,6 +222,7 @@ static uint32_t eval(int s, int e, bool *success)
 			return 0;
 
 		printf("\nPlease implement eval at eval\n");
+		assert(0);
 		*success = true;
 	}
 	return val;

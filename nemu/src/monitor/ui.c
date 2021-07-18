@@ -230,7 +230,6 @@ cmd_handler(cmd_x)
 		}
 	}
 	int32_t num_4bytes =  (int32_t)strtol(args1, NULL, 10);
-	printf("%d\n", num_4bytes);
 	
 	//parse the second argument, the actual addr for the memory data
 	char *args2 = args + strlen(args1) + 1;
@@ -242,7 +241,7 @@ cmd_handler(cmd_x)
 	}
 	else
 	{
-		printf("%d\n", addr);
+		printf("addr %d\n", addr);
 	}
 
 	return 0;
