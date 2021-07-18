@@ -227,8 +227,8 @@ static int dominant_op(int s, int e)
 		{
 			for (int j = top - 1; j >= 0; --j)
 			{
-				type_stack[j]=0;
-				idx_stack[j]=INT32_MIN;
+				type_stack[j] = 0;
+				idx_stack[j] = INT32_MIN;
 				top--;
 				if (type_stack[j] == '(')
 					break;
@@ -237,15 +237,16 @@ static int dominant_op(int s, int e)
 		else
 		{
 			type_stack[top++] = tokens[i].type;
-			idx_stack[top++]=i;
+			idx_stack[top++] = i;
 		}
 	}
-	for (int i=top-1;i>0;++i){
-		if(type_stack[i]=='+' || type_stack[i]=='-'){
-			return idx;
+	for (int i = top - 1; i >= 0; ++i)
+	{
+		if (type_stack[i] == '+' || type_stack[i] == '-')
+		{
+			return idx_stack[i];
 		}
 	}
-	
 }
 
 static uint32_t eval(int s, int e, bool *success)
@@ -270,20 +271,20 @@ static uint32_t eval(int s, int e, bool *success)
 			val = eval(s + 1, e - 1, success);
 		else
 		{
-			op = the position of dominant operator in the token expression;
-			val1 = eval(p, op - 1);
-			val2 = eval(op + 1, q);
-			switch (op_type)
-			{
-			case '+':
-				return val1 + val2;
-			case ' ' --': /* ... case '*': /* ...
-				case '/': /* ... */
-			default:
-				assert(0);
-				printf("\nPlease implement eval at eval\n");
-				assert(0);
-			}
+			
+			// op = the position of dominant operator in the token expression;
+			// val1 = eval(p, op - 1);
+			// val2 = eval(op + 1, q);
+			// switch (op_type)
+			// {
+			// case '+':
+			// 	return val1 + val2;
+			// case ' ' --': /* ... case ' *': /* ... case '/': /* ... */
+			// default:
+			// 	assert(0);
+			// 	printf("\nPlease implement eval at eval\n");
+			// 	assert(0);
+			// }
 		}
 		return val;
 	}
