@@ -134,6 +134,70 @@ static bool make_token(char *e)
 	return true;
 }
 
+static bool check_parentheses(int s, int e, bool *success)
+{
+	bool within_p = true;
+	if (tokens[s].type != '(' || tokens[e].type != ')')
+	{
+		*success = false;
+		within_p = false;
+		return within_p;
+	}
+
+	int length = 0;
+	for (int i = s; i <= e; ++i)
+	{
+		{
+			if (tokens[i].type == '(' || tokens[i].type == ')')
+				length++;
+		}
+	}
+	if (length % 2)
+	{
+		*success = false;
+		within_p = false;
+		return within_p;
+	}
+
+	int stk[length + 1], top = 1;
+	stk[0] = tokens[s].type;
+	for (int i = s + 1; i <= e; i++)
+	{
+		char ch;
+		if (tokens[i].type == ')')
+			ch = '(';
+		else
+			ch = 0;
+
+		if (ch)
+		{
+			if (top == 0 || stk[top - 1] != ch)
+			{
+				*success = false;
+				within_p = false;
+				return within_p;
+			}
+
+			top--;
+			if (top == 0 && i != e)
+				within_p = false;
+		}
+		else
+		{
+			stk[top++] = tokens[i].type;
+		}
+	}
+	if (top != 0)
+	{
+		*success = false;
+		within_p = false;
+	}
+	else
+		*success = true;
+
+	return within_p;
+}
+
 static uint32_t eval(int s, int e, bool *success)
 {
 	uint32_t val = 0;
@@ -145,9 +209,17 @@ static uint32_t eval(int s, int e, bool *success)
 	}
 	else if (s == e)
 		val = atoi(tokens[s - 1].str);
+	else if (check_parentheses(s, e, success) == true){
+		if(*success==false)
+			return 0;
+	
+		val= evel(s + 1, e - 1, success);
+	}
+	else{
 
-	//printf("\nPlease implement eval at eval\n");
-	*success = true;
+		printf("\nPlease implement eval at eval\n");
+		*success = true;
+	}
 	return val;
 }
 
