@@ -216,7 +216,8 @@ static int dominant_op(int s, int e)
 
 	int top = 0;
 	for (int i = s; i <= e; i++)
-	{
+	{	
+		printf("tokens[i].type %c\n",tokens[i].type);
 		char ch;
 		if (tokens[i].type == ')')
 			ch = '(';
