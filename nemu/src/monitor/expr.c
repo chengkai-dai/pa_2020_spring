@@ -207,7 +207,7 @@ static bool check_parentheses(int s, int e, bool *success)
 struct token_recond{
     Token token;
     int idx;
-}TR;
+};
 
 static int dominant_op(int s, int e)
 {
