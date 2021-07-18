@@ -230,17 +230,18 @@ static int dominant_op(int s, int e)
 				type_stack[j]=0;
 				idx_stack[j]=INT32_MIN;
 				top--;
-				if (stack[j] == '(')
+				if (type_stack[j] == '(')
 					break;
 			}
 		}
 		else
 		{
-			stack[top++] = tokens[i].type;
+			type_stack[top++] = tokens[i].type;
+			idx_stack[top++]=i;
 		}
 	}
 	for (int i=top-1;i>0;++i){
-		if(stack[i]=='+' || stack[i]=='-'){
+		if(type_stack[i]=='+' || type_stack[i]=='-'){
 			return idx;
 		}
 	}
