@@ -241,7 +241,11 @@ static int dominant_op(int s, int e)
 		}
 	}
 
-	for (int i = top - 1; i >= 0; --i)
+	printf("top %d\n",top);
+
+	for (int i = 0; i <= top; ++i){
+		printf("type %d is %c")
+	}
 	 
 	for (int i = top - 1; i >= 0; --i)
 	{
