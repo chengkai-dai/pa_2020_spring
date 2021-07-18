@@ -218,7 +218,7 @@ static int dominant_op(int s, int e)
 
 		if (ch)
 		{
-			for (int j = top - 1; j > 0; --j)
+			for (int j = top - 1; j >= 0; --j)
 			{
 				stack[j] = 0;
 				top--;
@@ -231,15 +231,10 @@ static int dominant_op(int s, int e)
 			stack[top++] = tokens[i].type;
 		}
 	}
-	if (top != 0)
-	{
-		*success = false;
-		within_p = false;
+	for (int i=top-1;i>0;++i){
+		if(stack[])
 	}
-	else
-		*success = true;
-
-	return within_p;
+	
 }
 
 static uint32_t eval(int s, int e, bool *success)
