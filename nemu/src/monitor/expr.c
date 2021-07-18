@@ -247,6 +247,8 @@ static int dominant_op(int s, int e)
 			return idx_stack[i];
 		}
 	}
+
+	return 0;
 }
 
 static uint32_t eval(int s, int e, bool *success)
