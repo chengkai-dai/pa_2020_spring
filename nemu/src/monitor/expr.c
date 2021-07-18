@@ -211,7 +211,9 @@ static bool check_parentheses(int s, int e, bool *success)
 
 static int dominant_op(int s, int e)
 {
-	TR stack[e - s + 1];
+	char type_stack[e - s + 1];
+	char idx_stack[e - s + 1];
+
 	int top = 0;
 	for (int i = s; i <= e; i++)
 	{
