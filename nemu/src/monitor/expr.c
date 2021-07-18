@@ -225,7 +225,7 @@ static int dominant_op(int s, int e)
 		{
 			for (int j = top - 1; j >= 0; --j)
 			{
-				stack[j] = NULL;
+				stack[j] = ;
 				top--;
 				if (stack[j] == '(')
 					break;
