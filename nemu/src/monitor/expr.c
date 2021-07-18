@@ -140,11 +140,7 @@ static bool check_parentheses(int s, int e, bool *success)
 	printf("tokens[e].type %c\n", tokens[e].type);
 	bool within_p = true;
 	if (tokens[s].type != '(' || tokens[e].type != ')')
-	{
-		*success = false;
 		within_p = false;
-		return within_p;
-	}
 
 	int length = 0;
 	for (int i = s; i <= e; ++i)
