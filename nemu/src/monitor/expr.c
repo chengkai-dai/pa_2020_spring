@@ -227,7 +227,7 @@ static uint32_t eval(int s, int e, bool *success)
 		else
 		{
 			op = the position of dominant operator in the token expression;
-			val1 = eval(p, op 1);
+			val1 = eval(p, op-1);
 			val2 = eval(op + 1, q);
 			switch(op_type) {
 				case '+': return val1 + val2;
