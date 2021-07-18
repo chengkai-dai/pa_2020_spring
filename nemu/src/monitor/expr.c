@@ -231,7 +231,7 @@ static int dominant_op(int s, int e)
 				type_stack[j] = 0;
 				idx_stack[j] = INT32_MIN;
 				top--;
-				printf("type_stack %c\n",type_stack[j]);
+				
 				if (type_stack[j] == '('){
 					printf("!!!\n");
 					break;
@@ -241,6 +241,7 @@ static int dominant_op(int s, int e)
 		else
 		{
 			type_stack[top] = tokens[i].type;
+			printf("type_stack %c\n",type_stack[top]);
 			idx_stack[top] = i;
 			top++;
 		}
