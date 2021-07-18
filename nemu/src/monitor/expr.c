@@ -194,6 +194,7 @@ static bool check_parentheses(int s, int e, bool *success)
 			stk[top++] = tokens[i].type;
 		}
 	}
+	printf("top %d\n",top);
 	if (top != 0)
 	{
 		*success = false;
