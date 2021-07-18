@@ -240,6 +240,10 @@ static int dominant_op(int s, int e)
 			idx_stack[top] = i;
 			top++;
 		}
+
+		for (int i = 0; i < top; ++i)
+			printf("type %d is %c\n",i, type_stack[i]);
+	
 	}
 
 	printf("top %d\n",top);
