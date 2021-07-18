@@ -231,7 +231,7 @@ static int dominant_op(int s, int e)
 				type_stack[j] = 0;
 				idx_stack[j] = INT32_MIN;
 				top--;
-				printf("type_stack_j %c\n",type_stack[j]);
+				printf("type_stack_j %d\n",type_stack[j]);
 				if (type_stack[j] == '('){
 					printf("!!!\n");
 					break;
