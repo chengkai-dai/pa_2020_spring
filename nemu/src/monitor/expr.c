@@ -204,6 +204,8 @@ static bool check_parentheses(int s, int e, bool *success)
 	return within_p;
 }
 
+static int dominant_op()
+
 static uint32_t eval(int s, int e, bool *success)
 {
 	uint32_t val = 0;
