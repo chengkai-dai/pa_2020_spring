@@ -205,13 +205,13 @@ static bool check_parentheses(int s, int e, bool *success)
 }
 
 struct token_recond{
-    Token x;
+    Token token;
     int idx;
 }TR;
 
 static int dominant_op(int s, int e)
 {
-	int stack[e - s + 1];
+	TR stack[e - s + 1];
 	int top = 0;
 	for (int i = s; i <= e; i++)
 	{
