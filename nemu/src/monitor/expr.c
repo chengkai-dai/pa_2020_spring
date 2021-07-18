@@ -271,8 +271,8 @@ static uint32_t eval(int s, int e, bool *success)
 			val = eval(s + 1, e - 1, success);
 		else
 		{
-			int op=dominant_op(s,e);
-			printf("op position %d\n",op);
+			int op = dominant_op(s, e);
+			printf("op position %d\n", op);
 			// op = the position of dominant operator in the token expression;
 			// val1 = eval(p, op - 1);
 			// val2 = eval(op + 1, q);
@@ -287,22 +287,23 @@ static uint32_t eval(int s, int e, bool *success)
 			// 	assert(0);
 			// }
 		}
-		return val;
 	}
+	return val;
+}
 
-	uint32_t expr(char *e, bool *success)
+uint32_t expr(char *e, bool *success)
+{
+	if (!make_token(e))
 	{
-		if (!make_token(e))
-		{
-			*success = false;
-			return 0;
-		}
-		//printf("nr_token %d\n", nr_token);
-
-		uint32_t val = eval(0, nr_token - 1, success);
-
-		// printf("\nPlease implement expr at expr.c\n");
-		// assert(0);
-
-		return val;
+		*success = false;
+		return 0;
 	}
+	//printf("nr_token %d\n", nr_token);
+
+	uint32_t val = eval(0, nr_token - 1, success);
+
+	// printf("\nPlease implement expr at expr.c\n");
+	// assert(0);
+
+	return val;
+}
