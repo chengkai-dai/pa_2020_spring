@@ -236,8 +236,9 @@ static int dominant_op(int s, int e)
 		}
 		else
 		{
-			type_stack[top++] = tokens[i].type;
-			idx_stack[top++] = i;
+			type_stack[top] = tokens[i].type;
+			idx_stack[top] = i;
+			top++;
 		}
 	}
 
