@@ -230,8 +230,10 @@ static int dominant_op(int s, int e)
 				type_stack[j] = 0;
 				idx_stack[j] = INT32_MIN;
 				top--;
-				if (type_stack[j] == '(')
+				if (type_stack[j] == '('){
+					printf("!!!\n");
 					break;
+				}
 			}
 		}
 		else
