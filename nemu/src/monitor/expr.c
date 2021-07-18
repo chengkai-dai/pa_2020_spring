@@ -213,7 +213,7 @@ static uint32_t eval(int s, int e, bool *success)
 		if(*success==false)
 			return 0;
 	
-		val= evel(s + 1, e - 1, success);
+		val= eval(s + 1, e - 1, success);
 	}
 	else{
 
