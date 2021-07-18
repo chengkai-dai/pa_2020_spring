@@ -163,6 +163,8 @@ static bool check_parentheses(int s, int e, bool *success)
 	stk[0] = tokens[s].type;
 	for (int i = s + 1; i <= e; i++)
 	{
+		if(tokens[i].type != ')' && tokens[i].type != '(' )
+			continue;
 		char ch;
 		if (tokens[i].type == ')')
 			ch = '(';
