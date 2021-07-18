@@ -232,7 +232,9 @@ static int dominant_op(int s, int e)
 		}
 	}
 	for (int i=top-1;i>0;++i){
-		if(stack[])
+		if(stack[i]=='+' || stack[i]=='-'){
+			return idx;
+		}
 	}
 	
 }
