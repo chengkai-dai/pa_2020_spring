@@ -215,8 +215,8 @@ static uint32_t eval(int s, int e, bool *success)
 		return 0;
 	}
 	else if (s == e)
-		val = atoi(tokens[s - 1].str);
-	else if (check_parentheses(s-1, e, success) == true)
+		val = atoi(tokens[s].str);
+	else if (check_parentheses(s, e, success) == true)
 		val= eval(s + 1, e - 1, success);
 	else{
 		if(*success==false)
@@ -237,7 +237,7 @@ uint32_t expr(char *e, bool *success)
 	}
 	printf("nr_token %d\n", nr_token);
 
-	uint32_t val = eval(1, nr_token, success);
+	uint32_t val = eval(0, nr_token-1, success);
 
 	// printf("\nPlease implement expr at expr.c\n");
 	// assert(0);
