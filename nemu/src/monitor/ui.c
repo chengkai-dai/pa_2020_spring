@@ -101,7 +101,7 @@ cmd_handler(cmd_p)
 	}
 	else
 	{
-		printf("%d\n", val);
+		printf("P val%d\n", val);
 	}
 	return 0;
 
