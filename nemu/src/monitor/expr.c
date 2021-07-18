@@ -151,6 +151,12 @@ static bool check_parentheses(int s, int e, bool *success)
 		}
 	}
 	printf("length %d",length);
+	if(length ==0)
+	{
+		within_p=false;
+		*success=true;
+		return within_p;
+	}
 	if (length % 2)
 	{
 		*success = false;
