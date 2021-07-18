@@ -209,9 +209,6 @@ static int dominant_op(int s, int e){
 	int top=0;
 	for (int i = s; i <= e; i++)
 	{
-		if (tokens[i].type != ')' && tokens[i].type != '(')
-			continue;
-
 		char ch;
 		if (tokens[i].type == ')')
 			ch = '(';
