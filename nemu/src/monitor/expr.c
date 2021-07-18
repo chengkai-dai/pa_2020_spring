@@ -227,7 +227,8 @@ static int dominant_op(int s, int e)
 		{
 			for (int j = top - 1; j >= 0; --j)
 			{
-				type_stack=-;
+				type_stack[j]=0;
+				idx_stack[j]=INT32_MIN;
 				top--;
 				if (stack[j] == '(')
 					break;
