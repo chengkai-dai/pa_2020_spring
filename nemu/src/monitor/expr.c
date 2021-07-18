@@ -217,20 +217,11 @@ static int dominant_op(int s, int e){
 
 		if (ch)
 		{
-			if (top == 0 || stk[top - 1] != ch)
-			{
-				*success = false;
-				within_p = false;
-				return within_p;
-			}
-
-			top--;
-			if (top == 0 && i != e)
-				within_p = false;
+			
 		}
 		else
 		{
-			stk[top++] = tokens[i].type;
+			stack[top++] = tokens[i].type;
 		}
 	}
 	if (top != 0)
