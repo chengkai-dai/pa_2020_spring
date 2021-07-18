@@ -102,7 +102,7 @@ static bool make_token(char *e)
 				char *substr_start = e + position;
 				int substr_len = pmatch.rm_eo;
 
-				printf("match regex[%d] at position %d with len %d: %.*s\n", i, position, substr_len, substr_len, substr_start);
+				//printf("match regex[%d] at position %d with len %d: %.*s\n", i, position, substr_len, substr_len, substr_start);
 				position += substr_len;
 
 				/* TODO: Now a new token is recognized with rules[i]. 
@@ -234,7 +234,7 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
-	printf("nr_token %d\n", nr_token);
+	//printf("nr_token %d\n", nr_token);
 
 	uint32_t val = eval(0, nr_token-1, success);
 
