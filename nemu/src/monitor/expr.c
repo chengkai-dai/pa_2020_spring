@@ -241,7 +241,7 @@ static int dominant_op(int s, int e)
 		else
 		{
 			type_stack[top] = tokens[i].type;
-			printf("type_stack %c\n",type_stack[top]);
+			printf("type_stack %d\n",type_stack[top]);
 			idx_stack[top] = i;
 			top++;
 		}
