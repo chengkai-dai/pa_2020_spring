@@ -217,8 +217,9 @@ static int dominant_op(int s, int e){
 
 		if (ch)
 		{
-			for(int j=top;j>0;--j){
-				if(s)
+			for(int j=top-1;j>0;--j){
+				if(stack[j]!='('){
+					stack[j]=0;
 
 			}
 		}
