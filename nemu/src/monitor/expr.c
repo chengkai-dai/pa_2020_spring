@@ -204,6 +204,11 @@ static bool check_parentheses(int s, int e, bool *success)
 	return within_p;
 }
 
+struct to{
+    int x;
+    int y;
+}
+
 static int dominant_op(int s, int e)
 {
 	int stack[e - s + 1];
