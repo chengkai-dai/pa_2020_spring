@@ -148,10 +148,10 @@ static bool check_parentheses(int s, int e, bool *success)
 				length++;
 		}
 	}
-	if(length ==0)
+	if (length == 0)
 	{
-		within_p=false;
-		*success=true;
+		within_p = false;
+		*success = true;
 		return within_p;
 	}
 
@@ -166,7 +166,7 @@ static bool check_parentheses(int s, int e, bool *success)
 	stk[0] = tokens[s].type;
 	for (int i = s + 1; i <= e; i++)
 	{
-		if(tokens[i].type != ')' && tokens[i].type != '(' )
+		if (tokens[i].type != ')' && tokens[i].type != '(')
 			continue;
 
 		char ch;
@@ -215,15 +215,20 @@ static uint32_t eval(int s, int e, bool *success)
 	}
 	else if (s == e)
 		val = atoi(tokens[s].str);
-	else if (check_parentheses(s, e, success) == true)
-		val= eval(s + 1, e - 1, success);
-	else{
-		if(*success==false)
+	else
+	{
+		bool with_p = check_parentheses(s, e, success);
+		
+		if (*success == false)
 			return 0;
 
-		printf("\nPlease implement eval at eval\n");
-		assert(0);
-		*success = true;
+		if (with_p = true)
+			val = eval(s + 1, e - 1, success);
+		else
+		{
+			printf("\nPlease implement eval at eval\n");
+			assert(0);
+		}
 	}
 	return val;
 }
@@ -237,7 +242,7 @@ uint32_t expr(char *e, bool *success)
 	}
 	//printf("nr_token %d\n", nr_token);
 
-	uint32_t val = eval(0, nr_token-1, success);
+	uint32_t val = eval(0, nr_token - 1, success);
 
 	// printf("\nPlease implement expr at expr.c\n");
 	// assert(0);
