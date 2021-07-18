@@ -204,7 +204,12 @@ static bool check_parentheses(int s, int e, bool *success)
 	return within_p;
 }
 
-static int dominant_op()
+static int dominant_op(int s, int e){
+	
+
+
+
+}
 
 static uint32_t eval(int s, int e, bool *success)
 {
