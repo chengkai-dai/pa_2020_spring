@@ -204,9 +204,10 @@ static bool check_parentheses(int s, int e, bool *success)
 	return within_p;
 }
 
-static int dominant_op(int s, int e){
-	int stack[e-s+1];
-	int top=0;
+static int dominant_op(int s, int e)
+{
+	int stack[e - s + 1];
+	int top = 0;
 	for (int i = s; i <= e; i++)
 	{
 		char ch;
@@ -217,11 +218,12 @@ static int dominant_op(int s, int e){
 
 		if (ch)
 		{
-			for(int j=top-1;j>0;--j){
-					stack[j]=0;
-					top--;
-				if(stack[j]=='(')
-
+			for (int j = top - 1; j > 0; --j)
+			{
+				stack[j] = 0;
+				top--;
+				if (stack[j] == '(')
+					break;
 			}
 		}
 		else
@@ -238,10 +240,6 @@ static int dominant_op(int s, int e){
 		*success = true;
 
 	return within_p;
-
-
-
-
 }
 
 static uint32_t eval(int s, int e, bool *success)
@@ -267,36 +265,36 @@ static uint32_t eval(int s, int e, bool *success)
 		else
 		{
 			op = the position of dominant operator in the token expression;
-			val1 = eval(p, op-1);
+			val1 = eval(p, op - 1);
 			val2 = eval(op + 1, q);
-			switch(op_type) {
-				case '+': 
+			switch (op_type)
+			{
+			case '+':
 				return val1 + val2;
-				case ' '--': /* ...
-				case '*': /* ...
+			case ' ' --': /* ... case '*': /* ...
 				case '/': /* ... */
-			default: 
+			default:
 				assert(0);
 				printf("\nPlease implement eval at eval\n");
-			assert(0);
+				assert(0);
+			}
 		}
+		return val;
 	}
-	return val;
-}
 
-uint32_t expr(char *e, bool *success)
-{
-	if (!make_token(e))
+	uint32_t expr(char *e, bool *success)
 	{
-		*success = false;
-		return 0;
+		if (!make_token(e))
+		{
+			*success = false;
+			return 0;
+		}
+		//printf("nr_token %d\n", nr_token);
+
+		uint32_t val = eval(0, nr_token - 1, success);
+
+		// printf("\nPlease implement expr at expr.c\n");
+		// assert(0);
+
+		return val;
 	}
-	//printf("nr_token %d\n", nr_token);
-
-	uint32_t val = eval(0, nr_token - 1, success);
-
-	// printf("\nPlease implement expr at expr.c\n");
-	// assert(0);
-
-	return val;
-}
