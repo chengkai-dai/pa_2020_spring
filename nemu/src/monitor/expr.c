@@ -216,7 +216,7 @@ static int dominant_op(int s, int e)
 
 	int top = 0;
 	for (int i = s; i <= e; i++)
-	{	
+	{
 		char ch;
 		if (tokens[i].type == ')')
 			ch = '(';
@@ -227,11 +227,12 @@ static int dominant_op(int s, int e)
 		{
 			for (int j = top - 1; j >= 0; --j)
 			{
-				bool close= (type_stack[j] == '(');
+				bool close = (type_stack[j] == '(');
 				type_stack[j] = 0;
 				idx_stack[j] = INT32_MIN;
 				top--;
-				if (close){
+				if (close)
+				{
 					break;
 				}
 			}
@@ -242,24 +243,13 @@ static int dominant_op(int s, int e)
 			idx_stack[top] = i;
 			top++;
 		}
-
-		// for (int i = 0; i < top; ++i)
-		// 	printf("type %d is %c\n",i, type_stack[i]);
-	
 	}
 
-	printf("top %d\n",top);
-
-	for (int i = 0; i < top; ++i){
-		printf("type %d is %c\n",i, type_stack[i]);
-	}
-	 
 	for (int i = top - 1; i >= 0; --i)
 	{
 		if (type_stack[i] == '+' || type_stack[i] == '-')
-		{
+
 			return idx_stack[i];
-		}
 	}
 
 	return 0;
@@ -290,7 +280,8 @@ static uint32_t eval(int s, int e, bool *success)
 			int op = dominant_op(s, e);
 			printf("op position %d\n", op);
 			// op = the position of dominant operator in the token expression;
-			// val1 = eval(p, op - 1);
+			uint32_t val1 = eval(s, op - 1, success);
+			uint32_t val2 = eval(op + 1, e, success);
 			// val2 = eval(op + 1, q);
 			// switch (op_type)
 			// {
