@@ -204,6 +204,61 @@ static bool check_parentheses(int s, int e, bool *success)
 	return within_p;
 }
 
+// typedef struct token_recond{
+//     Token token;
+//     int idx;
+// }TR;
+
+static int dominant_op(int s, int e)
+{
+	char type_stack[e - s + 2];
+	int idx_stack[e - s + 2];
+
+	int top = 0;
+	for (int i = s; i <= e; i++)
+	{
+		char ch;
+		if (tokens[i].type == ')')
+			ch = '(';
+		else
+			ch = 0;
+
+		if (ch)
+		{
+			for (int j = top - 1; j >= 0; --j)
+			{
+				type_stack[j] = 0;
+				idx_stack[j] = INT32_MIN;
+				top--;
+				if (type_stack[j] == '(')
+					break;
+			}
+		}
+		else
+		{
+			type_stack[top] = tokens[i].type;
+			idx_stack[top] = i;
+			top++;
+		}
+	}
+
+	printf("top %d\n",top);
+
+	for (int i = 0; i < top; ++i){
+		printf("type %d is %c\n",i, type_stack[i]);
+	}
+	 
+	for (int i = top - 1; i >= 0; --i)
+	{
+		if (type_stack[i] == '+' || type_stack[i] == '-')
+		{
+			return idx_stack[i];
+		}
+	}
+
+	return 0;
+}
+
 static uint32_t eval(int s, int e, bool *success)
 {
 	uint32_t val = 0;
@@ -217,17 +272,30 @@ static uint32_t eval(int s, int e, bool *success)
 		val = atoi(tokens[s].str);
 	else
 	{
-		bool with_p = check_parentheses(s, e, success);
+		bool within_p = check_parentheses(s, e, success);
 
 		if (*success == false)
 			return 0;
 
-		if (with_p == true)
+		if (within_p == true)
 			val = eval(s + 1, e - 1, success);
 		else
 		{
-			printf("\nPlease implement eval at eval\n");
-			assert(0);
+			int op = dominant_op(s, e);
+			printf("op position %d\n", op);
+			// op = the position of dominant operator in the token expression;
+			// val1 = eval(p, op - 1);
+			// val2 = eval(op + 1, q);
+			// switch (op_type)
+			// {
+			// case '+':
+			// 	return val1 + val2;
+			// case ' ' --': /* ... case ' *': /* ... case '/': /* ... */
+			// default:
+			// 	assert(0);
+			// 	printf("\nPlease implement eval at eval\n");
+			// 	assert(0);
+			// }
 		}
 	}
 	return val;
