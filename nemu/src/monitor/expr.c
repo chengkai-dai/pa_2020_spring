@@ -213,7 +213,7 @@ static uint32_t eval(int s, int e, bool *success)
 	}
 	else if (s == e)
 		val = atoi(tokens[s - 1].str);
-	else if (check_parentheses(s, e, success) == true)
+	else if (check_parentheses(s-1, e, success) == true)
 		val= eval(s + 1, e - 1, success);
 	else{
 		if(*success==false)
