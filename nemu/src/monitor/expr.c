@@ -204,10 +204,10 @@ static bool check_parentheses(int s, int e, bool *success)
 	return within_p;
 }
 
-struct to{
-    int x;
-    int y;
-}
+struct token_recond{
+    Token x;
+    int idx;
+}TR;
 
 static int dominant_op(int s, int e)
 {
