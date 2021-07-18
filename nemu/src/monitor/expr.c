@@ -217,7 +217,6 @@ static int dominant_op(int s, int e)
 	int top = 0;
 	for (int i = s; i <= e; i++)
 	{	
-		printf("tokens[i].type %c\n",tokens[i].type);
 		char ch;
 		if (tokens[i].type == ')')
 			ch = '(';
@@ -228,12 +227,11 @@ static int dominant_op(int s, int e)
 		{
 			for (int j = top - 1; j >= 0; --j)
 			{
+				bool close= (type_stack[j] == '(');
 				type_stack[j] = 0;
 				idx_stack[j] = INT32_MIN;
 				top--;
-				printf("type_stack_j %d\n",type_stack[j]);
-				if (type_stack[j] == '('){
-					printf("!!!\n");
+				if (close){
 					break;
 				}
 			}
@@ -241,7 +239,6 @@ static int dominant_op(int s, int e)
 		else
 		{
 			type_stack[top] = tokens[i].type;
-			printf("type_stack %c\n",type_stack[top]);
 			idx_stack[top] = i;
 			top++;
 		}
