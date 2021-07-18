@@ -240,6 +240,8 @@ static int dominant_op(int s, int e)
 			idx_stack[top++] = i;
 		}
 	}
+
+	for (int i = top - 1; i >= 0; --i)
 	 
 	for (int i = top - 1; i >= 0; --i)
 	{
