@@ -136,8 +136,6 @@ static bool make_token(char *e)
 
 static bool check_parentheses(int s, int e, bool *success)
 {
-	printf("tokens[s].type %c\n", tokens[s].type);
-	printf("tokens[e].type %c\n", tokens[e].type);
 	bool within_p = true;
 	if (tokens[s].type != '(' || tokens[e].type != ')')
 		within_p = false;
@@ -150,13 +148,13 @@ static bool check_parentheses(int s, int e, bool *success)
 				length++;
 		}
 	}
-	printf("length %d",length);
 	if(length ==0)
 	{
 		within_p=false;
 		*success=true;
 		return within_p;
 	}
+
 	if (length % 2)
 	{
 		*success = false;
@@ -168,7 +166,6 @@ static bool check_parentheses(int s, int e, bool *success)
 	stk[0] = tokens[s].type;
 	for (int i = s + 1; i <= e; i++)
 	{
-		printf("type %c\n",tokens[i].type);
 		if(tokens[i].type != ')' && tokens[i].type != '(' )
 			continue;
 
@@ -196,7 +193,6 @@ static bool check_parentheses(int s, int e, bool *success)
 			stk[top++] = tokens[i].type;
 		}
 	}
-	printf("top %d\n",top);
 	if (top != 0)
 	{
 		*success = false;
