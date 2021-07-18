@@ -243,8 +243,8 @@ static int dominant_op(int s, int e)
 			top++;
 		}
 
-		for (int i = 0; i < top; ++i)
-			printf("type %d is %c\n",i, type_stack[i]);
+		// for (int i = 0; i < top; ++i)
+		// 	printf("type %d is %c\n",i, type_stack[i]);
 	
 	}
 
