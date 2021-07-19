@@ -268,7 +268,7 @@ static uint32_t eval(int s, int e, bool *success)
 		if(tokens[s].type==NUM)
 			val = atoi(tokens[s].str);
 		else if(tokens[s].type==VAR)
-			val
+			val=getVariable(tokens[s].str);
 	}
 	else
 	{
