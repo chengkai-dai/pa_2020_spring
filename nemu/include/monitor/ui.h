@@ -4,5 +4,6 @@
 #include "nemu.h"
 
 void ui_mainloop(bool autorun);
+uint32_t look_up_fun_symtab(char *sym, bool *success);
 
 #endif
