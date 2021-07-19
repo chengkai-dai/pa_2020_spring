@@ -169,7 +169,7 @@ static uint32_t get_varible(char *e, bool *success)
 	// printf("check0\n");
 	sh = (void *)elf + elf->e_shoff;
 	printf("check0\n");
-	printf("check2\n");
+	// printf("check2\n");
 
 	ph = (void *)elf + elf->e_phoff;
 	printf("check2\n");
@@ -178,16 +178,9 @@ static uint32_t get_varible(char *e, bool *success)
 	printf("check3\n");
 
 	esh=sh+elf->e_shnum;
+	printf("check4\n");
 	for (; ph < eph; ph++){}
-printf("check4\n");
-	for (; sh < esh; sh++){
-		if (sh->sh_type ==	SHT_SYMTAB ){
-			printf("check22\n");
-
-		}
-
-
-	}
+	for (; sh < esh; sh++){}
 	// {
 
 	// esh = sh + elf->e_shnum;
