@@ -41,8 +41,7 @@ static struct rule
 	{"\\/", '/'},
 	{"\\(", '('},
 	{"\\)", ')'},
-	{"[a-zA-Z_][a-zA-Z0-9_]+",VAR}
-};
+	{"[a-zA-Z_][a-zA-Z0-9_]+", VAR}};
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]))
 
@@ -272,11 +271,12 @@ static uint32_t eval(int s, int e, bool *success)
 		*success = false;
 		return 0;
 	}
-	else if (s == e){
-		if(tokens[s].type==NUM)
+	else if (s == e)
+	{
+		if (tokens[s].type == NUM)
 			val = atoi(tokens[s].str);
-		else if(tokens[s].type==VAR)
-			val=get_varible(tokens[s].str);
+		else if (tokens[s].type == VAR)
+			val = get_varible(tokens[s].str);
 	}
 	else
 	{
