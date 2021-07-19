@@ -149,66 +149,7 @@ static bool check_parentheses(int s, int e)
 
 static uint32_t get_varible(char *e, bool *success)
 {
-	// if (tokens[s].type == '(' && tokens[e].type == ')')
-	// 	return true;
-	Elf32_Ehdr *elf;
-	Elf32_Shdr *sh,*esh;
-	Elf32_Phdr *ph, *eph;
-	// Elf32_Sym *sy;
-
-#ifdef HAS_DEVICE_IDE
-	uint8_t buf[4096];
-	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
-	elf = (void *)buf;
-	//Log("ELF loading from hard disk.");
-#else
-	elf = (void *)0x0;
-	// Log("ELF loading from ram disk.");
-#endif
-
-	printf("get_varible\n");
-
-	printf("e_phnum %d\n",elf->e_phnum);
-	// printf("check0\n");
-	sh = (void *)elf + elf->e_shoff;
-	printf("check0\n");
-	// printf("check2\n");
-
-	ph = (void *)elf + elf->e_phoff;
-	printf("check2\n");
-
-	eph = ph + elf->e_phnum;
-	printf("e_phnum %d\n",elf->e_phnum);
-
-	printf("check3\n");
-
-	esh=sh+elf->e_shnum;
-	printf("e_shnum %d\n",elf->e_shnum);
-
-	printf("check4\n");
-	for (; ph < eph; ph++){}
-	for (; sh < esh; sh++){
-
-		// if (sh->sh_type ==	SHT_SYMTAB )
-		// {
-		// 	printf("check2\n");
-		// }
-	}
-	// {
-
-	// esh = sh + elf->e_shnum;
-	// printf("check1\n");
-	// for (; sh < esh; sh++)
-	// {
-	// 	if (sh->sh_type ==	SHT_SYMTAB )
-	// 	{
-	// 		printf("check2\n");
-	// 		// sy = (void *)elf + sh->sh_offset;
-	// 		// esy = sy + sh->sh_entsize;
-	// 		printf("symbol table entry size %d\n",sh->sh_entsize);
-
-	// 	}
-	// }
+	
 
 	return 0;
 }

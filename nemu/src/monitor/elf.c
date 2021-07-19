@@ -77,7 +77,6 @@ void load_elf_tables(char *exec_file)
 
 	fclose(fp);
 
-	printf("finised loading\n");
 }
 
 uint32_t look_up_fun_symtab(char *sym, bool *success)
