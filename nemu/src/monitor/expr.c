@@ -164,7 +164,7 @@ static uint32_t get_varible(char *e, bool *success)
 	Log("ELF loading from ram disk.");
 #endif
 
-	
+	sh = (void *)elf + elf->e_shoff;
 
 	return 0;
 }
