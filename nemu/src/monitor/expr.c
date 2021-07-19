@@ -153,7 +153,7 @@ static uint32_t get_varible(char *e, bool *success)
 	// 	return true;
 	Elf32_Ehdr *elf;
 	Elf32_Shdr *sh,*esh;
-	Elf32_Sym
+	Elf32_Sym *sy;
 
 #ifdef HAS_DEVICE_IDE
 	uint8_t buf[4096];
@@ -171,6 +171,8 @@ static uint32_t get_varible(char *e, bool *success)
 	{
 		if (sh->sh_type ==	SHT_SYMTAB )
 		{
+			sy = (void *)elf + elf->e_phoff;
+		}
 
 	return 0;
 }
