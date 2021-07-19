@@ -169,19 +169,24 @@ static uint32_t get_varible(char *e, bool *success)
 	sh = (void *)elf + elf->e_shoff;
 	printf("check2\n");
 
-	esh = sh + elf->e_shnum;
-	printf("check1\n");
-	for (; sh < esh; sh++)
+	ph = (void *)elf + elf->e_phoff;
+	eph = ph + elf->e_phnum;
+	for (; ph < eph; ph++)
 	{
-		if (sh->sh_type ==	SHT_SYMTAB )
-		{
-			printf("check2\n");
-			// sy = (void *)elf + sh->sh_offset;
-			// esy = sy + sh->sh_entsize;
-			printf("symbol table entry size %d\n",sh->sh_entsize);
 
-		}
-	}
+	// esh = sh + elf->e_shnum;
+	// printf("check1\n");
+	// for (; sh < esh; sh++)
+	// {
+	// 	if (sh->sh_type ==	SHT_SYMTAB )
+	// 	{
+	// 		printf("check2\n");
+	// 		// sy = (void *)elf + sh->sh_offset;
+	// 		// esy = sy + sh->sh_entsize;
+	// 		printf("symbol table entry size %d\n",sh->sh_entsize);
+
+	// 	}
+	// }
 
 	return 0;
 }
