@@ -312,14 +312,7 @@ static bool valid_expr(int s, int e)
 		}
 	}
 	if (top != 0)
-	{
-		*success = false;
-		within_p = false;
-	}
-	else
-		*success = true;
-
-	return within_p;
+		return false;
 
 	return success;
 }
