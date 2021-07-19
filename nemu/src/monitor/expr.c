@@ -152,7 +152,7 @@ static uint32_t get_varible(char *e, bool *success)
 	// if (tokens[s].type == '(' && tokens[e].type == ')')
 	// 	return true;
 	Elf32_Ehdr *elf;
-
+	Elf32_Shdr *sh;
 
 	return 0;
 }
