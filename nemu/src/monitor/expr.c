@@ -153,16 +153,16 @@ static uint32_t get_varible(char *e, bool *success)
 	// 	return true;
 	Elf32_Ehdr *elf;
 	Elf32_Shdr *sh,*esh;
-	Elf32_Sym *sy, *esy;
+	Elf32_Sym *sy;
 
 #ifdef HAS_DEVICE_IDE
 	uint8_t buf[4096];
 	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
 	elf = (void *)buf;
-	Log("ELF loading from hard disk.");
+	//Log("ELF loading from hard disk.");
 #else
 	elf = (void *)0x0;
-	Log("ELF loading from ram disk.");
+	//Log("ELF loading from ram disk.");
 #endif
 
 	sh = (void *)elf + elf->e_shoff;
