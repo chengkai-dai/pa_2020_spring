@@ -166,7 +166,7 @@ static uint32_t get_varible(char *e, bool *success)
 	Log("ELF loading from ram disk.");
 #endif
 
-	printf("get_varible\n",elf->e_phnum);
+	printf("get_varible\n");
 
 	printf("e_phnum %d\n",elf->e_phnum);
 	// printf("check0\n");
