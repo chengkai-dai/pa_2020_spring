@@ -168,7 +168,7 @@ static uint32_t get_varible(char *e, bool *success)
 	esh = sh + elf->e_shnum;
 	for (; sh < esh; sh++)
 	{
-		if (sh->p_type == PT_LOAD)
+		if (sh->sh_type == )
 		{
 
 	return 0;
