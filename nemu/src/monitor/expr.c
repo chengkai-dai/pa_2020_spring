@@ -260,8 +260,10 @@ static int dominant_op(int s, int e)
 }
 
 static void valid_expr(int s, int e, bool *success){
+	*success=true;
 	for (int i = s ; i <= e; i++){
-		if(i>s )	
+		if(i>s && tokens[i].type==NUM && tokens[i-1].type==')')	
+		
 	}
 	
 
