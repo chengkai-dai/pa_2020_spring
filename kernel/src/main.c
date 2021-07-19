@@ -87,6 +87,7 @@ void init_cond()
 #endif
 	/* Load the program. */
 	uint32_t eip = loader();
+	printf("loading finished\n");
 #ifdef HAS_DEVICE_VGA
 	/* Read data in the video memory to check whether 
 	 * the test data is written sucessfully.
