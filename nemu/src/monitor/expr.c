@@ -334,7 +334,7 @@ static uint32_t eval(int s, int e, bool *success)
 
 uint32_t expr(char *e, bool *success)
 {
-	if (!make_token(e) )
+	if (!(make_token(e) && valid_expr(0,nr_token-1)))
 	{
 		*success = false;
 		return 0;
