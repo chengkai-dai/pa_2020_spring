@@ -259,24 +259,24 @@ static int dominant_op(int s, int e)
 	return 0;
 }
 
-static void valid_expr(int s, int e, bool *success)
+static bool valid_expr(int s, int e)
 {
-	*success = true;
+	bool success = true;
 	for (int i = s; i <= e; i++)
 	{
 		if (i > s && tokens[i].type == NUM && tokens[i - 1].type == ')')
 		{
-			*success = false;
-			return;
+			success = false;
+			return success;
 		}
 
 		if (i < e && tokens[i].type == NUM && tokens[i + 1].type == '(')
 		{
-			*success = false;
-			return;
+			success = false;
+			return success;
 		}
 	}
-	return;
+	return success;
 }
 
 static uint32_t eval(int s, int e, bool *success)
@@ -334,13 +334,12 @@ static uint32_t eval(int s, int e, bool *success)
 
 uint32_t expr(char *e, bool *success)
 {
-	if (!make_token(e))
+	if (!make_token(e) )
 	{
 		*success = false;
 		return 0;
 	}
 
-	valid_expr(0, nr_token - 1);
 	//printf("nr_token %d\n", nr_token);
 
 	uint32_t val = eval(0, nr_token - 1, success);
