@@ -234,7 +234,7 @@ cmd_handler(cmd_x)
 	
 	//parse the second argument, the actual addr for the memory data
 	char *args2 = args + strlen(args1) + 1;
-	bool success;
+	bool success=true;
 	uint32_t addr = expr(args2, &success);
 	if (!success)
 	{
