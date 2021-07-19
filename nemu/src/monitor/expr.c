@@ -149,9 +149,9 @@ static bool check_parentheses(int s, int e)
 
 static uint32_t get_varible(char *e, bool *success)
 {
-	
+	uint32_t val=look_up_symtab(e,success);
 
-	return 0;
+	return val;
 }
 
 static int dominant_op(int s, int e)
