@@ -134,6 +134,10 @@ static bool make_token(char *e)
 		}
 	}
 
+	for(int i=0;i<nr_token;++i){
+		printf("token type %c\n",tokens[i].type);
+	}
+
 	return true;
 }
 
