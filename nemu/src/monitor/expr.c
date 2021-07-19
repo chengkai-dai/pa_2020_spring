@@ -40,7 +40,7 @@ static struct rule
 	{"\\/", '/'},
 	{"\\(", '('},
 	{"\\)", ')'}};
-	{"["}
+	{"[a-z][A-Z]["}
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]))
 
