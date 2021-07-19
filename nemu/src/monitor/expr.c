@@ -152,7 +152,7 @@ static uint32_t get_varible(char *e, bool *success)
 	// if (tokens[s].type == '(' && tokens[e].type == ')')
 	// 	return true;
 	Elf32_Ehdr *elf;
-	Elf32_Shdr *sh;
+	Elf32_Shdr *sh,eph;
 
 #ifdef HAS_DEVICE_IDE
 	uint8_t buf[4096];
@@ -165,6 +165,7 @@ static uint32_t get_varible(char *e, bool *success)
 #endif
 
 	sh = (void *)elf + elf->e_shoff;
+	eph = ph + elf->e_phnum;
 
 	return 0;
 }
