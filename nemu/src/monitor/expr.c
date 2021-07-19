@@ -153,7 +153,7 @@ static uint32_t get_varible(char *e, bool *success)
 	// 	return true;
 	Elf32_Ehdr *elf;
 	Elf32_Shdr *sh,*esh;
-	Elf32_Sym *sy;
+	Elf32_Sym *sy, *esy;
 
 #ifdef HAS_DEVICE_IDE
 	uint8_t buf[4096];
