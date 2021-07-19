@@ -178,7 +178,7 @@ static bool check_parentheses(int s, int e, bool *success)
 
 		if (ch)
 		{
-			if (top == 0 || stk[top - 1] != ch)
+			if (top == 0 || stk[top - 1] != ch) 
 			{
 				*success = false;
 				within_p = false;
