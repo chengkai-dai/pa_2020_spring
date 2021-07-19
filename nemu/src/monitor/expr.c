@@ -171,11 +171,11 @@ static uint32_t get_varible(char *e, bool *success)
 	printf("check0\n");
 	// printf("check2\n");
 
-	ph = (void *)elf + elf->e_phoff;
-	printf("check2\n");
+	// ph = (void *)elf + elf->e_phoff;
+	// printf("check2\n");
 
-	eph = ph + elf->e_phnum;
-	printf("check3\n");
+	// eph = ph + elf->e_phnum;
+	// printf("check3\n");
 
 	esh=sh+elf->e_shnum;
 printf("check4\n");
