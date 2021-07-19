@@ -178,7 +178,7 @@ static bool check_parentheses(int s, int e, bool *success)
 
 		if (ch)
 		{
-			if (top == 0 || stk[top - 1] != ch) 
+			if (top == 0 || stk[top - 1] != ch)
 			{
 				*success = false;
 				within_p = false;
@@ -259,14 +259,18 @@ static int dominant_op(int s, int e)
 	return 0;
 }
 
-static void valid_expr(int s, int e, bool *success){
-	*success=true;
-	for (int i = s ; i <= e; i++){
-		if(i>s && tokens[i].type==NUM && tokens[i-1].type==')')	
-		
-	}
-	
+static void valid_expr(int s, int e, bool *success)
+{
+	*success = true;
+	for (int i = s; i <= e; i++)
+	{
+		if (i > s && tokens[i].type == NUM && tokens[i - 1].type == ')'){
+			*success = false;
+		}
 
+		if (i <e  && tokens[i].type == NUM && tokens[i + 1].type == '(')
+			*success = false;
+	}
 }
 
 static uint32_t eval(int s, int e, bool *success)
