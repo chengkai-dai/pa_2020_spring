@@ -266,10 +266,7 @@ static bool valid_expr(int s, int e)
 	for (int i = s; i <= e; i++)
 	{
 		if (i > s && tokens[i].type == NUM && tokens[i - 1].type == ')')
-		{
-			success = false;
-			return success;
-		}
+		return false;
 
 		if (i < e && tokens[i].type == NUM && tokens[i + 1].type == '(')
 		{
@@ -277,9 +274,6 @@ static bool valid_expr(int s, int e)
 			return success;
 		}
 	}
-
-	if (tokens[s].type != '(' || tokens[e].type != ')')
-		within_p = false;
 
 	int length = 0;
 	for (int i = s; i <= e; ++i)
@@ -289,19 +283,9 @@ static bool valid_expr(int s, int e)
 				length++;
 		}
 	}
-	if (length == 0)
-	{
-		within_p = false;
-		*success = true;
-		return within_p;
-	}
 
 	if (length % 2)
-	{
-		*success = false;
-		within_p = false;
-		return within_p;
-	}
+		return false;
 
 	int stk[length + 1], top = 0;
 	for (int i = s; i <= e; i++)
