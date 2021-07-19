@@ -165,7 +165,10 @@ static uint32_t get_varible(char *e, bool *success)
 	//Log("ELF loading from ram disk.");
 #endif
 
+	printf("check0\n");
 	sh = (void *)elf + elf->e_shoff;
+	printf("check2\n");
+
 	esh = sh + elf->e_shnum;
 	printf("check1\n");
 	for (; sh < esh; sh++)
