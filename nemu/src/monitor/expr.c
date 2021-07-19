@@ -273,7 +273,7 @@ static bool valid_expr(int s, int e)
 			return false;
 	}
 
-	//step 2: check 
+	//step 2: check valid parentheses
 
 	int length = 0;
 	for (int i = s; i <= e; ++i)
@@ -302,15 +302,9 @@ static bool valid_expr(int s, int e)
 		if (ch)
 		{
 			if (top == 0 || stk[top - 1] != ch)
-			{
-				*success = false;
-				within_p = false;
-				return within_p;
-			}
-
+				return false;
 			top--;
-			if (top == 0 && i != e)
-				within_p = false;
+			
 		}
 		else
 		{
