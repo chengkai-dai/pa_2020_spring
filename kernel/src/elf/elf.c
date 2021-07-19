@@ -35,7 +35,7 @@ uint32_t loader()
 	eph = ph + elf->e_phnum;
 	for (; ph < eph; ph++)
 	{
-		printf("kernel check\n");
+		// printf("kernel check\n");
 		if (ph->p_type == PT_LOAD)
 		{
 
