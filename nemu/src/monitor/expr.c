@@ -137,7 +137,7 @@ static bool make_token(char *e)
 	return true;
 }
 
-static bool check_parentheses(int s, int e, bool *success)
+static bool check_parentheses(int s, int e)
 {
 	if (tokens[s].type == '(' && tokens[e].type == ')')
 		return true;
@@ -265,12 +265,8 @@ static uint32_t eval(int s, int e, bool *success)
 		val = atoi(tokens[s].str);
 	else
 	{
-		bool within_p = check_parentheses(s, e, success);
-		printf("within_p %d\n",within_p);
-		printf("success %d\n",*success);
-		if (*success == false)
-			return 0;
-
+		bool within_p = check_parentheses(s, e);
+				
 		if (within_p == true)
 			val = eval(s + 1, e - 1, success);
 		else
