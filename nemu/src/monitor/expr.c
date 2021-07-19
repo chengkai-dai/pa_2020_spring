@@ -169,9 +169,8 @@ static bool check_parentheses(int s, int e, bool *success)
 		return within_p;
 	}
 
-	int stk[length + 1], top = 1;
-	stk[0] = tokens[s].type;
-	for (int i = s + 1; i <= e; i++)
+	int stk[length + 1], top = 0;
+	for (int i = s; i <= e; i++)
 	{
 		if (tokens[i].type != ')' && tokens[i].type != '(')
 			continue;
