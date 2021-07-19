@@ -173,9 +173,10 @@ static uint32_t get_varible(char *e, bool *success)
 		{
 			sy = (void *)elf + sh->sh_offset;
 			esy = sy + sh->sh_entsize;
-			printf("")
+			printf("symbol table entry size %d\n",sh->sh_entsize);
 
 		}
+	}
 
 	return 0;
 }
