@@ -191,13 +191,11 @@ static int dominant_op(int s, int e)
 
 	for (int i = top - 1; i >= 0; --i)
 	{
-		if (type_stack[i] == '+' || type_stack[i] == '-')
+		if (type_stack[i] == '*' || type_stack[i] == '/')
 
 			return idx_stack[i];
 	}
-	else if (type_stack[i] == '*' || type_stack[i] == '/')
-			return idx_stack[i];
-
+	
 	return 0;
 }
 
