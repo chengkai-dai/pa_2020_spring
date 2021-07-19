@@ -172,7 +172,7 @@ static uint32_t get_varible(char *e, bool *success)
 		if (sh->sh_type ==	SHT_SYMTAB )
 		{
 			sy = (void *)elf + sh->sh_offset;
-			esy = sy + elf->e_shnum;
+			esy = sy + sh->sh_size;
 
 		}
 
