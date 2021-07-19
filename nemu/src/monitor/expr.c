@@ -306,6 +306,7 @@ uint32_t expr(char *e, bool *success)
 {
 	if (!(make_token(e) && valid_expr(0,nr_token-1)))
 	{
+		printf("\nPlease implement eval at eval\n");
 		*success = false;
 		return 0;
 	}
