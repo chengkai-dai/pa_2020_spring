@@ -291,7 +291,13 @@ static uint32_t eval(int s, int e, bool *success)
 			case '-':
 				return val1 + val2;
 				break;
-			case 
+			case '*':
+				return val1*val2;
+				break;
+			case '/':
+				return val1/val2;
+				break;
+
 			default:
 				assert(0);
 				printf("\nPlease implement eval at eval\n");
