@@ -153,6 +153,7 @@ static uint32_t get_varible(char *e, bool *success)
 	// 	return true;
 	Elf32_Ehdr *elf;
 	Elf32_Shdr *sh,*esh;
+	Elf32_Phdr *ph, *eph;
 	// Elf32_Sym *sy;
 
 #ifdef HAS_DEVICE_IDE
@@ -165,14 +166,18 @@ static uint32_t get_varible(char *e, bool *success)
 	//Log("ELF loading from ram disk.");
 #endif
 
-	printf("check0\n");
-	sh = (void *)elf + elf->e_shoff;
-	printf("check2\n");
+	// printf("check0\n");
+	// sh = (void *)elf + elf->e_shoff;
+	// printf("check2\n");
 
 	ph = (void *)elf + elf->e_phoff;
+	printf("check2\n");
+
 	eph = ph + elf->e_phnum;
-	for (; ph < eph; ph++)
-	{
+	printf("check3\n");
+
+	// for (; ph < eph; ph++)
+	// {
 
 	// esh = sh + elf->e_shnum;
 	// printf("check1\n");
