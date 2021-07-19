@@ -277,6 +277,72 @@ static bool valid_expr(int s, int e)
 			return success;
 		}
 	}
+
+	if (tokens[s].type != '(' || tokens[e].type != ')')
+		within_p = false;
+
+	int length = 0;
+	for (int i = s; i <= e; ++i)
+	{
+		{
+			if (tokens[i].type == '(' || tokens[i].type == ')')
+				length++;
+		}
+	}
+	if (length == 0)
+	{
+		within_p = false;
+		*success = true;
+		return within_p;
+	}
+
+	if (length % 2)
+	{
+		*success = false;
+		within_p = false;
+		return within_p;
+	}
+
+	int stk[length + 1], top = 0;
+	for (int i = s; i <= e; i++)
+	{
+		if (tokens[i].type != ')' && tokens[i].type != '(')
+			continue;
+
+		char ch;
+		if (tokens[i].type == ')')
+			ch = '(';
+		else
+			ch = 0;
+
+		if (ch)
+		{
+			if (top == 0 || stk[top - 1] != ch)
+			{
+				*success = false;
+				within_p = false;
+				return within_p;
+			}
+
+			top--;
+			if (top == 0 && i != e)
+				within_p = false;
+		}
+		else
+		{
+			stk[top++] = tokens[i].type;
+		}
+	}
+	if (top != 0)
+	{
+		*success = false;
+		within_p = false;
+	}
+	else
+		*success = true;
+
+	return within_p;
+
 	return success;
 }
 
