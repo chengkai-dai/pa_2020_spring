@@ -152,7 +152,7 @@ static uint32_t get_varible(char *e, bool *success)
 	// if (tokens[s].type == '(' && tokens[e].type == ')')
 	// 	return true;
 	Elf32_Ehdr *elf;
-	// Elf32_Shdr *sh,*esh;
+	Elf32_Shdr *sh,*esh;
 	Elf32_Phdr *ph, *eph;
 	// Elf32_Sym *sy;
 
@@ -167,7 +167,8 @@ static uint32_t get_varible(char *e, bool *success)
 #endif
 
 	// printf("check0\n");
-	// sh = (void *)elf + elf->e_shoff;
+	sh = (void *)elf + elf->e_shoff;
+	printf("check0\n");
 	// printf("check2\n");
 
 	ph = (void *)elf + elf->e_phoff;
