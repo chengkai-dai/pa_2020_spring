@@ -299,7 +299,7 @@ static uint32_t eval(int s, int e, bool *success)
 	else
 	{
 		bool within_p = check_parentheses(s, e, success);
-		printf("within_p ")
+		printf("within_p %d\n",within_p);
 		if (*success == false)
 			return 0;
 
