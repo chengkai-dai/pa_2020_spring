@@ -167,7 +167,6 @@ static bool check_parentheses(int s, int e, bool *success)
 	stk[0] = tokens[s].type;
 	for (int i = s + 1; i <= e; i++)
 	{
-		if()
 		if (tokens[i].type != ')' && tokens[i].type != '(')
 			continue;
 
@@ -260,7 +259,13 @@ static int dominant_op(int s, int e)
 	return 0;
 }
 
+static void valid_expr(int s, int e, bool *success){
+	for (int i = s ; i <= e; i++){
+		if(i>s )	
+	}
+	
 
+}
 
 static uint32_t eval(int s, int e, bool *success)
 {
