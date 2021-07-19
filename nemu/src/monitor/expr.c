@@ -207,7 +207,7 @@ static bool valid_expr(int s, int e)
 	//step 1: check lexical exception
 	for (int i = s; i <= e; i++)
 	{
-		if (i > s && tokens[i].type == NUM && tokens[i - 1].type == ')')
+		if (i > s && (tokens[i].type == NUM || tokens[i].type == VAR) && tokens[i - 1].type == ')')
 			return false;
 
 		if (i < e && tokens[i].type == NUM && tokens[i + 1].type == '(')
