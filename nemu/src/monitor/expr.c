@@ -270,7 +270,7 @@ static uint32_t eval(int s, int e, bool *success)
 		else
 		{
 			int op = dominant_op(s, e);
-			// printf("op position %d\n", op);
+			printf("op position %d\n", op);
 			// op = the position of dominant operator in the token expression;
 			uint32_t val1 = eval(s, op - 1, success);
 			uint32_t val2 = eval(op + 1, e, success);
