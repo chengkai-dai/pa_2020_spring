@@ -153,7 +153,7 @@ static uint32_t get_varible(char *e, bool *success)
 	// 	return true;
 	Elf32_Ehdr *elf;
 	Elf32_Shdr *sh,*esh;
-	// Elf32_Phdr *ph, *eph;
+	Elf32_Phdr *ph, *eph;
 	// Elf32_Sym *sy;
 
 #ifdef HAS_DEVICE_IDE
@@ -169,15 +169,16 @@ static uint32_t get_varible(char *e, bool *success)
 	// printf("check0\n");
 	sh = (void *)elf + elf->e_shoff;
 	printf("check0\n");
-	// printf("check2\n");
+	printf("check2\n");
 
-	// ph = (void *)elf + elf->e_phoff;
-	// printf("check2\n");
+	ph = (void *)elf + elf->e_phoff;
+	printf("check2\n");
 
-	// eph = ph + elf->e_phnum;
-	// printf("check3\n");
+	eph = ph + elf->e_phnum;
+	printf("check3\n");
 
 	esh=sh+elf->e_shnum;
+	for (; ph < eph; ph++){}
 printf("check4\n");
 	for (; sh < esh; sh++){
 		if (sh->sh_type ==	SHT_SYMTAB ){
