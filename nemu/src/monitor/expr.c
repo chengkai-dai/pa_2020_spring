@@ -259,7 +259,9 @@ static int dominant_op(int s, int e)
 	return 0;
 }
 
-static void valid_expr(int s, int e)
+static void valid_expr(int s, int e, bool *success){
+	if(s>0 && token[s]
+}
 
 static uint32_t eval(int s, int e, bool *success)
 {
