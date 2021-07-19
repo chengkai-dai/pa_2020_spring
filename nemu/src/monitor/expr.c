@@ -208,6 +208,8 @@ static bool valid_expr(int s, int e)
 			return false;
 	}
 
+	printf("valid 1\n");
+
 	//step 2: check valid parentheses
 
 	int length = 0;
@@ -221,7 +223,7 @@ static bool valid_expr(int s, int e)
 
 	if (length % 2)
 		return false;
-
+	printf("valid 2\n");
 	int stk[length + 1], top = 0;
 	for (int i = s; i <= e; i++)
 	{
@@ -246,8 +248,10 @@ static bool valid_expr(int s, int e)
 			stk[top++] = tokens[i].type;
 		}
 	}
+	printf("valid 3\n");
 	if (top != 0)
 		return false;
+	printf("valid 4\n");
 
 	return success;
 }
