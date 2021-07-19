@@ -259,6 +259,8 @@ static int dominant_op(int s, int e)
 	return 0;
 }
 
+static void valid_expr(int s, int e)
+
 static uint32_t eval(int s, int e, bool *success)
 {
 	uint32_t val = 0;
