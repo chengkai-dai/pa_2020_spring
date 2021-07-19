@@ -265,7 +265,10 @@ static uint32_t eval(int s, int e, bool *success)
 		return 0;
 	}
 	else if (s == e){
-		val = atoi(tokens[s].str);
+		if(tokens[s].type==NUM)
+			val = atoi(tokens[s].str);
+		else if(tokens[s].type==VAR)
+			val
 	}
 	else
 	{
