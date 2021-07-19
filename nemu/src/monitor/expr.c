@@ -210,7 +210,7 @@ static bool valid_expr(int s, int e)
 		if (i > s && (tokens[i].type == NUM || tokens[i].type == VAR) && tokens[i - 1].type == ')')
 			return false;
 
-		if (i < e && tokens[i].type == NUM && tokens[i + 1].type == '(')
+		if (i < e && (tokens[i].type == NUM || tokens[i].type == VAR) && tokens[i + 1].type == '(')
 			return false;
 	}
 
@@ -264,8 +264,9 @@ static uint32_t eval(int s, int e, bool *success)
 		*success = false;
 		return 0;
 	}
-	else if (s == e)
+	else if (s == e){
 		val = atoi(tokens[s].str);
+	}
 	else
 	{
 		bool within_p = check_parentheses(s, e);
