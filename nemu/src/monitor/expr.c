@@ -145,7 +145,6 @@ static bool check_parentheses(int s, int e)
 	return false;
 }
 
-
 static int dominant_op(int s, int e)
 {
 	int type_stack[e - s + 2];
@@ -241,7 +240,6 @@ static bool valid_expr(int s, int e)
 			if (top == 0 || stk[top - 1] != ch)
 				return false;
 			top--;
-			
 		}
 		else
 		{
@@ -268,18 +266,15 @@ static uint32_t eval(int s, int e, bool *success)
 	else
 	{
 		bool within_p = check_parentheses(s, e);
-				
+
 		if (within_p == true)
 			val = eval(s + 1, e - 1, success);
 		else
 		{
 			int op = dominant_op(s, e);
-			printf("op position %d\n", op);
 			// op = the position of dominant operator in the token expression;
 			uint32_t val1 = eval(s, op - 1, success);
-			printf("val1 %d\n",val1);
 			uint32_t val2 = eval(op + 1, e, success);
-			printf("val2 %d\n",val2);
 			// val2 = eval(op + 1, q);
 			switch (tokens[op].type)
 			{
@@ -308,7 +303,7 @@ static uint32_t eval(int s, int e, bool *success)
 
 uint32_t expr(char *e, bool *success)
 {
-	if (!(make_token(e) && valid_expr(0,nr_token-1)))
+	if (!(make_token(e) && valid_expr(0, nr_token - 1)))
 	{
 		*success = false;
 		return 0;

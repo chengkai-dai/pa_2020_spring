@@ -222,19 +222,21 @@ cmd_handler(cmd_x)
 
 	//parse the first argument (num of the 4_bytes for displaying)
 	char *args1 = strtok(NULL, " ");
-	char * t;    
-    for (t = args1; *t != '\0'; t++){
-		if (*t < '0' || *t > '9'){
+	char *t;
+	for (t = args1; *t != '\0'; t++)
+	{
+		if (*t < '0' || *t > '9')
+		{
 			puts("N should be a decimal number!");
 			return 0;
 		}
 	}
-	int32_t num_4bytes =  (int32_t)strtol(args1, NULL, 10);
+	int32_t num_4bytes = (int32_t)strtol(args1, NULL, 10);
 	printf("num_4bytes %d\n", num_4bytes);
-	
+
 	//parse the second argument, the actual addr for the memory data
 	char *args2 = args + strlen(args1) + 1;
-	bool success=true;
+	bool success = true;
 	uint32_t addr = expr(args2, &success);
 	if (!success)
 	{
@@ -271,7 +273,6 @@ static struct
 
 	//DIY Commands
 	{"x", "Check Memory Data", cmd_x},
-
 
 	/* TODO: Add more commands */
 	{"si", "Single Step Execution", cmd_si},
