@@ -300,6 +300,7 @@ static uint32_t eval(int s, int e, bool *success)
 	{
 		bool within_p = check_parentheses(s, e, success);
 		printf("within_p %d\n",within_p);
+		printf("success %d\n",*success);
 		if (*success == false)
 			return 0;
 
