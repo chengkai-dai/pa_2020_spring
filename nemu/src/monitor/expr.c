@@ -195,7 +195,7 @@ static int dominant_op(int s, int e)
 
 			return idx_stack[i];
 	}
-	
+
 	return 0;
 }
 
@@ -277,7 +277,9 @@ static uint32_t eval(int s, int e, bool *success)
 			printf("op position %d\n", op);
 			// op = the position of dominant operator in the token expression;
 			uint32_t val1 = eval(s, op - 1, success);
+			printf("val1 %d\n",val1);
 			uint32_t val2 = eval(op + 1, e, success);
+			printf("val2 %d\n",val2);
 			// val2 = eval(op + 1, q);
 			switch (tokens[op].type)
 			{
