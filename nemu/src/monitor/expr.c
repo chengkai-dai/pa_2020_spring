@@ -148,6 +148,14 @@ static bool check_parentheses(int s, int e)
 	return false;
 }
 
+static uint32_t get_varible(char *e)
+{
+	// if (tokens[s].type == '(' && tokens[e].type == ')')
+	// 	return true;
+
+	return 0;
+}
+
 static int dominant_op(int s, int e)
 {
 	int type_stack[e - s + 2];
