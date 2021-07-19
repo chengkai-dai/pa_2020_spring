@@ -1,7 +1,7 @@
 #include "nemu.h"
 #include "cpu/reg.h"
 #include "memory/memory.h"
-
+#include "kernel/in"
 #include <stdlib.h>
 
 /* We use the POSIX regex functions to process regular expressions.
@@ -151,6 +151,8 @@ static uint32_t get_varible(char *e, bool *success)
 {
 	// if (tokens[s].type == '(' && tokens[e].type == ')')
 	// 	return true;
+	Elf32_Ehdr *elf;
+
 
 	return 0;
 }
