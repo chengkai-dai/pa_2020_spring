@@ -250,8 +250,8 @@ static int dominant_op(int s, int e)
 		if (type_stack[i] == '+' || type_stack[i] == '-')
 
 			return idx_stack[i];
-		
-		else if(type_stack[i] == '*' || type_stack[i] == '/')
+
+		else if (type_stack[i] == '*' || type_stack[i] == '/')
 			return idx_stack[i];
 	}
 
@@ -295,10 +295,10 @@ static uint32_t eval(int s, int e, bool *success)
 				return val1 + val2;
 				break;
 			case '*':
-				return val1*val2;
+				return val1 * val2;
 				break;
 			case '/':
-				return val1/val2;
+				return val1 / val2;
 				break;
 
 			default:
