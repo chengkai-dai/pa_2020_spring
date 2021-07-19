@@ -264,13 +264,19 @@ static void valid_expr(int s, int e, bool *success)
 	*success = true;
 	for (int i = s; i <= e; i++)
 	{
-		if (i > s && tokens[i].type == NUM && tokens[i - 1].type == ')'){
+		if (i > s && tokens[i].type == NUM && tokens[i - 1].type == ')')
+		{
 			*success = false;
+			return;
 		}
 
-		if (i <e  && tokens[i].type == NUM && tokens[i + 1].type == '(')
+		if (i < e && tokens[i].type == NUM && tokens[i + 1].type == '(')
+		{
 			*success = false;
+			return;
+		}
 	}
+	return;
 }
 
 static uint32_t eval(int s, int e, bool *success)
@@ -333,6 +339,8 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
+
+	valid_expr(0, nr_token - 1);
 	//printf("nr_token %d\n", nr_token);
 
 	uint32_t val = eval(0, nr_token - 1, success);
