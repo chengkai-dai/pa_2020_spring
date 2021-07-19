@@ -263,17 +263,17 @@ static int dominant_op(int s, int e)
 static bool valid_expr(int s, int e)
 {
 	bool success = true;
+	//step 1: check lexical exception
 	for (int i = s; i <= e; i++)
 	{
 		if (i > s && tokens[i].type == NUM && tokens[i - 1].type == ')')
-		return false;
+			return false;
 
 		if (i < e && tokens[i].type == NUM && tokens[i + 1].type == '(')
-		{
-			success = false;
-			return success;
-		}
+			return false;
 	}
+
+	//step 2: check 
 
 	int length = 0;
 	for (int i = s; i <= e; ++i)
