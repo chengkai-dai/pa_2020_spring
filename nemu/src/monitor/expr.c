@@ -147,7 +147,7 @@ static bool check_parentheses(int s, int e)
 	return false;
 }
 
-static uint32_t get_varible(char *e)
+static uint32_t get_varible(char *e, bool *success)
 {
 	// if (tokens[s].type == '(' && tokens[e].type == ')')
 	// 	return true;
@@ -275,11 +275,11 @@ static uint32_t eval(int s, int e, bool *success)
 	{
 		if (tokens[s].type == NUM)
 			val = atoi(tokens[s].str);
-		else if (tokens[s].type == VAR){
-			printf("varible %c\n",tokens[s].str);
-			val = get_varible(tokens[s].str,success);
+		else if (tokens[s].type == VAR)
+		{
+			printf("varible %s\n", tokens[s].str);
+			val = get_varible(tokens[s].str, success);
 		}
-			
 	}
 	else
 	{
