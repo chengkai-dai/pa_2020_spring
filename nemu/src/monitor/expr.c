@@ -176,7 +176,7 @@ static uint32_t get_varible(char *e, bool *success)
 	eph = ph + elf->e_phnum;
 	printf("check3\n");
 
-	// for (; ph < eph; ph++)
+	for (; ph < eph; ph++){}
 	// {
 
 	// esh = sh + elf->e_shnum;
