@@ -139,17 +139,12 @@ static bool make_token(char *e)
 
 static bool check_parentheses(int s, int e, bool *success)
 {
-	bool within_p = true;
-	if (tokens[s].type != '(' && tokens[e].type != ')')
-		within_p = false;
+	if (tokens[s].type == '(' && tokens[e].type == ')')
+		return true;
 
-	return within_p;
+	return false;
 }
 
-// typedef struct token_recond{
-//     Token token;
-//     int idx;
-// }TR;
 
 static int dominant_op(int s, int e)
 {
