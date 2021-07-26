@@ -16,7 +16,9 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     int sindex = (int)caddr.set_index;
     uint32_t boffset = caddr.offset;
     uint32_t tag = caddr.tag;
-    
+
+    for(i)
+
 
     return 0;
 }
