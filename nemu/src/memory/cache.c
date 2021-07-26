@@ -13,7 +13,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 {
     CacheAddr caddr;
     caddr.paddr = paddr;
-    uintsindex=(int) caddr.
+    uint32_t sindex=caddr.set_index;
 
     return 0;
 }
