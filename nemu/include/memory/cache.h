@@ -2,7 +2,8 @@
 #define __CACHE_H__
 
 #define LINE_SIZE 1024
-#define BLOCK_SIZE 1024
+#define BLOCK_SIZE 6
+#define SET_SIZE 3
 
 #include "nemu.h"
 
