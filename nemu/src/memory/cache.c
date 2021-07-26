@@ -26,9 +26,12 @@ uint32_t cache_read(paddr_t paddr, size_t len)
         else
             continue;
     }
-    
-    if(hit==false)
-        return 0;
+
+    if(hit==false){
+        uint32_t data=paddr_read(paddr,len);
+        return data;
+    }
+
 
     return 0;
 }
