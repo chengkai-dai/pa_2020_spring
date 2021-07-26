@@ -23,13 +23,17 @@ void hw_mem_write(paddr_t paddr, size_t len, uint32_t data)
 uint32_t paddr_read(paddr_t paddr, size_t len)
 {
 	uint32_t ret = 0;
-	#if
+#ifdef CACHE_ENABLED
+	ret = cache_read(paddr, len);
+#else
 	ret = hw_mem_read(paddr, len);
+#endif
 	return ret;
 }
 
 void paddr_write(paddr_t paddr, size_t len, uint32_t data)
 {
+	#if
 	hw_mem_write(paddr, len, data);
 }
 
