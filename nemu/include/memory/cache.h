@@ -16,6 +16,7 @@ typedef struct
 
 typedef struct{
     union{
+        
 
     uint32_t offset:BLOCK_SIZE;
     uint32_t set_index: (LINE_SIZE-SET_SIZE);
