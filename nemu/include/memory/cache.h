@@ -2,8 +2,8 @@
 #define __CACHE_H__
 
 #define LINE_SIZE 1024
+#include "nemu.h"
 
-#include "memory.h"
 typedef struct
 {
     uint8_t data_line[64];
