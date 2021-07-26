@@ -5,8 +5,9 @@
 typedef struct
 {
     uint8_t data_line[64];
-    
-}Cacheline;
+
+    char valid_bit;
+}CacheLine;
 
 
 
