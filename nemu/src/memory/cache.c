@@ -12,8 +12,7 @@ void init_cache()
 
 uint32_t cache_read(paddr_t paddr, size_t len)
 {
-    uint32_t block_offset=paddr && (0xFFFFFFFF >> (32 - BLOCK_SIZE));
-    uint32_t block_offset=paddr && (0xFFFFFFFF >> (32 - BLOCK_SIZE));
+    CacheAddr caddr=(CacheAddr) paddr;
 
     return 0;
 }
