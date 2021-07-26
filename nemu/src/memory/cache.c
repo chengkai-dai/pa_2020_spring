@@ -26,7 +26,8 @@ uint32_t cache_read(paddr_t paddr, size_t len)
         if (cur.valid_bit && tag == cur.tag)
         {
             hit = true;
-            uint32_t data=cur.
+            uint32_t data = 0;
+            data=memcpy(&ret, hw_mem + paddr, len);cur.data_line[32]
         }
         else
             continue;
