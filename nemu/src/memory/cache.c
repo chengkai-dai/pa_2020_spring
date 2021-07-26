@@ -26,7 +26,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
         if (cur.valid_bit && tag == cur.tag)
         {
             uint32_t data = 0;
-            data = memcpy(&data, &cur.data_line[boffset], len);
+            data = memcpy(&data, (uint32_t *)&cur.data_line[boffset], len);
             return data;
         }
         else
@@ -38,6 +38,8 @@ uint32_t cache_read(paddr_t paddr, size_t len)
         uint32_t data = paddr_read(paddr, len);
         return data;
     }
+
+    return 0;
 }
 
 void cache_write(paddr_t paddr, size_t len, uint32_t data)
