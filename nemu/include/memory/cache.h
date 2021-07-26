@@ -2,6 +2,8 @@
 #define __CACHE_H__
 
 #define LINE_SIZE 1024
+#define BLOCK_SIZE 1024
+
 #include "nemu.h"
 
 typedef struct
