@@ -4,7 +4,7 @@
 #define LINE_SIZE 10
 #define BLOCK_SIZE 6
 #define SET_SIZE 3
-#define SET_SIZE 3
+#define SET_CAPACITY 1<<(LINE_SIZE - SET_SIZE)
 
 #include "nemu.h"
 
