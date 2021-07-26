@@ -23,7 +23,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     for (int i = 0; i < SET_CAPACITY; ++i)
     {
         CacheLine cur=cache[SET_CAPACITY * sindex + i];
-        if (tag == cache[SET_CAPACITY * sindex + i].tag)
+        if (cur.valid_bit && tag == cur.tag)
         {
             hit = true;
         }
