@@ -22,12 +22,12 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 
     for (int i = 0; i < SET_CAPACITY; ++i)
     {
-        CacheLine cur=cache[SET_CAPACITY * sindex + i];
+        CacheLine cur = cache[SET_CAPACITY * sindex + i];
         if (cur.valid_bit && tag == cur.tag)
         {
-            hit = true;
             uint32_t data = 0;
-            data=memcpy(&data, cur.data_line[boffset], len);cur.data_line[32]
+            data = memcpy(&data, cur.data_line[boffset], len);
+            return data;
         }
         else
             continue;
