@@ -16,7 +16,9 @@ typedef struct
 
 typedef struct{
 
-}Addr_
+    uint32_t  
+
+}CacheAddr
 
 void init_cache();
 
