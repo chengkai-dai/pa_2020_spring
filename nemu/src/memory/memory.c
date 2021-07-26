@@ -62,6 +62,8 @@ void init_mem()
 	make_all_tlb();
 	init_all_tlb();
 #endif
+
+#ifdef CACHE_ENABLED
 }
 
 uint32_t instr_fetch(vaddr_t vaddr, size_t len)
