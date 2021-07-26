@@ -4,7 +4,8 @@
 #include "memory.h"
 typedef struct
 {
-    uint8_
+    uint8_t data_line[64];
+    
 }Cacheline;
 
 
