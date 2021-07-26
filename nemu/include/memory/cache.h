@@ -1,6 +1,8 @@
 #ifndef __CACHE_H__
 #define __CACHE_H__
 
+define LINE_SIZE 1024
+
 #include "memory.h"
 typedef struct
 {

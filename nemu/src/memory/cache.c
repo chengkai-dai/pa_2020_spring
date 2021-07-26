@@ -1,4 +1,3 @@
 #include "cache.h"
-
-typedef CacheLine[1024] Cache
+ CacheLine[1024] Cache
 
