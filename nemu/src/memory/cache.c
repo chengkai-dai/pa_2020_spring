@@ -4,7 +4,7 @@ CacheLine cache[LINE_SIZE];
 
 void init_cache()
 {
-    *cache=malloc()
+    cache=(CacheLine *)malloc()
 }
 
 uint32_t cache_read(paddr_t paddr, size_t len)
