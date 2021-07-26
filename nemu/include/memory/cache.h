@@ -9,7 +9,8 @@
 #define LINE_SIZE 1<<LINE_BITS
 
 #include "nemu.h"
-#include "me"
+#include "memory.h"
+
 typedef struct
 {
     uint8_t data_line[64];
