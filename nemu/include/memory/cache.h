@@ -16,7 +16,8 @@ typedef struct
 
 typedef struct{
 
-    uint32_t  
+    uint32_t offset:BLOCK_SIZE;
+    uint32_t set_index:  
 
 }CacheAddr
 
