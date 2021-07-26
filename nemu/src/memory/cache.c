@@ -1,4 +1,5 @@
 #include "memory/cache.h"
+#include <stdlib.h>
 
 CacheLine cache[LINE_SIZE];
 
