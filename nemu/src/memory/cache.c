@@ -1,4 +1,4 @@
-#include "cache.h"
+#include "memory/cache.h"
 
 CacheLine[LINE_SIZE] cache;
 
