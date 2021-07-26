@@ -5,11 +5,11 @@
 #define BLOCK_BITS 6
 #define SET_BITS 3
 
-#define SET_CAPACITY 1<<(LINE_BITS - SET_BITS)
+#define SET_CAPACITY (1<<(LINE_BITS - SET_BITS))
 #define LINE_SIZE 1<<LINE_BITS
 
 #include "nemu.h"
-
+#include "me"
 typedef struct
 {
     uint8_t data_line[64];
