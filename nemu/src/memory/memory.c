@@ -1,4 +1,5 @@
 #include "nemu.h"
+#include "cache.h"
 #include "cpu/cpu.h"
 #include "memory/memory.h"
 #include "device/mm_io.h"
@@ -64,6 +65,8 @@ void init_mem()
 #endif
 
 #ifdef CACHE_ENABLED
+	init_cache();
+#endif
 }
 
 uint32_t instr_fetch(vaddr_t vaddr, size_t len)
