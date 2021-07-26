@@ -18,7 +18,11 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     uint32_t tag = caddr.tag;
 
     for(int i=0;i<SET_CAPACITY;++i){
-        ca
+        if(tag==cache[SET_CAPACITY*sindex+i].tag){
+
+        }
+        else
+            continue;
     }
 
 
