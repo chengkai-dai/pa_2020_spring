@@ -5,7 +5,9 @@ CacheLine cache[LINE_SIZE];
 
 void init_cache()
 {
-    for 
+    for(int i=0;i<LINE_SIZE;++i)
+        cache[i].valid_bit=0;
+    
 }
 
 uint32_t cache_read(paddr_t paddr, size_t len)
