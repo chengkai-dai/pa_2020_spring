@@ -1,10 +1,10 @@
 #ifndef __CACHE_H__
 #define __CACHE_H__
 
-#define LINE_SIZE 10
-#define BLOCK_SIZE 6
-#define SET_SIZE 3
-#define SET_CAPACITY 1<<(LINE_SIZE - SET_SIZE)
+#define LINE_BITS 10
+#define BLOCK_BITS 6
+#define SET_BITS 3
+#define SET_CAPACITY 1<<(LINE_BITS - SET_BITS)
 
 #include "nemu.h"
 
@@ -19,9 +19,9 @@ typedef union
 {
     struct
     {
-        uint32_t offset : BLOCK_SIZE;
-        uint32_t set_index : (LINE_SIZE - SET_SIZE);
-        uint32_t tag : (32 - (LINE_SIZE - SET_SIZE) - BLOCK_SIZE);
+        uint32_t offset : BLOCK_BITS;
+        uint32_t set_index : (LINE_BITS - SET_BITS);
+        uint32_t tag : (32 - (LINE_BITS - SET_BITS) - BLOCK_BITS);
     };
 
     uint32_t paddr;
