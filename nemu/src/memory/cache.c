@@ -31,9 +31,6 @@ uint32_t cache_read(paddr_t paddr, size_t len)
         uint32_t data=paddr_read(paddr,len);
         return data;
     }
-
-
-    return 0;
 }
 
 void cache_write(paddr_t paddr, size_t len, uint32_t data)
