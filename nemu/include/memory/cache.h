@@ -4,7 +4,9 @@
 #define LINE_BITS 10
 #define BLOCK_BITS 6
 #define SET_BITS 3
+
 #define SET_CAPACITY 1<<(LINE_BITS - SET_BITS)
+#define LINE_SIZE 1<<LINE_BITS
 
 #include "nemu.h"
 

@@ -1,7 +1,7 @@
 #include "memory/cache.h"
 #include <stdlib.h>
 
-CacheLine cache[1 << LINE_SIZE];
+CacheLine cache[LINE_SIZE];
 
 void init_cache()
 {
