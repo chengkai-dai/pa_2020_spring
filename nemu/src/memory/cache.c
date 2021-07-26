@@ -17,14 +17,17 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     uint32_t boffset = caddr.offset;
     uint32_t tag = caddr.tag;
 
+    bool hit=false;
+
     for(int i=0;i<SET_CAPACITY;++i){
         if(tag==cache[SET_CAPACITY*sindex+i].tag){
-
+            hit=true;
         }
         else
             continue;
     }
-
+    if(hit==false)
+    return 0;
 
     return 0;
 }
