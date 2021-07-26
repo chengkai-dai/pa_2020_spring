@@ -14,6 +14,8 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     CacheAddr caddr;
     caddr.paddr = paddr;
     int sindex=(int) caddr.set_index;
+    uint32_t boffset=caddr.offset;
+    uint32_t tag=caddr.offset;
 
     return 0;
 }
