@@ -4,7 +4,7 @@
 #include "device/mm_io.h"
 #include <memory.h>
 #include <stdio.h>
-
+#include <stdlib.h>
 uint8_t hw_mem[MEM_SIZE_B];
 
 uint32_t hw_mem_read(paddr_t paddr, size_t len)
@@ -21,12 +21,18 @@ void hw_mem_write(paddr_t paddr, size_t len, uint32_t data)
 
 uint32_t paddr_read(paddr_t paddr, size_t len)
 {
+	//printf("cache read from 0x%x with %d bytes of data\n", paddr, len);
 	uint32_t ret = 0;
 #ifdef CACHE_ENABLED
 	ret = cache_read(paddr, len);
 #else
 	ret = hw_mem_read(paddr, len);
 #endif
+
+	// if(cache_read(paddr,len)!=hw_mem_read(paddr,len)){
+	// 	printf("output fail\n");
+	// 	exit(0);
+	// }
 	return ret;
 }
 

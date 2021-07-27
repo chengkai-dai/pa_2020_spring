@@ -7,13 +7,13 @@
 
 #define SET_CAPACITY (1<<(LINE_BITS - SET_BITS))
 #define LINE_SIZE 1<<LINE_BITS
-
+#define LINE_DATA 64
 #include "nemu.h"
 #include "memory.h"
 
 typedef struct
 {
-    uint8_t data_line[64];
+    uint8_t data_block[LINE_DATA];
     uint32_t tag;
     char valid_bit;
 } CacheLine;
