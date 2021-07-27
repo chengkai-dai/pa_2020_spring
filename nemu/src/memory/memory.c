@@ -29,13 +29,13 @@ uint32_t paddr_read(paddr_t paddr, size_t len)
 	ret = hw_mem_read(paddr, len);
 #endif
 
-	// if(cache_read(paddr,len)!=hw_mem_read(paddr,len)){
-	// 	printf("output fail\n");
-	// 	exit(0);
-	// }
-	// else{
-	// 	printf("output success\n");
-	// }
+	if(cache_read(paddr,len)!=hw_mem_read(paddr,len)){
+		printf("output fail\n");
+		exit(0);
+	}
+	else{
+		printf("output success\n");
+	}
 	return ret;
 }
 
