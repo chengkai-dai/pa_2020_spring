@@ -18,6 +18,8 @@ typedef struct
     char valid_bit;
 } CacheLine;
 
+CacheLine cache[LINE_SIZE];
+
 typedef union
 {
     struct
