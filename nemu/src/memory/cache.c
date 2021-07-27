@@ -106,7 +106,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
 
     if (cache_hit(paddr, line, &unvalid_bit_index))
     {
-        printf("cache hit during writing\n");
+        //printf("cache hit during writing\n");
         memcpy(&line->data_block[boffset], &data, len);
     }
    
