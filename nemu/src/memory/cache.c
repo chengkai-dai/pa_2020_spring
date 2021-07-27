@@ -58,6 +58,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 
     if (cache_hit(paddr, line, &unvalid_bit_index))
     {
+        printf("cache hit during reading\n");
         uint32_t data = 0;
         memcpy(&data, &line->data_block[boffset], len);
         free(line);
