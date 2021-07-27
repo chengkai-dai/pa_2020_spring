@@ -34,9 +34,9 @@ uint32_t paddr_read(paddr_t paddr, size_t len)
 		printf("output fail\n");
 		exit(0);
 	}
-	else{
-		printf("output success\n");
-	}
+	// else{
+	// 	printf("output success\n");
+	// }
 	return ret;
 }
 
