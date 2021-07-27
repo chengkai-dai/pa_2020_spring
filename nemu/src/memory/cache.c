@@ -46,23 +46,23 @@ void init_cache()
 uint32_t cache_read(paddr_t paddr, size_t len)
 {
     //printf("cache read from 0x%x with %d bytes of data", paddr, len);
-    // CacheAddr caddr;
-    // caddr.paddr = paddr;
+    CacheAddr caddr;
+    caddr.paddr = paddr;
 
-    // //int sindex = (int)caddr.set_index;
-    // uint32_t boffset = caddr.offset;
+    //int sindex = (int)caddr.set_index;
+    uint32_t boffset = caddr.offset;
 
-    // int unvalid_bit_index = INT32_MAX;
+    int unvalid_bit_index = INT32_MAX;
 
-    // CacheLine *line = malloc(sizeof(CacheLine));
+    CacheLine *line = malloc(sizeof(CacheLine));
 
-    // if (cache_hit(paddr, line, &unvalid_bit_index))
-    // {
-    //     uint32_t data = 0;
-    //     memcpy(&data, &line->data_block[boffset], len);
-    //     free(line);
-    //     return data;
-    // }
+    if (cache_hit(paddr, line, &unvalid_bit_index))
+    {
+        uint32_t data = 0;
+        memcpy(&data, &line->data_block[boffset], len);
+        free(line);
+        return data;
+    }
 
     // if cache not hit, replace the data block to cache
     // int replace_index;
@@ -106,7 +106,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
 
     if (cache_hit(paddr, line, &unvalid_bit_index))
     {
-        //printf("cache hit during writing\n");
+        printf("cache hit during writing\n");
         memcpy(&line->data_block[boffset], &data, len);
     }
    
