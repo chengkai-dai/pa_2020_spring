@@ -84,11 +84,6 @@ void init_mem()
 
 #ifdef CACHE_ENABLED
 	init_cache();
-for(int i=0;i<LINE_SIZE;++i){
-	printf("%d",cache[i].valid_bit);
-	
-}
-printf("\n");
 #endif
 }
 

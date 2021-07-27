@@ -22,6 +22,7 @@ static bool cache_hit(paddr_t paddr, CacheLine *line, int *unvalid_bit_index)
         // cache hit
         if (cur->valid_bit && tag == cur->tag)
         {
+            printf("cur->valid_bit %d\n",cur->valid_bit);
             line = cur;
             return true;
         }
