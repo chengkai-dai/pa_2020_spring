@@ -47,7 +47,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     CacheAddr caddr;
     caddr.paddr = paddr;
 
-    //int sindex = (int)caddr.set_index;
+    int sindex = (int)caddr.set_index;
     uint32_t boffset = caddr.offset;
 
     int unvalid_bit_index = INT32_MAX;
