@@ -5,8 +5,8 @@
 #define BLOCK_BITS 6
 #define SET_BITS 3
 
-#define SET_CAPACITY (1<<(LINE_BITS - SET_BITS))
-#define LINE_SIZE 1<<LINE_BITS
+#define SET_CAPACITY (1 << (LINE_BITS - SET_BITS))
+#define LINE_SIZE 1 << LINE_BITS
 #define LINE_DATA 64
 #include "nemu.h"
 #include "memory.h"
@@ -25,8 +25,8 @@ typedef union
     struct
     {
         uint32_t offset : BLOCK_BITS;
-        uint32_t set_index : (LINE_BITS - SET_BITS);
-        uint32_t tag : (32 - (LINE_BITS - SET_BITS) - BLOCK_BITS);
+        uint32_t set_index : SET_BITS;
+        uint32_t tag : (32 - SET_BITS - BLOCK_BITS);
     };
 
     uint32_t paddr;
