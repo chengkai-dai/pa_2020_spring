@@ -72,14 +72,14 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     else
         replace_index = random_gen(0, SET_CAPACITY - 1);
 
-    CacheLine *replace_line = &cache[SET_CAPACITY * sindex + replace_index];
+    // CacheLine *replace_line = &cache[SET_CAPACITY * sindex + replace_index];
 
-    for (int i = 0; i < LINE_DATA; ++i)
-    {
-        uint32_t replace_data = hw_mem_read(paddr - boffset + i, 1);
-        replace_line->data_block[i] = (uint8_t)(replace_data & 0xff);
-        replace_line->valid_bit = 1;
-    }
+    // for (int i = 0; i < LINE_DATA; ++i)
+    // {
+    //     uint32_t replace_data = hw_mem_read(paddr - boffset + i, 1);
+    //     replace_line->data_block[i] = (uint8_t)(replace_data & 0xff);
+    //     replace_line->valid_bit = 1;
+    // }
 
     uint32_t data = hw_mem_read(paddr, len);
 
