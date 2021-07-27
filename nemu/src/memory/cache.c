@@ -1,10 +1,10 @@
 #include "memory/cache.h"
 #include <stdlib.h>
 
-// static int random_gen(int lower, int upper)
-// {
-//     return (rand() % (upper - lower + 1)) + lower;
-// }
+static int random_gen(int lower, int upper)
+{
+    return (rand() % (upper - lower + 1)) + lower;
+}
 
 static bool cache_hit(paddr_t paddr, CacheLine *line, int *unvalid_bit_index)
 {
@@ -22,9 +22,6 @@ static bool cache_hit(paddr_t paddr, CacheLine *line, int *unvalid_bit_index)
         // cache hit
         if (cur->valid_bit && tag == cur->tag)
         {
-            printf("SET_CAPACITY * sindex + i= %d\n",SET_CAPACITY * sindex + i);
-            printf("sindex %d\n",sindex);
-            printf("cur->valid_bit %d\n",cur->valid_bit);
             line = cur;
             return true;
         }
@@ -59,7 +56,6 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 
     if (cache_hit(paddr, line, &unvalid_bit_index))
     {
-        printf("cache hit during reading\n");
         uint32_t data = 0;
         memcpy(&data, &line->data_block[boffset], len);
         free(line);
@@ -67,25 +63,25 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     }
 
     // if cache not hit, replace the data block to cache
-    // int replace_index;
+    int replace_index;
 
-    // if (unvalid_bit_index != INT32_MAX)
-    //     replace_index = unvalid_bit_index;
-    // else
-    //     replace_index = random_gen(0, SET_CAPACITY - 1);
+    if (unvalid_bit_index != INT32_MAX)
+        replace_index = unvalid_bit_index;
+    else
+        replace_index = random_gen(0, SET_CAPACITY - 1);
 
-    // CacheLine *replace_line = &cache[SET_CAPACITY * sindex + replace_index];
+    CacheLine *replace_line = &cache[SET_CAPACITY * sindex + replace_index];
 
-    // for (int i = 0; i < LINE_DATA; ++i)
-    // {
-    //     uint32_t replace_data = hw_mem_read(paddr - boffset + i, 1);
-    //     replace_line->data_block[i] = (uint8_t)(replace_data & 0xff);
-    //     replace_line->valid_bit = 1;
-    // }
+    for (int i = 0; i < LINE_DATA; ++i)
+    {
+        uint32_t replace_data = hw_mem_read(paddr - boffset + i, 1);
+        replace_line->data_block[i] = (uint8_t)(replace_data & 0xff);
+        replace_line->valid_bit = 1;
+    }
 
     uint32_t data = hw_mem_read(paddr, len);
 
-    // free(line);
+    free(line);
 
     return data;
 }
