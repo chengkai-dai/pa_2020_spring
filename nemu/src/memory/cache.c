@@ -3,10 +3,10 @@
 
 CacheLine cache[LINE_SIZE];
 
-static int random_gen(int lower, int upper)
-{
-    return (rand() % (upper - lower + 1)) + lower;
-}
+// static int random_gen(int lower, int upper)
+// {
+//     return (rand() % (upper - lower + 1)) + lower;
+// }
 
 static bool cache_hit(paddr_t paddr, CacheLine *line, int *unvalid_bit_index)
 {
