@@ -33,11 +33,15 @@ uint32_t paddr_read(paddr_t paddr, size_t len)
 	// 	printf("output fail\n");
 	// 	exit(0);
 	// }
+	// else{
+	// 	printf("output success\n");
+	// }
 	return ret;
 }
 
 void paddr_write(paddr_t paddr, size_t len, uint32_t data)
 {
+	//printf("cache write to 0x%x with %d bytes of 0x%x\n", paddr, len, data);
 #ifdef CACHE_ENABLED
 	cache_write(paddr, len, data);
 #else

@@ -1,5 +1,5 @@
 
-testcase/bin/mov:     file format elf32-i386
+./testcase/bin/mov:     file format elf32-i386
 
 
 Disassembly of section .text:
