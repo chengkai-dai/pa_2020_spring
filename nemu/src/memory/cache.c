@@ -58,6 +58,8 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     {
         uint32_t data = 0;
         memcpy(&data, &line->data_block[boffset], len);
+        printf("cache hit during reading, get data 0x%x\n",data);
+
         free(line);
         return data;
     }
@@ -82,6 +84,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     uint32_t data = hw_mem_read(paddr, len);
 
     free(line);
+    free(replace_line);
 
     return data;
 }
