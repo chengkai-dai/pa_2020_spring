@@ -43,7 +43,7 @@ void init_cache()
 
 uint32_t cache_read(paddr_t paddr, size_t len)
 {
-    //printf("cache read from 0x%x with %d bytes of data", paddr, len);
+    printf("cache read from 0x%x with %d bytes of data", paddr, len);
     CacheAddr caddr;
     caddr.paddr = paddr;
 
