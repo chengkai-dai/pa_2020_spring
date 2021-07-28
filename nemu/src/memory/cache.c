@@ -84,7 +84,6 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     uint32_t data = hw_mem_read(paddr, len);
 
     free(line);
-    free(replace_line);
 
     return data;
 }
