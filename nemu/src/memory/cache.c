@@ -16,6 +16,14 @@ static bool cache_hit(paddr_t paddr, CacheLine *line, int *unvalid_bit_index)
     uint32_t tag = caddr.tag;
 
     printf("paddr 0x%x, tag 0x%x, sindex %d\n", paddr, tag, sindex);
+    for (int i = 0; i < SET_CAPACITY; ++i)
+    {
+        if (!cache[SET_CAPACITY * sindex + i].valid_bit){
+                *unvalid_bit_index = i;
+                break;
+        }
+    }
+                
 
     //check cache hit or not
     for (int i = 0; i < SET_CAPACITY; ++i)
@@ -26,12 +34,6 @@ static bool cache_hit(paddr_t paddr, CacheLine *line, int *unvalid_bit_index)
         {
             line = cur;
             return true;
-        }
-        else
-        {
-            if (!cur->valid_bit)
-                *unvalid_bit_index = i;
-            continue;
         }
     }
     return false;
