@@ -76,7 +76,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     else
         replace_index = random_gen(0, SET_CAPACITY - 1);
     
-    printf("replace index %d",replace_index);
+    printf("replace index %d\n",replace_index);
 
     CacheLine *replace_line = &cache[SET_CAPACITY * sindex + replace_index];
 
