@@ -81,7 +81,7 @@ uint32_t cache_read(paddr_t paddr, size_t len)
     }
 
     int low_len = LINE_DATA - boffset;
-    uint32_t low_data=0, high_data=0;
+    uint32_t low_data = 0, high_data = 0;
     switch (flag)
     {
     case 0: // cache miss and cross line (modify two lines of data in cache, read from hw)
@@ -135,7 +135,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
         printf("CACHE WRITE CASE: cache hit and cross line not implemented\n");
         exit(-1);
         break;
-    default:// cache hit and within line  (modify the corresponding cache)
+    default: // cache hit and within line  (modify the corresponding cache)
         memcpy(&cache[line_index].data_block[boffset], &data, len);
         break;
     }
