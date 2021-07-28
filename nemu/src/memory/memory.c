@@ -37,7 +37,7 @@ uint32_t paddr_read(paddr_t paddr, size_t len)
 
 	uint32_t test = hw_mem_read(paddr,len);
 	if(ret!=test){
-		printf("output fail\n");
+		printf("output2 fail\n");
 		exit(-1);
 	}
 	// else{
