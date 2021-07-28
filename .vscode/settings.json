@@ -28,6 +28,7 @@
         "stos.h": "c",
         "sstream": "c",
         "memory.h": "c",
-        "cache.h": "c"
+        "cache.h": "c",
+        "string": "c"
     }
 }
