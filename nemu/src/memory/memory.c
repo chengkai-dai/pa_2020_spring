@@ -25,6 +25,12 @@ uint32_t paddr_read(paddr_t paddr, size_t len)
 	uint32_t ret = 0;
 #ifdef CACHE_ENABLED
 	ret = cache_read(paddr, len);
+	uint32_t ret2 = cache_read(paddr, len);
+	if(ret!=ret2){
+		printf("output fail\n");
+		exit(-1);
+	}
+
 #else
 	ret = hw_mem_read(paddr, len);
 #endif
