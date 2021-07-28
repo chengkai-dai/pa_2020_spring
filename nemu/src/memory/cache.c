@@ -15,6 +15,8 @@ static bool cache_hit(paddr_t paddr, CacheLine *line, int *unvalid_bit_index)
     int sindex = (int)caddr.set_index;
     uint32_t tag = caddr.tag;
 
+    printf("paddr 0x%x, tag 0x%x, sindex %d\n", paddr, tag, sindex);
+
     //check cache hit or not
     for (int i = 0; i < SET_CAPACITY; ++i)
     {
@@ -71,6 +73,8 @@ uint32_t cache_read(paddr_t paddr, size_t len)
         replace_index = unvalid_bit_index;
     else
         replace_index = random_gen(0, SET_CAPACITY - 1);
+    
+    printf("replace index %d",replace_index);
 
     CacheLine *replace_line = &cache[SET_CAPACITY * sindex + replace_index];
 
