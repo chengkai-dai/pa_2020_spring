@@ -30,13 +30,13 @@ uint32_t paddr_read(paddr_t paddr, size_t len)
 	ret = hw_mem_read(paddr, len);
 #endif
 
-	uint32_t test = hw_mem_read(paddr, len);
-	if (ret != test)
-	{
-		printf("cache read from 0x%x with %d bytes of data\n", paddr, len);
-		printf("output2 fail ret 0x%x ret2 0x%x\n", ret, test);
-		exit(-1);
-	}
+	// uint32_t test = hw_mem_read(paddr, len);
+	// if (ret != test)
+	// {
+	// 	printf("cache read from 0x%x with %d bytes of data\n", paddr, len);
+	// 	printf("output mismatch ret 0x%x ground_truth 0x%x\n", ret, test);
+	// 	exit(-1);
+	// }
 	return ret;
 }
 
