@@ -27,11 +27,42 @@ static bool cache_hit(paddr_t paddr, int *line_index, int *unvalid_bit_index)
     //check cache hit or not
     for (int i = 0; i < SET_CAPACITY; ++i)
     {
+        
         CacheLine cur = cache[SET_CAPACITY * sindex + i];
+        // if(paddr==0x1000cc){
+            
+        //     if(SET_CAPACITY * sindex + i==434){
+        //         printf("paddr 0x1000cc\n");
+        //         printf("line 434 tag bit 0x%x\n", cur.tag);
+        //         printf("paddr tag bit 0x%x\n", tag);
+        //         printf("line 434 valid bit 0x%x\n", cur.valid_bit);
+                
+        //     }
+        //     if(SET_CAPACITY * sindex + i==435){
+        //         printf("paddr 0x1000cc\n");
+        //         printf("line 435 tag bit 0x%x\n", cur.tag);
+        //         printf("paddr tag bit 0x%x\n", tag);
+        //         printf("line 435 valid bit 0x%x\n", cur.valid_bit);
+                
+        //     }
+        // }
         // cache hit
         if (cur.valid_bit && tag == cur.tag)
         {
             *line_index = SET_CAPACITY * sindex + i;
+            // if(paddr==0x1000cc){
+            // if (*line_index==434)
+            // {
+            //     printf("line 434 tag bit 0x%x\n", tag);
+            //     printf("line 434 valid bit 0x%x\n", tag);
+            // }
+
+            // if (*line_index == 435)
+            // {
+            //     printf("line 435 tag bit 0x%x\n", tag);
+            //     printf("line 435 valid bit 0x%x\n", tag);
+            // }
+            // }
             return true;
         }
     }
@@ -82,29 +113,146 @@ uint32_t cache_read(paddr_t paddr, size_t len)
 
     int low_len = LINE_DATA - boffset;
     uint32_t low_data = 0, high_data = 0;
+
+    // CacheAddr caddr_end;
+    // caddr_end.paddr = paddr+len-1;
+    // int sindex_end = (int)caddr_end.set_index;
+    // if(sindex_end!=sindex){
+    //     printf("sindex_change\n");
+    //     exit(-1);
+    // }
     switch (flag)
     {
     case 0: // cache miss and cross line (modify two lines of data in cache, read from hw)
-        replace_line_data(line_index, paddr - boffset, tag);
+        if (paddr + len)
+            replace_line_data(line_index, paddr - boffset, tag);
         replace_line_data(line_index + 1, paddr - boffset + LINE_DATA, tag);
         memcpy(&low_data, &cache[line_index].data_block[boffset], low_len);
         memcpy(&high_data, &cache[line_index + 1].data_block[0], len - low_len);
         data = high_data << (8 * low_len) | low_data;
+        if (line_index == 435)
+        {
+            printf("cache miss and cross line in line 435\n");
+            printf("cache read from 0x%x with %d bytes of data\n", paddr, len);
+        }
+        if (line_index == 434)
+        {
+            printf("cache miss and cross line in line 434\n");
+            printf("cache read from 0x%x with %d bytes of data\n", paddr, len);
+
+            printf("cache data 434\n");
+            for (int i = 0; i < LINE_DATA; ++i)
+            {
+                printf("%x ", cache[line_index].data_block[i]);
+            }
+            printf("cache data 435\n");
+            for (int i = 0; i < LINE_DATA; ++i)
+            {
+                printf("%x ", cache[line_index+1].data_block[i]);
+            }
+            printf("\n");
+        }
         break;
     case 1: // cache miss and within line (modify current line of data, read from hw)
+        if (line_index == 435 || line_index == 434)
+        {
+            printf("cache miss and within line in line %d\n", line_index);
+            printf("cache read from 0x%x with %d bytes of data\n", paddr, len);
+
+            printf("change before\n");
+            for (int i = 0; i < LINE_DATA; ++i)
+            {
+                printf("%x ", cache[line_index].data_block[i]);
+            }
+            printf("\n");
+        }
         replace_line_data(line_index, paddr - boffset, tag);
         memcpy(&data, &cache[line_index].data_block[boffset], len);
+        if (line_index == 435)
+        {
+            printf("change after\n");
+            for (int i = 0; i < LINE_DATA; ++i)
+            {
+                printf("%x ", cache[line_index].data_block[i]);
+            }
+            printf("\n");
+        }
         break;
     case 2: // cache hit and cross line (modify next line of data and read from cache)
         replace_line_data(line_index + 1, paddr - boffset + LINE_DATA, tag);
         memcpy(&low_data, &cache[line_index].data_block[boffset], low_len);
         memcpy(&high_data, &cache[line_index + 1].data_block[0], len - low_len);
         data = high_data << (8 * low_len) | low_data;
+        if (line_index == 435)
+        {
+            printf("cache hit and cross line in line 435\n");
+            printf("cache read from 0x%x with %d bytes of data\n", paddr, len);
+        }
+        if (line_index == 434)
+        {
+            printf(" cache hit and cross line in line 434\n");
+            printf("boffset %d\n", boffset);
+
+            printf("cache read from 0x%x with %d bytes of data\n", paddr, len);
+
+            printf("cache data 434 tag 0x%x\n",cache[line_index].tag);
+            for (int i = 0; i < LINE_DATA; ++i)
+            {
+                printf("%x ", cache[line_index].data_block[i]);
+            }
+            printf("\n");
+            printf("cache data 435\n");
+            for (int i = 0; i < LINE_DATA; ++i)
+            {
+                printf("%x ", cache[line_index+1].data_block[i]);
+            }
+            printf("\n");
+            printf("hw data from 0x%x\n",paddr - boffset+LINE_DATA);
+            for (int i = 0; i < LINE_DATA; ++i)
+            {
+                printf("%x ", hw_mem_read(paddr - boffset + i+LINE_DATA, 1));
+            }
+            printf("\n");
+        }
         break;
     default:
         memcpy(&data, &cache[line_index].data_block[boffset], len);
+        if (line_index == 435)
+        {
+            printf("cache hit and within line in line 435\n");
+            printf("cache read from 0x%x with %d bytes of data\n", paddr, len);
+        }
+        if (data == 0x89 && paddr == 0x1000cc)
+        {
+            printf("line index %d\n", line_index);
+            printf("boffset %d\n", boffset);
+            printf("tag 0x%x\n", tag);
+            printf("sindex %d\n", sindex);
+            printf("line start %d\n", SET_CAPACITY * sindex);
+            printf("cache previous line data %d\n",line_index-1);
+            printf("cache previous line tag 0x%x\n",cache[line_index-1].tag);
+            for (int i = 0; i < LINE_DATA; ++i)
+            {
+                printf("%x ", cache[line_index-1].data_block[i]);
+            }
+            printf("\n");
+            printf("cache data\n");
+        
+            for (int i = 0; i < LINE_DATA; ++i)
+            {
+                printf("%x ", cache[line_index].data_block[i]);
+            }
+            printf("\n");
+            printf("hw data from 0x%x\n", paddr - boffset);
+            for (int i = 0; i < LINE_DATA; ++i)
+            {
+                printf("%x ", hw_mem_read(paddr - boffset + i, 1));
+            }
+            printf("\n");
+        }
         break;
     }
+
     return data;
 }
 
@@ -124,6 +272,11 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data)
     bool hit = cache_hit(paddr, &line_index, &unvalid_bit_index);
     bool within_line = (boffset + len) <= LINE_DATA;
     uint8_t flag = hit << 1 | within_line;
+
+    if (line_index == 435)
+    {
+        printf("cache write to 0x%x with %d bytes of 0x%x\n", paddr, len, data);
+    }
 
     switch (flag)
     {
