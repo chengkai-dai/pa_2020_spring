@@ -29,5 +29,5 @@ make_instr_func(js_short_);
 make_instr_func(jae_short_);
 make_instr_func(ja_short_);
 make_instr_func(jb_short_);
-
+make_instr_func(jmp_far_imm);
 #endif

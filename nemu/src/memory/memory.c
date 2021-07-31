@@ -63,13 +63,23 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 uint32_t vaddr_read(vaddr_t vaddr, uint8_t sreg, size_t len)
 {
 	assert(len == 1 || len == 2 || len == 4);
-	return laddr_read(vaddr, len);
+#ifdef IA32_SEG
+	laddr_t laddr = segment_translate(vaddr,sreg);
+	return laddr_read(laddr, len);
+#else
+    return laddr_read(vaddr, len);
+#endif
 }
 
 void vaddr_write(vaddr_t vaddr, uint8_t sreg, size_t len, uint32_t data)
 {
 	assert(len == 1 || len == 2 || len == 4);
-	laddr_write(vaddr, len, data);
+#ifdef IA32_SEG
+	laddr_t laddr = segment_translate(vaddr,sreg);
+	laddr_write(laddr, len, data);
+#else
+    laddr_write(vaddr, len);
+#endif
 }
 
 void init_mem()

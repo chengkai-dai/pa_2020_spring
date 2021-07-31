@@ -1,5 +1,5 @@
 #include "cpu/instr.h"
-
+#include <stdlib.h>
 make_instr_func(jmp_near)
 {
         OPERAND rel;
@@ -44,19 +44,38 @@ make_instr_func(jmp_near_indirect)
         int len = 1;
         OPERAND ind;
         ind.data_size = data_size;
+        ind.sreg = SREG_CS;
         len += modrm_rm(eip + 1, &ind);
         operand_read(&ind);
         int dest = sign_ext(ind.val, data_size);
-        // printf("offset indirect 0x%x\n", offset);
-        // printf("ind.mem_addr.base 0x%x\n", ind.mem_addr.base);
-        // printf("ind.mem_addr.disp 0x%x\n", ind.mem_addr.disp);
-        // printf("ind.mem_addr.index 0x%x\n", ind.mem_addr.index);
-        // printf("ind.mem_addr.scale 0x%x\n", ind.mem_addr.scale);
-
-        // printf("edx val 0x%x\n", cpu.edx);
-        // printf("eip 0x%x\n", cpu.eip);
-
         cpu.eip = dest;
         return 0;
+}
 
+make_instr_func(jmp_far_imm){        
+#ifdef IA32_SEG    
+        int len = 1;
+        OPERAND ptr1, ptr2;
+        ptr1.data_size = 16;
+        ptr2.data_size = data_size;
+        ptr1.type = ptr2.type = OPR_IMM;
+        ptr1.sreg = ptr2.sreg = SREG_CS;
+        ptr2.addr = eip + 1;
+        ptr1.addr = eip + 1 + data_size/8;
+
+        print_asm_2("ljmp","",2,&ptr1,&ptr2);
+
+        operand_read(&ptr1);
+        operand_read(&ptr2);
+        len += 2 + data_size/8;
+        
+        cpu.eip = ptr2.val;
+        cpu.segReg[SREG_CS].val = ptr1.val;
+        
+        load_sreg(SREG_CS);
+        
+        return 0;       
+#else
+        printf("please implement ljmp\n");assert(0);
+#endif
 }

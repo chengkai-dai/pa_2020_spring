@@ -29,6 +29,7 @@
         "sstream": "c",
         "memory.h": "c",
         "cache.h": "c",
-        "string": "c"
+        "string": "c",
+        "cmps.h": "c"
     }
 }
