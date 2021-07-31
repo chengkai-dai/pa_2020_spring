@@ -12,17 +12,22 @@ make_instr_func(pop_r_v)
     //get the content on stack memory
     OPERAND r, sr;
     sr.type = OPR_MEM;
+    sr.sreg = SREG_SS;
     sr.addr = cpu.esp;
     sr.data_size = data_size;
     operand_read(&sr);
 
     r.type = OPR_REG;
+    r.sreg = SREG_DS;
     r.addr = opcode & 0x7;
     r.data_size = data_size;
     r.val = sr.val;
     operand_write(&r);
 
     // step 2
+    print_asm_1("pop", " ",len, &r);
+
+    
 
     cpu.esp += data_size / 8;
 

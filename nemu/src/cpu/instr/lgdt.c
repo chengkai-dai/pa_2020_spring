@@ -21,14 +21,6 @@ OPERAND for_base(uint32_t addr)
     return base;
 }
 
-void lgdt_choose(OPERAND limit, OPERAND base)
-{
-    cpu.gdtr.limit = limit.val;
-    if (data_size == 16)
-        cpu.gdtr.base = base.val & 0x00ffffff;
-    else
-        cpu.gdtr.base = base.val;
-}
 
 make_instr_func(lgdt)
 {
@@ -41,7 +33,11 @@ make_instr_func(lgdt)
     OPERAND base = for_base(addr);
     operand_read(&limit);
     operand_read(&base);
-    lgdt_choose(limit, base);
+    cpu.gdtr.limit = limit.val;
+    if (data_size == 16)
+        cpu.gdtr.base = base.val & 0x00ffffff;
+    else
+        cpu.gdtr.base = base.val;
     print_asm_1("lgdt", "", 2, &opr_src);
 
     return len;

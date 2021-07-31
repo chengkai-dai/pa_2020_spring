@@ -48,6 +48,7 @@ make_instr_func(jmp_near_indirect)
         len += modrm_rm(eip + 1, &ind);
         operand_read(&ind);
         int dest = sign_ext(ind.val, data_size);
+        print_asm_1("jmp", "", len, &ind);
         cpu.eip = dest;
         return 0;
 }
@@ -73,7 +74,7 @@ make_instr_func(jmp_far_imm){
         cpu.segReg[SREG_CS].val = ptr1.val;
         
         load_sreg(SREG_CS);
-        
+
         return 0;       
 #else
         printf("please implement ljmp\n");assert(0);

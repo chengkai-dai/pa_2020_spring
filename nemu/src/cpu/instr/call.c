@@ -18,6 +18,7 @@ make_instr_func(call_near)
     rsp.addr = cpu.esp;
     rsp.data_size = data_size;
     rsp.val = eip + len;
+    rsp.sreg = SREG_SS;
 
     operand_write(&rsp);
 
@@ -34,7 +35,7 @@ make_instr_func(call_near)
 
     int offset = sign_ext(rel.val, data_size);
     cpu.eip += offset;
-
+    print_asm_1("call", "", len, &rel);
     return len;
 }
 
@@ -58,7 +59,7 @@ make_instr_func(call_near_indirect)
     rsp.addr = cpu.esp;
     rsp.data_size = data_size;
     rsp.val = eip + len;
-
+    rsp.sreg = SREG_SS;
     operand_write(&rsp);
 
     //step 3
@@ -70,6 +71,7 @@ make_instr_func(call_near_indirect)
     operand_read(&ind);
     int dest = sign_ext(ind.val, data_size);
     cpu.eip = dest;
+    print_asm_1("call", "", len, &ind);
 
     return 0;
 }

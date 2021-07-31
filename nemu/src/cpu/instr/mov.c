@@ -171,6 +171,9 @@ make_instr_func(mov_c2r_l)
 
         operand_write(&rm);
 
+        print_asm_2("movc", "", len, &c, &rm);
+
+
         return len;
 #else
         printf("please implement mov_c2r_l\n");
@@ -200,6 +203,9 @@ make_instr_func(mov_r2c_l){
         c.val=rm.val;
 
         operand_write(&c);
+
+        print_asm_2("movc", "", len, &rm, &c);
+
 
         return len;
 #else

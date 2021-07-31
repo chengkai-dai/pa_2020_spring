@@ -8,6 +8,6 @@ make_instr_func(lea)
     r.data_size=data_size;
     r.val = rm.addr;
     operand_write(&r);
-
+    print_asm_2("lea","",len, &rm,&r);
     return len;
 }
