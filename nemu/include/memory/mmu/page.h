@@ -9,6 +9,17 @@
 #define NR_PTE 1024
 #define PD_SIZE ((NR_PTE) * (PAGE_SIZE))
 
+typedef union PageAddrType
+{
+	struct
+	{
+		uint32_t page_offset : 12;
+		uint32_t pt_index : 10;
+		uint32_t pdir_index : 10;
+	};
+	uint32_t val;
+} pa_t;
+
 #define PAGE_MASK (PAGE_SIZE - 1)
 
 /* force the data to be aligned with page boundary.
@@ -16,7 +27,8 @@
 #define align_to_page __attribute((aligned(PAGE_SIZE)))
 
 /* the 32bit Page Directory(first level page table) data structure */
-typedef union PageDirectoryEntry {
+typedef union PageDirectoryEntry
+{
 	struct
 	{
 		uint32_t present : 1;
@@ -32,7 +44,8 @@ typedef union PageDirectoryEntry {
 } PDE;
 
 /* the 32bit Page Table Entry(second level page table) data structure */
-typedef union PageTableEntry {
+typedef union PageTableEntry
+{
 	struct
 	{
 		uint32_t present : 1;

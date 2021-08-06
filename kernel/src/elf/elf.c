@@ -39,9 +39,13 @@ uint32_t loader()
 		{
 
 			// remove this panic!!!
-			// panic("Please implement the loader");
+			//panic("Please implement the loader");
+#ifdef IA32_PAGE
+			ph->p_vaddr = mm_malloc(ph->p_vaddr, ph->p_memsz);
+#endif
+
 			memcpy((void *)ph->p_vaddr, (void *)ph->p_offset, ph->p_memsz);
-			
+
 			if (ph->p_memsz > ph->p_filesz)
 				memset((void *)ph->p_vaddr + ph->p_filesz, 0, (ph->p_memsz - ph->p_filesz));
 

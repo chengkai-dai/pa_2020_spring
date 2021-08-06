@@ -19,7 +19,6 @@ void init_page(void)
 
 	/* make all PDE invalid */
 	memset(pdir, 0, NR_PDE * sizeof(PDE));
-
 	/* fill PDEs and PTEs */
 	pframe_idx = 0;
 	for (pdir_idx = 0; pdir_idx < PHY_MEM / PT_SIZE; pdir_idx++)
@@ -33,7 +32,6 @@ void init_page(void)
 			ptable++;
 		}
 	}
-
 	/* make CR3 to be the entry of page directory */
 	cr3.val = 0;
 	cr3.page_directory_base = ((uint32_t)pdir) >> 12;

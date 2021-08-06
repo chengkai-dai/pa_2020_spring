@@ -24,6 +24,7 @@ void mm_brk(uint32_t new_brk)
 
 void init_mm()
 {
+ 
 	PDE *kpdir = get_kpdir();
 
 	/* make all PDE invalid */

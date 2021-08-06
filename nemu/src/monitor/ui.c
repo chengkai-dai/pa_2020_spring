@@ -2,6 +2,7 @@
 #include "monitor/ui.h"
 #include "monitor/breakpoint.h"
 #include "cpu/cpu.h"
+#include "memory/memory.h"
 
 #include <stdlib.h>
 #include <readline/readline.h>
@@ -232,7 +233,6 @@ cmd_handler(cmd_x)
 		}
 	}
 	int32_t num_4bytes = (int32_t)strtol(args1, NULL, 10);
-	printf("num_4bytes %d\n", num_4bytes);
 
 	//parse the second argument, the actual addr for the memory data
 	char *args2 = args + strlen(args1) + 1;
@@ -244,7 +244,12 @@ cmd_handler(cmd_x)
 	}
 	else
 	{
-		printf("addr %d\n", addr);
+		printf("addr 0x%x\n", addr);
+		for(int i=0;i<num_4bytes;++i){
+			uint32_t val=paddr_read(addr+4*i,4);
+			printf("0x%x ",val);
+		}
+		printf("\n");
 	}
 
 	return 0;

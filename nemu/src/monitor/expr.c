@@ -18,7 +18,8 @@ enum
 	NUM,
 	REG,
 	SYMB,
-	VAR
+	VAR,
+	HEX
 
 	/* TODO: Add more token types */
 
@@ -36,6 +37,7 @@ static struct rule
 
 	{" +", NOTYPE}, // white space
 	{"\\+", '+'},
+	{"0[xX][0-9a-fA-F]+", HEX},
 	{"[0-9]{1,10}", NUM},
 	{"-", '-'},
 	{"\\*", '*'},
@@ -137,6 +139,7 @@ static bool make_token(char *e)
 		}
 	}
 
+
 	return true;
 }
 
@@ -214,10 +217,10 @@ static bool valid_expr(int s, int e)
 	//step 1: check lexical exception
 	for (int i = s; i <= e; i++)
 	{
-		if (i > s && (tokens[i].type == NUM || tokens[i].type == VAR) && tokens[i - 1].type == ')')
+		if (i > s && (tokens[i].type == NUM || tokens[i].type == HEX || tokens[i].type == VAR) && tokens[i - 1].type == ')')
 			return false;
 
-		if (i < e && (tokens[i].type == NUM || tokens[i].type == VAR) && tokens[i + 1].type == '(')
+		if (i < e && (tokens[i].type == NUM || tokens[i].type == HEX || tokens[i].type == VAR) && tokens[i + 1].type == '(')
 			return false;
 	}
 
@@ -280,6 +283,9 @@ static uint32_t eval(int s, int e, bool *success)
 			// printf("varible %s\n", tokens[s].str);
 			val = get_varible(tokens[s].str, success);
 		}
+
+		else if (tokens[s].type == HEX)
+			val = (uint32_t)strtol(tokens[s].str, NULL, 0);
 	}
 	else
 	{
@@ -326,6 +332,7 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
+
 
 	uint32_t val = eval(0, nr_token - 1, success);
 

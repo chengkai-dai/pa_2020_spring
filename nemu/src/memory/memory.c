@@ -52,22 +52,51 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data)
 
 uint32_t laddr_read(laddr_t laddr, size_t len)
 {
-	return paddr_read(laddr, len);
+	if (cpu.cr0.pg && cpu.cr0.pe)
+	{
+		// printf("read vddr 0x%x pddr 0x%x\n",laddr,page_translate(laddr));
+		
+		if (laddr + len > (((laddr >> 12) << 12) + (1 << 12)))
+		{
+			printf("read data cross the page boundary, please implement to handle\n");
+			assert(0);
+		}
+		else
+		{
+			return paddr_read(page_translate(laddr), len);
+		}
+	}
+	else
+		return paddr_read(laddr, len);
 }
 
 void laddr_write(laddr_t laddr, size_t len, uint32_t data)
 {
-	paddr_write(laddr, len, data);
+	if (cpu.cr0.pg && cpu.cr0.pe)
+	{
+		// printf("write vddr 0x%x pddr 0x%x\n",laddr,page_translate(laddr));
+		if (laddr + len > (((laddr >> 12) << 12) + (1 << 12)))
+		{
+			printf("write data cross the page boundary, please implement to handle\n");
+			assert(0);
+		}
+		else
+		{
+			return paddr_write(page_translate(laddr), len, data);
+		}
+	}
+	else
+		paddr_write(laddr, len, data);
 }
 
 uint32_t vaddr_read(vaddr_t vaddr, uint8_t sreg, size_t len)
 {
 	assert(len == 1 || len == 2 || len == 4);
 #ifdef IA32_SEG
-	laddr_t laddr = segment_translate(vaddr,sreg);
+	laddr_t laddr = segment_translate(vaddr, sreg);
 	return laddr_read(laddr, len);
 #else
-    return laddr_read(vaddr, len);
+	return laddr_read(vaddr, len);
 #endif
 }
 
@@ -75,10 +104,10 @@ void vaddr_write(vaddr_t vaddr, uint8_t sreg, size_t len, uint32_t data)
 {
 	assert(len == 1 || len == 2 || len == 4);
 #ifdef IA32_SEG
-	laddr_t laddr = segment_translate(vaddr,sreg);
+	laddr_t laddr = segment_translate(vaddr, sreg);
 	laddr_write(laddr, len, data);
 #else
-    laddr_write(vaddr, len, data);
+	laddr_write(vaddr, len, data);
 #endif
 }
 

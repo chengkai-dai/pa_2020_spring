@@ -30,6 +30,10 @@
         "memory.h": "c",
         "cache.h": "c",
         "string": "c",
-        "cmps.h": "c"
+        "cmps.h": "c",
+        "string.h": "c",
+        "stdlib.h": "c",
+        "readline.h": "c",
+        "cpu.h": "c"
     }
 }

@@ -5,10 +5,35 @@
 paddr_t page_translate(laddr_t laddr)
 {
 #ifndef TLB_ENABLED
-	printf("\nPlease implement page_translate()\n");
-	assert(0);
+	return page_walk(laddr);
+	
 #else
 	return tlb_read(laddr) | (laddr & PAGE_MASK);
 	;
 #endif
+}
+
+paddr_t page_walk(laddr_t laddr)
+{
+	pa_t addr = {.val = (uint32_t)laddr};
+
+	uint32_t pdir_index=addr.pdir_index;
+
+	PDE pdir;
+	paddr_t pdir_base = cpu.cr3.page_directory_base << 12;
+
+	pdir.val = paddr_read(pdir_base + pdir_index*4, 4);
+
+	assert(pdir.present==1);
+
+	PTE pt;
+	paddr_t pt_base = pdir.page_frame << 12;
+	uint32_t pt_index = addr.pt_index;
+	pt.val=	paddr_read(pt_base + pt_index*4, 4);
+
+	assert(pt.present==1);
+	uint32_t ppn= pt.page_frame;
+
+	return ppn<<12 | addr.page_offset;
+
 }
