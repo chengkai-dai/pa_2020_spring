@@ -34,6 +34,16 @@
         "string.h": "c",
         "stdlib.h": "c",
         "readline.h": "c",
-        "cpu.h": "c"
+        "cpu.h": "c",
+        "elf.h": "c",
+        "group.h": "c",
+        "lgdt.h": "c",
+        "instr_helper.h": "c",
+        "int.h": "c",
+        "pusha.h": "c",
+        "popa.h": "c",
+        "i8259_pic.h": "c",
+        "iret.h": "c",
+        "stdio.h": "c"
     }
 }

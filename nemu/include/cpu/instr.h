@@ -7,6 +7,8 @@
 #include "cpu/modrm.h"
 #include "cpu/operand.h"
 #include "cpu/instr_helper.h"
+#include "cpu/intr.h"
+
 #include "memory/memory.h"
 #include <stdio.h>
 #include <cpu-ref/instr_ref.h>
@@ -46,6 +48,15 @@ extern uint8_t data_size;
 #include "cpu/instr/stos.h"
 #include "cpu/instr/cmps.h"
 #include "cpu/instr/lgdt.h"
+#include "cpu/instr/cli.h"
+#include "cpu/instr/lidt.h"
+#include "cpu/instr/sti.h"
+#include "cpu/instr/int.h"
+#include "cpu/instr/pusha.h"
+#include "cpu/instr/popa.h"
+#include "cpu/instr/iret.h"
+#include "cpu/instr/neg.h"
+
 /* TODO: add more instructions here */
 
 #endif

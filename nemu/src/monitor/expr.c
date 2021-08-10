@@ -108,7 +108,7 @@ static bool make_token(char *e)
 				char *substr_start = e + position;
 				int substr_len = pmatch.rm_eo;
 
-				//printf("match regex[%d] at position %d with len %d: %.*s\n", i, position, substr_len, substr_len, substr_start);
+				// printf("match regex[%d] at position %d with len %d: %.*s\n", i, position, substr_len, substr_len, substr_start);
 				position += substr_len;
 
 				/* TODO: Now a new token is recognized with rules[i]. 
@@ -276,16 +276,18 @@ static uint32_t eval(int s, int e, bool *success)
 	}
 	else if (s == e)
 	{
-		if (tokens[s].type == NUM)
+		if (tokens[s].type == NUM){
 			val = atoi(tokens[s].str);
+		}
 		else if (tokens[s].type == VAR)
 		{
-			// printf("varible %s\n", tokens[s].str);
 			val = get_varible(tokens[s].str, success);
 		}
 
-		else if (tokens[s].type == HEX)
-			val = (uint32_t)strtol(tokens[s].str, NULL, 0);
+		else if (tokens[s].type == HEX){
+			val = (uint32_t)strtoul(tokens[s].str, NULL, 0);
+
+		}
 	}
 	else
 	{
@@ -332,7 +334,6 @@ uint32_t expr(char *e, bool *success)
 		*success = false;
 		return 0;
 	}
-
 
 	uint32_t val = eval(0, nr_token - 1, success);
 

@@ -1,6 +1,5 @@
 #include "common.h"
 #include "x86.h"
-
 #define NR_IRQ_HANDLE 32
 
 /* There are no more than 16(actually, 3) kinds of hardward interrupts. */
@@ -50,11 +49,15 @@ void irq_handle(TrapFrame *tf)
 	{
 		int irq_id = irq - 1000;
 		assert(irq_id < NR_HARD_INTR);
-		if (irq_id == 0)
-			panic("You have hit a timer interrupt, remove this panic after you've figured out how the control flow gets here.");
+
+		// if (irq_id == 0)
+		// 	panic("You have hit a timer interrupt, remove this panic after you've figured out how the control flow gets here.");
 
 		struct IRQ_t *f = handles[irq_id];
-
+		bool is_n = (f == NULL);
+		if(is_n)
+			assert(0);
+		
 		while (f != NULL)
 		{ /* call handlers one by one */
 			f->routine();

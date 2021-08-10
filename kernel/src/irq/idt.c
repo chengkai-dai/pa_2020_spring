@@ -86,7 +86,6 @@ void init_idt()
 	set_intr(idt + 32 + 1, SEG_KERNEL_CODE << 3, (uint32_t)irq1, DPL_KERNEL);   // keyboard
 	set_intr(idt + 32 + 2, SEG_KERNEL_CODE << 3, (uint32_t)irq2, DPL_KERNEL);   // audio, experimental
 	set_intr(idt + 32 + 14, SEG_KERNEL_CODE << 3, (uint32_t)irq14, DPL_KERNEL); // ide
-
 	/* the ``idt'' is its virtual address */
 	write_idtr(idt, sizeof(idt));
 	sti();

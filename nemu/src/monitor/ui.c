@@ -246,7 +246,7 @@ cmd_handler(cmd_x)
 	{
 		printf("addr 0x%x\n", addr);
 		for(int i=0;i<num_4bytes;++i){
-			uint32_t val=paddr_read(addr+4*i,4);
+			uint32_t val=laddr_read(addr+4*i,4);
 			printf("0x%x ",val);
 		}
 		printf("\n");

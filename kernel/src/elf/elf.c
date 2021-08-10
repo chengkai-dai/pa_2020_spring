@@ -3,6 +3,7 @@
 #include "string.h"
 
 #include <elf.h>
+#include <stdio.h>
 
 #ifdef HAS_DEVICE_IDE
 #define ELF_OFFSET_IN_DISK 0
@@ -41,7 +42,9 @@ uint32_t loader()
 			// remove this panic!!!
 			//panic("Please implement the loader");
 #ifdef IA32_PAGE
+			//Log("before mm_malloc 0x%x\n",ph->p_vaddr);
 			ph->p_vaddr = mm_malloc(ph->p_vaddr, ph->p_memsz);
+			//Log("after mm_malloc 0x%x\n",ph->p_vaddr);
 #endif
 
 			memcpy((void *)ph->p_vaddr, (void *)ph->p_offset, ph->p_memsz);

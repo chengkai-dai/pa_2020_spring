@@ -59,7 +59,7 @@ void set_PF(uint32_t result)
 
 	result = result & 0xFF;
 	size_t one_bits = 0;
-	
+
 	while (result != 0)
 	{
 		one_bits += result & 0x1;
@@ -223,7 +223,7 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_sub(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	res = dest - sign_ext(src,data_size);
+	res = dest - sign_ext(src, data_size);
 
 	set_CF_sub(src, dest, data_size);
 	set_PF(res);
@@ -241,7 +241,7 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size)
 	return __ref_alu_sbb(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	res = dest - sign_ext(src,data_size);
+	res = dest - sign_ext(src, data_size);
 	if (cpu.eflags.CF == 0)
 		set_CF_sub(src, dest, data_size);
 	else
@@ -320,7 +320,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size)
 
 	set_CF_OF_mul(res, data_size);
 
-	return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size*2));
+	return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size * 2));
 #endif
 }
 
@@ -329,7 +329,7 @@ int64_t alu_imul(int32_t src, int32_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_imul(src, dest, data_size);
 #else
-	int64_t res= (int64_t)src * (int64_t) dest;
+	int64_t res = (int64_t)src * (int64_t)dest;
 
 	return res;
 #endif
@@ -341,9 +341,9 @@ uint32_t alu_div(uint64_t src, uint64_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_div(src, dest, data_size);
 #else
-	assert(src!=0);
-	uint32_t res=0;
-	res=(uint32_t)(dest / src);
+	assert(src != 0);
+	uint32_t res = 0;
+	res = (uint32_t)(dest / src);
 	return res & (0xFFFFFFFF >> (32 - data_size));
 
 #endif
@@ -355,9 +355,9 @@ int32_t alu_idiv(int64_t src, int64_t dest, size_t data_size)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_idiv(src, dest, data_size);
 #else
-	assert(src!=0);
-	int32_t res=0;
-	res=(int32_t)((int64_t)dest / (int64_t)src);
+	assert(src != 0);
+	int32_t res = 0;
+	res = (int32_t)((int64_t)dest / (int64_t)src);
 	return res;
 #endif
 }
@@ -367,8 +367,8 @@ uint32_t alu_mod(uint64_t src, uint64_t dest)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_mod(src, dest);
 #else
-	uint32_t res=0; 
-	res=(uint32_t)dest%src;
+	uint32_t res = 0;
+	res = (uint32_t)dest % src;
 	return res;
 
 #endif
@@ -379,8 +379,8 @@ int32_t alu_imod(int64_t src, int64_t dest)
 #ifdef NEMU_REF_ALU
 	return __ref_alu_imod(src, dest);
 #else
-	int32_t res=0; 
-	res=(int32_t)dest%src;
+	int32_t res = 0;
+	res = (int32_t)dest % src;
 	return res;
 #endif
 }
@@ -518,4 +518,24 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size)
 	set_SF(res, data_size);
 	return res & (0xFFFFFFFF >> (32 - data_size));
 #endif
+}
+
+uint32_t alu_neg(uint32_t src, size_t data_size)
+{
+
+	uint32_t res = 0;
+	res = ~src + 1;
+	if (src == 0)
+		cpu.eflags.CF = 0;
+	else
+		cpu.eflags.CF = 1;
+
+
+	set_OF_add(res, (~src), 1, data_size);
+
+	set_ZF(res, data_size);
+	set_PF(res);
+	set_SF(res, data_size);
+	return res & (0xFFFFFFFF >> (32 - data_size));
+
 }
