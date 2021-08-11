@@ -59,7 +59,7 @@ void irq_handle(TrapFrame *tf)
 		// if(is_n)
 		// 	assert(0);
 		BREAK_POINT
-		Log("eax %x\n",cpu.eax);
+		Log("eax 0x%x\n",cpu.eax);
 		while (f != NULL)
 		{ /* call handlers one by one */
 			f->routine();
