@@ -39,10 +39,8 @@ char translate_key(int scan_code);
 // the keyboard event handler, called when an keyboard interrupt is fired
 void keyboard_event_handler()
 {
-	// Log("keyboard_event_handler\n");
 
 	uint8_t key_pressed = in_byte(0x60);
-	// printf("key_pressed 0x%x\n",key_pressed);
 
 	// translate scan code to ASCII
 	char c = translate_key(key_pressed);
