@@ -33,7 +33,8 @@ void irq_handle(TrapFrame *tf)
 {
 	int irq = tf->irq;
 
-	Log("handle count %d\n",handle_count);
+	Log("handle count %d irq %d\n",handle_count,irq);
+
 	if (irq < 0)
 	{
 		panic("Unhandled exception!");
