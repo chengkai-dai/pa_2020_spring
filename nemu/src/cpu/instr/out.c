@@ -20,11 +20,7 @@ make_instr_func(out_b)
 
     uint32_t out_data = cpu.gpr[0]._8[0] & 0xFF;
 
-    printf("port_no 0x%x\n",port_no);
-    printf("out_data 0x%x\n",out_data);
-
     pio_write(port_no, data_size / 8, out_data);
-    printf("out_data finished\n");
 
     print_asm_0("out al (\%dx)", "", len);
 
