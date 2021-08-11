@@ -47,6 +47,7 @@
         "stdio.h": "c",
         "neg.h": "c",
         "in.h": "c",
-        "port_io.h": "c"
+        "port_io.h": "c",
+        "stdint.h": "c"
     }
 }

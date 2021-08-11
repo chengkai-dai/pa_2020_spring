@@ -1,6 +1,7 @@
 #include "trap.h"
 #include <stdint.h>
 #include <sys/syscall.h>
+#include <stdio.h>
 
 // read a byte from the port
 uint8_t in_byte(uint16_t port)
@@ -54,10 +55,8 @@ void keyboard_event_handler()
 
 int main()
 {
-	// BREAK_POINT
 	// register for keyboard events
 	add_irq_handler(1, keyboard_event_handler);
-	// BREAK_POINT
 	while (1)
 		asm volatile("hlt");
 	return 0;
