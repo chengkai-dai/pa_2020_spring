@@ -39,7 +39,7 @@ make_instr_func(iret)
     operand_read(&imm);
     cpu.eflags.val = imm.val;
 
-    cpu.esp -= 10;
+    cpu.esp += 10;
 
     print_asm_0("iret", "", len);
 
