@@ -48,6 +48,7 @@ paddr_t page_walk(laddr_t laddr)
 		printf("pdir_index 0x%x\n", pdir_index);
 		printf("pt_index 0x%x\n", addr.pt_index);
 		printf("pdir.page_frame 0x%x\n", pdir.page_frame << 12);
+		printf("cpu.eip 0x%x\n", cpu.eip);
 	}
 
 	assert(pt.present == 1);
