@@ -29,7 +29,7 @@ printf("pdir_index 0x%x\n",pdir_index);
 	pdir.val = paddr_read(pdir_base + pdir_index * 4, 4);
 	
 	assert(pdir.present == 1);
-printf("pdir.page_frame 0x%x\n",pdir_index);
+printf("pdir.page_frame 0x%x\n",pdir.page_frame<< 12);
 
 	PTE pt;
 	paddr_t pt_base = pdir.page_frame << 12;
