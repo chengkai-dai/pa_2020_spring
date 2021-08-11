@@ -32,7 +32,6 @@ void add_irq_handle(int irq, void (*func)(void))
 void irq_handle(TrapFrame *tf)
 {
 	int irq = tf->irq;
-Log("irq %d\n",irq);
 	if (irq < 0)
 	{
 		panic("Unhandled exception!");
