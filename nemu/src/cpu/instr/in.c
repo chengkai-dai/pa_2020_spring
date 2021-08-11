@@ -33,7 +33,7 @@ make_instr_func(in_b)
 make_instr_func(in_v)
 {
 #ifdef HAS_DEVICE_SERIAL
-    // EC IN AL,DX
+    // EC IN EAX,DX
 
     // Input byte from port DX into AL
 
@@ -46,11 +46,9 @@ make_instr_func(in_v)
 
     uint32_t in_data = pio_read(port_no, data_size_ / 8);
 
-    // printf("indata 0x%x\n",in_data);
-
     //al reg no.0
 
-    cpu.gpr[0]._8[0] = in_data & 0xFF;
+    cpu.eax= in_data;
 
     print_asm_0("in (\%dx) al", "", len);
 
