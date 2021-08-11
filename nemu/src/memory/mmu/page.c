@@ -26,6 +26,13 @@ paddr_t page_walk(laddr_t laddr)
 
 	pdir.val = paddr_read(pdir_base + pdir_index * 4, 4);
 
+	if (pdir.present != 1)
+	{
+		printf("laddr 0x%x\n", laddr);
+		printf("pdir_index 0x%x\n", pdir_index);
+		printf("pt_index 0x%x\n", addr.pt_index);
+		printf("pdir.page_frame 0x%x\n", pdir.page_frame << 12);
+	}
 	assert(pdir.present == 1);
 
 	PTE pt;
