@@ -53,7 +53,7 @@ cache_fetch(uint32_t sector)
 		/* issue a read command */
 		disk_do_read(&ptr->content, sector);
 
-		Log() 
+		Log("0x%x\n",*(((uint32_t *)&ptr->content) + 0));
 
 		ptr->used = true;
 		ptr->sector = sector;
