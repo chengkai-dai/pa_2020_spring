@@ -36,7 +36,7 @@ void ide_write(uint8_t *buf, uint32_t offset, uint32_t len)
 static void
 ide_writeback(void)
 {
-	printf("aaaa\n");
+	Log("ide_writeback\n");
 	static uint32_t counter = 0;
 	counter++;
 	if (counter == WRITEBACK_TIME * HZ)
@@ -51,6 +51,8 @@ static volatile int has_ide_intr;
 static void
 ide_intr(void)
 {
+		Log("ide_intr\n");
+
 	has_ide_intr = 1;
 }
 
