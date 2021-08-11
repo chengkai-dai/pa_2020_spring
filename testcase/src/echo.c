@@ -1,7 +1,7 @@
 #include "trap.h"
 #include <stdint.h>
 #include <sys/syscall.h>
-#include <stdio.h>
+// #include <stdio.h>
 
 // read a byte from the port
 uint8_t in_byte(uint16_t port)
