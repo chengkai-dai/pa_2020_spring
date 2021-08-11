@@ -36,6 +36,7 @@ void ide_write(uint8_t *buf, uint32_t offset, uint32_t len)
 static void
 ide_writeback(void)
 {
+	printf("aaaa\n");
 	static uint32_t counter = 0;
 	counter++;
 	if (counter == WRITEBACK_TIME * HZ)
