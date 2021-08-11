@@ -25,7 +25,7 @@ make_instr_func(hlt)
 	}
 	else
 	{
-		printf("SDL_WaitThread\n");
+		// printf("SDL_WaitThread\n");
 		SDL_WaitThread(thread, NULL);
 	}
 	return 1;
