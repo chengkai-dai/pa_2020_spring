@@ -46,7 +46,7 @@ make_instr_func(in_v)
 
     uint32_t in_data = pio_read(port_no, data_size_ / 8);
 
-    printf("indata 0x%x\n",in_data);
+    // printf("indata 0x%x\n",in_data);
 
     //al reg no.0
 
