@@ -1,7 +1,7 @@
 #include "trap.h"
 #include <stdint.h>
 #include <sys/syscall.h>
-// #include <stdio.h>
+#include <stdio.h>
 
 // read a byte from the port
 uint8_t in_byte(uint16_t port)
@@ -49,6 +49,7 @@ void keyboard_event_handler()
 		// can you now fully understand Fig. 8.3 on pg. 317 of the text book?
 		printc(c);
 	}
+	printf("finshed");
 }
 
 int main()
