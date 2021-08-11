@@ -36,6 +36,13 @@ printf("pdir.page_frame 0x%x\n",pdir.page_frame<< 12);
 	uint32_t pt_index = addr.pt_index;
 	pt.val = paddr_read(pt_base + pt_index * 4, 4);
 
+	if(pt.present != 1){
+		printf("laddr 0x%x\n",laddr);
+printf("pdir_index 0x%x\n",pdir_index);
+printf("pdir.page_frame 0x%x\n",pdir.page_frame<< 12);
+
+	}
+
 	assert(pt.present == 1);
 	uint32_t ppn = pt.page_frame;
 
