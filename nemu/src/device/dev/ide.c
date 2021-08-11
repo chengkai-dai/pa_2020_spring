@@ -16,7 +16,6 @@ void init_ide(const char *file_to_load)
 	assert(disk_fp != 0);
 	disk_idx = 0;
 	write_io_port(IDE_PORT_BASE + 7, 1, 0x40);
-	printf("init ide %s\n",file_to_load);
 }
 
 make_pio_handler(handler_ide)
