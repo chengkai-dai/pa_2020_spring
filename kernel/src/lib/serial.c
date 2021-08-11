@@ -13,7 +13,7 @@ serial_idle(void)
 
 void serial_printc(char ch)
 {
-	Log("serial_printc 0x%x %c\n",ch,ch);
+	// Log("serial_printc 0x%x %c\n",ch,ch);
 	while (!serial_idle())
 		; // wait untile serial is idle
 	// print 'ch' via out instruction here
