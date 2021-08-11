@@ -21,7 +21,7 @@ make_instr_func(ret_near)
     cpu.esp += data_size / 8;
     if (cpu.eip == 0x804904a)
     {
-        printf("ret esp 0x%x\n", cpu.esp);
+        printf("ret va 0x%x\n", cpu.esp);
     }
     //step 3
     uint32_t ret_eip = rsp.val;
