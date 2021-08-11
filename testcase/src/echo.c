@@ -51,7 +51,7 @@ void keyboard_event_handler()
 }
 
 int main()
-{
+{BREAK_POINT
 	// register for keyboard events
 	add_irq_handler(1, keyboard_event_handler);
 	while (1)
