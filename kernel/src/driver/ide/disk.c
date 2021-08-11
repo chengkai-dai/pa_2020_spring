@@ -69,7 +69,6 @@ void disk_do_read(void *buf, uint32_t sector)
 	int i;
 	for (i = 0; i < 512 / sizeof(uint32_t); i++)
 	{
-		Log("in_long 0x%x\n",in_long(IDE_PORT_BASE));
 		*(((uint32_t *)buf) + i) = in_long(IDE_PORT_BASE);
 	}
 #endif
