@@ -48,6 +48,7 @@
         "neg.h": "c",
         "in.h": "c",
         "port_io.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "trap.h": "c"
     }
 }

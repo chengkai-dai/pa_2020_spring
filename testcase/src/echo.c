@@ -49,7 +49,7 @@ void keyboard_event_handler()
 		// can you now fully understand Fig. 8.3 on pg. 317 of the text book?
 		printc(c);
 	}
-	printf("finshed");
+	BREAK_POINT
 }
 
 int main()
