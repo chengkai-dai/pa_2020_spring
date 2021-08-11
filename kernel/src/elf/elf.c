@@ -51,11 +51,11 @@ uint32_t loader()
 
 #ifdef HAS_DEVICE_IDE
 			// uint8_t buf[ph->p_memsz];
-			ide_read((void *)ph->p_vaddr, ph->p_offset, ph->p_memsz);
+			ide_read((void *)ph->p_vaddr, ELF_OFFSET_IN_DISK+ph->p_offset, ph->p_memsz);
 			// // elf = (void *)buf;
 			// memcpy((void *)ph->p_vaddr, buf, ph->p_memsz);
 #else
-			memcpy((void *)ph->p_vaddr, ELF_OFFSET_IN_DISK +(void *)ph->p_offset, ph->p_memsz);
+			memcpy((void *)ph->p_vaddr, (void *)ph->p_offset, ph->p_memsz);
 #endif
 			if (ph->p_memsz > ph->p_filesz)
 				memset((void *)ph->p_vaddr + ph->p_filesz, 0, (ph->p_memsz - ph->p_filesz));
