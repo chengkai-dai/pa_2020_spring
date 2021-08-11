@@ -39,7 +39,7 @@ make_instr_func(in_v)
 
     int len = 1;
 
-    int data_size_ = data_size;
+    int data_size_ = 32;
 
     //dx 16bit reg no.2
     int port_no = cpu.gpr[2]._16;
