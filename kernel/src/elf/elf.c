@@ -19,10 +19,11 @@ uint32_t loader()
 {
 	Elf32_Ehdr *elf;
 	Elf32_Phdr *ph, *eph;
-
 #ifdef HAS_DEVICE_IDE
+// BREAK_POINT
 	uint8_t buf[4096];
 	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
+	
 	elf = (void *)buf;
 	Log("ELF loading from hard disk.");
 #else
@@ -33,12 +34,13 @@ uint32_t loader()
 	/* Load each program segment */
 	ph = (void *)elf + elf->e_phoff;
 	eph = ph + elf->e_phnum;
+
 	for (; ph < eph; ph++)
 	{
+		
 		// printf("kernel check\n");
 		if (ph->p_type == PT_LOAD)
 		{
-
 			// remove this panic!!!
 			//panic("Please implement the loader");
 #ifdef IA32_PAGE
@@ -47,8 +49,14 @@ uint32_t loader()
 			//Log("after mm_malloc 0x%x\n",ph->p_vaddr);
 #endif
 
-			memcpy((void *)ph->p_vaddr, (void *)ph->p_offset, ph->p_memsz);
-
+#ifdef HAS_DEVICE_IDE
+			// uint8_t buf[ph->p_memsz];
+			ide_read((void *)ph->p_vaddr, ph->p_offset, ph->p_memsz);
+			// // elf = (void *)buf;
+			// memcpy((void *)ph->p_vaddr, buf, ph->p_memsz);
+#else
+			memcpy((void *)ph->p_vaddr, ELF_OFFSET_IN_DISK +(void *)ph->p_offset, ph->p_memsz);
+#endif
 			if (ph->p_memsz > ph->p_filesz)
 				memset((void *)ph->p_vaddr + ph->p_filesz, 0, (ph->p_memsz - ph->p_filesz));
 

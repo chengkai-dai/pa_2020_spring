@@ -56,6 +56,8 @@ extern uint8_t data_size;
 #include "cpu/instr/popa.h"
 #include "cpu/instr/iret.h"
 #include "cpu/instr/neg.h"
+#include "cpu/instr/in.h"
+#include "cpu/instr/out.h"
 
 /* TODO: add more instructions here */
 

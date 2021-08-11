@@ -85,6 +85,7 @@ void init_cond()
 	 */
 	Log("Hello, NEMU world!");
 
+
 #ifdef HAS_DEVICE_VGA
 	/* Write some test data to the video memory. */
 	video_mapping_write_test();

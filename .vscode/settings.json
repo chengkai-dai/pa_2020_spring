@@ -44,6 +44,9 @@
         "popa.h": "c",
         "i8259_pic.h": "c",
         "iret.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "neg.h": "c",
+        "in.h": "c",
+        "port_io.h": "c"
     }
 }
