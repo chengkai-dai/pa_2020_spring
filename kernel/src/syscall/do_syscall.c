@@ -47,6 +47,7 @@ void do_syscall(TrapFrame *tf)
 {
 	switch (tf->eax)
 	{
+		Log()
 	case 0:
 		cli();
 		add_irq_handle(tf->ebx, (void *)tf->ecx);
