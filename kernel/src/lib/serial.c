@@ -19,7 +19,6 @@ void serial_printc(char ch)
 	// print 'ch' via out instruction here
 	// panic("0x%x\n",ch);
 	// HIT_BAD_TRAP;
-	Log("serial_printc 0x%x %c\n",ch,ch);
 	out_byte(SERIAL_PORT, ch);
 	
 }
