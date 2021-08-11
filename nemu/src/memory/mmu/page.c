@@ -24,11 +24,7 @@ paddr_t page_walk(laddr_t laddr)
 	paddr_t pdir_base = cpu.cr3.page_directory_base << 12;
 
 	pdir.val = paddr_read(pdir_base + pdir_index * 4, 4);
-
-	if(pdir.present != 1){
-		printf("pdir_index 0x%x\n",pdir_index);
-		printf("pdir.val 0x%x\n",pdir.val);
-	}
+	
 	assert(pdir.present == 1);
 
 	PTE pt;
