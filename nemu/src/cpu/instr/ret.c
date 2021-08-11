@@ -19,14 +19,14 @@ make_instr_func(ret_near)
 
     // step 2
     cpu.esp += data_size / 8;
-
+    if (cpu.eip == 0x804904a)
+    {
+        printf("ret esp 0x%x\n", cpu.esp);
+    }
     //step 3
     uint32_t ret_eip = rsp.val;
     cpu.eip = ret_eip;
-    if (cpu.eip == 0x804904a)
-    {
-        printf("ret eip 0x%x\n", ret_eip);
-    }
+    
     print_asm_0("ret", " ", 1);
 
     return 0;
