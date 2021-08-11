@@ -40,6 +40,7 @@ void keyboard_event_handler()
 {
 
 	uint8_t key_pressed = in_byte(0x60);
+	printf("key_pressed 0x%x\n",key_pressed);
 
 	// translate scan code to ASCII
 	char c = translate_key(key_pressed);
