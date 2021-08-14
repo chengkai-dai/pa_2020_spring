@@ -1,25 +1,5 @@
-# 关于本仓库
+# 南京大学《计算机系统基础》 *PA 2020 Spring*
 
-这是南京大学《计算机系统基础》 *PA 2020 Spring* 实验课程的**临时**框架代码仓库. 供校外有需要的老师同学借鉴.
+My solution to the pa of this course.
 
-请根据实验教程 *PA 0* 中的描述来正确按照和配置环境开展实验.
-
-* 实验教程和定制的objdump地址：
-
-https://gitee.com/wlicsnju/pa2020_spring_guide
-
-* 直播课程录屏地址：
-
-https://space.bilibili.com/284613991/channel/detail?cid=103368
-
-# 讨论和问答
-
-请在本仓库的issue中开展讨论，我不定时会来查看并回复.
-
-# 重要说明
-
-* **本框架代码开放传播和修改，但请不要在任何公共场合（包括但不限于公开的代码仓库、论坛）上透露你自己做的答案！**
-
-* **南京大学的同学，请用校内的gitlab仓库，不要用这个（虽然内容是一样的）**
-
-* **未来上MOOC的同学，请用MOOC课程所公布的仓库，这个是为了方便交流所用的临时仓库**
+Please notice that there is an unknown bug (I guess it's in the memory write part), which prevent the tasks after pa-4.2.2 (Keyboard IO) to run successfully.
